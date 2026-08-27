@@ -2,7 +2,203 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="hero">
+
+    <div class="hero-content">
+        <h1>Новая техника для твоего компьютера</h1>
+
+        <p>
+            Мощные ноутбуки, компьютеры и аксессуары
+            для работы и развлечений.
+        </p>
+
+        <a href="/Products" class="btn">
+            Смотреть товары →
+        </a>
+    </div>
+
+    <div class="hero-image">
+        <img src="/images/hero.jpg" alt="Новая техника">
+    </div>
+
+</section>
+
+
+<!-- CATEGORIES -->
+<section class="categories">
+
+    <h2>Популярные категории</h2>
+
+    <div class="category-list">
+
+        <a href="/Products?category=Laptops" class="category-card">
+            <div class="category-icon">💻</div>
+            <h3>Ноутбуки</h3>
+        </a>
+
+        <a href="/Products?category=Computers" class="category-card">
+            <div class="category-icon">🖥️</div>
+            <h3>Компьютеры</h3>
+        </a>
+
+        <a href="/Products?category=Phones" class="category-card">
+            <div class="category-icon">📱</div>
+            <h3>Телефоны</h3>
+        </a>
+
+        <a href="/Products?category=Accessories" class="category-card">
+            <div class="category-icon">⌨️</div>
+            <h3>Аксессуары</h3>
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- POPULAR PRODUCTS -->
+<section class="popular-products">
+
+    <div class="section-header">
+        <h2>Популярные товары</h2>
+
+        <a href="/Products">
+            Все товары →
+        </a>
+    </div>
+
+
+    <div class="product-list">
+
+        <!-- Product 1 -->
+        <article class="product-card">
+
+            <div class="product-image">
+                <img src="/images/products/product1.jpg"
+                     alt="ASUS TUF Gaming">
+            </div>
+
+            <h3>ASUS TUF Gaming A15</h3>
+
+            <p class="product-description">
+                Ryzen 7 • RTX 4060 • 16 GB RAM
+            </p>
+
+            <p class="product-price">
+                1299 AZN
+            </p>
+
+            <button type="button">
+                🛒 Добавить в корзину
+            </button>
+
+        </article>
+
+
+        <!-- Product 2 -->
+        <article class="product-card">
+
+            <div class="product-image">
+                <img src="/images/products/product2.jpg"
+                     alt="Lenovo Legion">
+            </div>
+
+            <h3>Lenovo Legion 5</h3>
+
+            <p class="product-description">
+                Ryzen 7 • RTX 4060 • 16 GB RAM
+            </p>
+
+            <p class="product-price">
+                1399 AZN
+            </p>
+
+            <button type="button">
+                🛒 Добавить в корзину
+            </button>
+
+        </article>
+
+
+        <!-- Product 3 -->
+        <article class="product-card">
+
+            <div class="product-image">
+                <img src="/images/products/product3.jpg"
+                     alt="iPhone">
+            </div>
+
+            <h3>iPhone</h3>
+
+            <p class="product-description">
+                256 GB • 5G
+            </p>
+
+            <p class="product-price">
+                1799 AZN
+            </p>
+
+            <button type="button">
+                🛒 Добавить в корзину
+            </button>
+
+        </article>
+
+
+        <!-- Product 4 -->
+        <article class="product-card">
+
+            <div class="product-image">
+                <img src="/images/products/product4.jpg"
+                     alt="Logitech Mouse">
+            </div>
+
+            <h3>Logitech Mouse</h3>
+
+            <p class="product-description">
+                Wireless • Gaming
+            </p>
+
+            <p class="product-price">
+                120 AZN
+            </p>
+
+            <button type="button">
+                🛒 Добавить в корзину
+            </button>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- WHY TECHSTORE -->
+<section class="advantages">
+
+    <h2>Почему TechStore?</h2>
+
+    <div class="advantages-list">
+
+        <div class="advantage">
+            <span>🚚</span>
+            <h3>Быстрая доставка</h3>
+            <p>Доставим ваш заказ в кратчайшие сроки.</p>
+        </div>
+
+        <div class="advantage">
+            <span>🔒</span>
+            <h3>Безопасная оплата</h3>
+            <p>Безопасная обработка платежей.</p>
+        </div>
+
+        <div class="advantage">
+            <span>↩️</span>
+            <h3>Возврат</h3>
+            <p>Возможность вернуть товар.</p>
+        </div>
+
+    </div>
+
+</section>
