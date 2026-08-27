@@ -102,3 +102,60 @@ nav a:hover {
 .search-container button:hover {
     background-color: #374151;
 }
+
+.account-menu {
+    position: relative;
+}
+
+.account-link {
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    color: #374151;
+    font-size: 15px;
+}
+
+.account-dropdown {
+    position: absolute;
+    top: 35px;
+    right: 0;
+
+    width: 190px;
+
+    padding: 8px;
+
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+
+    display: none;
+}
+
+.account-dropdown a,
+.account-dropdown button {
+    display: block;
+    width: 100%;
+
+    padding: 9px 10px;
+
+    border: none;
+    background: none;
+
+    text-align: left;
+    color: #374151;
+
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.account-dropdown a:hover,
+.account-dropdown button:hover {
+    background-color: #f3f4f6;
+}

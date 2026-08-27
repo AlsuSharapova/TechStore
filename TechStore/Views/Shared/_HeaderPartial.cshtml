@@ -10,14 +10,60 @@
         </nav>
 
         <div class="header-actions">
+
             <select>
                 <option>RU</option>
                 <option>EN</option>
                 <option>AZ</option>
             </select>
 
-            <a href="/Cart">🛒</a>
-            <a href="/Account/Login">👤</a>            
+            <a href="/Cart" class="header-icon">
+                🛒
+            </a>
+
+            @if (User.Identity?.IsAuthenticated == true) {
+                <div class="account-menu">
+
+                    <button type="button" class="account-link">
+                        👤 @User.Identity.Name
+                    </button>
+
+                    <div class="account-dropdown">
+
+                        <a href="/Account/Profile">
+                            👤 Мой профиль
+                        </a>
+
+                        <a href="/Orders">
+                            📦 Мои заказы
+                        </a>
+
+                        <a href="/Account/Settings">
+                            ⚙ Настройки
+                        </a>
+
+                        <form asp-controller="Account"
+                              asp-action="Logout"
+                              method="post">
+
+                            <button type="submit">
+                                🚪 Выйти
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+            }
+            else {
+                <a asp-controller="Account"
+                   asp-action="Login"
+                   class="account-link">
+                    👤 Войти
+                </a>
+            }
+
         </div>
 
     </div>
