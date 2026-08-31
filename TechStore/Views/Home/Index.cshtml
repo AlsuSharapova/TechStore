@@ -1,4 +1,5 @@
-﻿@{
+﻿@model HomeViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -31,31 +32,17 @@
 
     <div class="category-list">
 
-        <a href="/Products?category=Laptops" class="category-card">
-            <div class="category-icon">💻</div>
-            <h3>Ноутбуки</h3>
-        </a>
-
-        <a href="/Products?category=Phones" class="category-card">
-            <div class="category-icon">📱</div>
-            <h3>Телефоны</h3>
-        </a>
-
-        <a href="/Products?category=Headphones" class="category-card">
-            <div class="category-icon">🎧</div>
-            <h3>Наушники</h3>
-        </a>
-
-        <a href="/Products?category=Mice" class="category-card">
-            <div class="category-icon">🖱️</div>
-            <h3>Мышки</h3>
-        </a>
+        @foreach(var category in Model.Categories)
+        {
+            <a asp-controller="Products" asp-action="Index" asp-route-category="@category.Id" class="category-card">
+                <div class="category-icon">@category.Icon</div>
+                <h3>@category.Name</h3>
+            </a>
+        }
 
     </div>
 
 </section>
-
-
 <!-- POPULAR PRODUCTS -->
 <section class="popular-products">
 
@@ -69,106 +56,23 @@
 
 
     <div class="product-list">
-
-        <!-- Product 1 -->
-        <article class="product-card">
-
-            <div class="product-image">
-                <img src="/images/products/product1.jpg"
-                     alt="ASUS TUF Gaming">
-            </div>
-
-            <h3>ASUS TUF Gaming A15</h3>
-
-            <p class="product-description">
-                Ryzen 7 • RTX 4060 • 16 GB RAM
-            </p>
-
-            <p class="product-price">
-                1299 AZN
-            </p>
-
-            <button type="button">
-                🛒 Добавить в корзину
-            </button>
-
-        </article>
-
-
-        <!-- Product 2 -->
-        <article class="product-card">
-
-            <div class="product-image">
-                <img src="/images/products/product2.jpg"
-                     alt="Lenovo Legion">
-            </div>
-
-            <h3>Lenovo Legion 5</h3>
-
-            <p class="product-description">
-                Ryzen 7 • RTX 4060 • 16 GB RAM
-            </p>
-
-            <p class="product-price">
-                1399 AZN
-            </p>
-
-            <button type="button">
-                🛒 Добавить в корзину
-            </button>
-
-        </article>
-
-
-        <!-- Product 3 -->
-        <article class="product-card">
-
-            <div class="product-image">
-                <img src="/images/products/product3.jpg"
-                     alt="iPhone">
-            </div>
-
-            <h3>iPhone</h3>
-
-            <p class="product-description">
-                256 GB • 5G
-            </p>
-
-            <p class="product-price">
-                1799 AZN
-            </p>
-
-            <button type="button">
-                🛒 Добавить в корзину
-            </button>
-
-        </article>
-
-
-        <!-- Product 4 -->
-        <article class="product-card">
-
-            <div class="product-image">
-                <img src="/images/products/product4.jpg"
-                     alt="Logitech Mouse">
-            </div>
-
-            <h3>Logitech Mouse</h3>
-
-            <p class="product-description">
-                Wireless • Gaming
-            </p>
-
-            <p class="product-price">
-                120 AZN
-            </p>
-
-            <button type="button">
-                🛒 Добавить в корзину
-            </button>
-
-        </article>
-
+        @foreach (var product in Model.BestSellers) {
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="@product.ImageUrl" alt="@product.Name">
+                </div>
+                <h3>@product.Name</h3>
+                <p class="product-description">
+                    @product.Description
+                </p>
+                <p class="product-price">
+                    @product.Price AZN
+                </p>
+                <button type="button">
+                    🛒 Добавить в корзину
+                </button>
+            </article>
+        }
     </div>
 
 </section>

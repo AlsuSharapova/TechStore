@@ -1,26 +1,33 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using TechStore.Data;
 using TechStore.Models;
+using TechStore.ViewModels;
 
 namespace TechStore.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly AppDbContext _context; 
+        public HomeController(ILogger<HomeController> logger, AppDbContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        public async Task<IActionResult> Index() {
+            var viewModel = new HomeViewModel {
+                Categories = await _context.Categories.ToListAsync(),
+                BestSellers = await _context.Products
+                    .Where(p => p.IsBestSeller)
+                    .Include(p => p.Category)
+                    .Take(4)
+                    .ToListAsync()
+            };
 
-        public IActionResult Privacy()
-        {
-            return View();
+            return View(viewModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
