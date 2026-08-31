@@ -19,7 +19,10 @@ namespace TechStore.Controllers
 
         public async Task<IActionResult> Index() {
             var viewModel = new HomeViewModel {
-                Categories = await _context.Categories.ToListAsync(),
+                Categories = await _context.Categories
+                .Where(c => c.IsFeatured)
+                .Take(4)
+                .ToListAsync(),
                 BestSellers = await _context.Products
                     .Where(p => p.IsBestSeller)
                     .Include(p => p.Category)

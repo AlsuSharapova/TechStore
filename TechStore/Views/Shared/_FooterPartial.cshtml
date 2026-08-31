@@ -1,37 +1,29 @@
 ﻿<footer>
-
     <div class="footer-content">
-
         <div class="footer-brand">
             <h3>TECHSTORE</h3>
             <p>Магазин современной техники.</p>
         </div>
-
         <div class="footer-column">
             <h4>Покупателям</h4>
-            <a href="/Products">Каталог</a>
-            <a href="/Orders">Мои заказы</a>
-            <a href="/Cart">Корзина</a>
+            <a asp-controller="Products" asp-action="Index">Каталог</a>
+            <a asp-controller="Orders" asp-action="Index">Мои заказы</a>
+            <a asp-controller="Cart" asp-action="Index">Корзина</a>
         </div>
-
         <div class="footer-column">
             <h4>Помощь</h4>
-            <a href="/Home/Delivery">Доставка</a>
-            <a href="/Home/Payment">Оплата</a>
-            <a href="/Home/Returns">Возврат</a>
-            <a href="/Home/Contacts">Контакты</a>
+            <a asp-controller="Home" asp-action="Delivery">Доставка</a>
+            <a asp-controller="Home" asp-action="Payment">Оплата</a>
+            <a asp-controller="Home" asp-action="Returns">Возврат</a>
+            <a asp-controller="Home" asp-action="Contacts">Контакты</a>
         </div>
-
     </div>
-
     <div class="footer-bottom">
         <p>© 2026 TechStore</p>
-
         <div>
             <a href="#">Instagram</a>
             <a href="#">Telegram</a>
             <a href="#">Facebook</a>
         </div>
     </div>
-
 </footer>

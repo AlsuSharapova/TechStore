@@ -1,59 +1,43 @@
 ﻿<header>
     <div class="header-top">
-
-        <a href="/" class="logo">TECHSTORE</a>
-
+        <a asp-controller="Home" asp-action="Index" class="logo">TECHSTORE</a>
         <nav>
-            <a href="/Products">Каталог</a>
-            <a href="/Home/About">О нас</a>
-            <a href="/Home/Contacts">Контакты</a>
+            <a asp-controller="Products" asp-action="Index">Каталог</a>
+            <a asp-controller="Home" asp-action="About">О нас</a>
+            <a asp-controller="Home" asp-action="Contacts">Контакты</a>
         </nav>
-
         <div class="header-actions">
-
             <select>
                 <option>RU</option>
                 <option>EN</option>
                 <option>AZ</option>
             </select>
-
-            <a href="/Cart" class="header-icon">
+            <a asp-controller="Cart" asp-action="Index" class="header-icon">
                 🛒
             </a>
-
             @if (User.Identity?.IsAuthenticated == true) {
                 <div class="account-menu">
-
                     <button type="button" class="account-link">
                         👤 @User.Identity.Name
                     </button>
-
                     <div class="account-dropdown">
-
-                        <a href="/Account/Profile">
+                        <a asp-controller="Account" asp-action="Profile">
                             👤 Мой профиль
                         </a>
-
-                        <a href="/Orders">
+                        <a asp-controller="Orders" asp-action="Index">
                             📦 Мои заказы
                         </a>
-
-                        <a href="/Account/Settings">
+                        <a asp-controller="Account" asp-action="Settings">
                             ⚙ Настройки
                         </a>
-
                         <form asp-controller="Account"
                               asp-action="Logout"
                               method="post">
-
                             <button type="submit">
                                 🚪 Выйти
                             </button>
-
                         </form>
-
                     </div>
-
                 </div>
             }
             else {
@@ -63,14 +47,11 @@
                     👤 Войти
                 </a>
             }
-
         </div>
-
     </div>
-
     <!-- SEARCH -->
     <div class="search-container">
-        <form action="/Products" method="get">
+        <form asp-controller="Products" asp-action="Index" method="get">
             <input type="text"
                    name="search"
                    placeholder="Поиск товаров...">
