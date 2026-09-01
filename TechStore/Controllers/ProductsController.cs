@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TechStore.Data;
+using TechStore.ViewModels;
 
 namespace TechStore.Controllers {
     public class ProductsController : Controller{
@@ -9,8 +10,7 @@ namespace TechStore.Controllers {
         public ProductsController(AppDbContext context) {
             _context = context;
         }
-        public async Task<IActionResult> Index(int? category, string? search) {
-
+        public async Task<IActionResult> Index(int? category, string? search, decimal? minPrice, decimal? maxPrice) {
             var query = _context.Products
                 .Include(p => p.Category)
                 .AsQueryable();
@@ -23,9 +23,24 @@ namespace TechStore.Controllers {
                 query = query.Where(p => p.Name.Contains(search));
             }
 
-            var products = await query.ToListAsync();
+            if (minPrice.HasValue) {
+                query = query.Where(p => p.Price >= minPrice.Value);
+            }
 
-            return View(products);
+            if (maxPrice.HasValue) {
+                query = query.Where(p => p.Price <= maxPrice.Value);
+            }
+
+            var viewModel = new ProductsIndexViewModel {
+                Products = await query.ToListAsync(),
+                Categories = await _context.Categories.ToListAsync(),
+                SelectedCategoryId = category,
+                MinPrice = minPrice,
+                MaxPrice = maxPrice,
+                Search = search
+            };
+
+            return View(viewModel);
         }
     }
 }

@@ -1,26 +1,64 @@
-﻿@model List<Product>
+﻿@model ProductsIndexViewModel
 @{
     ViewData["Title"] = "Каталог";
 }
 
-<section class="product-list">
-    @foreach (var product in Model) {
-        <article class="product-card">
-            <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">
-                <div class="product-image">
-                    <img src="@product.ImageUrl" alt="@product.Name">
-                </div>
-                <h3>@product.Name</h3>
-            </a>
-            <p class="product-description">
-                @product.Description
-            </p>
-            <p class="product-price">
-                @product.Price AZN
-            </p>
-            <button type="button">
-                🛒 Добавить в корзину
-            </button>
-        </article>
+<!-- CATEGORY STRIP -->
+<div class="category-strip">
+    @foreach (var category in Model.Categories) {
+        var isActive = Model.SelectedCategoryId == category.Id;
+        <a asp-controller="Products"
+           asp-action="Index"
+           asp-route-category="@(isActive ? null : category.Id)"
+           asp-route-search="@Model.Search"
+           class="category-strip-item @(isActive ? "active" : "")">
+            <span style="font-size: 22px;">@category.Icon</span>
+            <span>@category.Name</span>
+        </a>
     }
-</section>
+</div>
+
+<div class="catalog-layout">
+
+    @if (Model.SelectedCategoryId.HasValue) {
+        <!-- FILTERS SIDEBAR -->
+        <aside class="filters-sidebar">
+            <form asp-controller="Products" asp-action="Index" method="get">
+                <input type="hidden" name="category" value="@Model.SelectedCategoryId" />
+                <input type="hidden" name="search" value="@Model.Search" />
+
+                <h3>Цена, AZN</h3>
+                <div class="price-filter">
+                    <input type="number" name="minPrice" placeholder="От" value="@Model.MinPrice" />
+                    <input type="number" name="maxPrice" placeholder="До" value="@Model.MaxPrice" />
+                </div>
+
+                <button type="submit" class="btn-apply">Применить</button>
+            </form>
+        </aside>
+    }
+
+    <!-- PRODUCTS -->
+    <section class="product-list">
+        @foreach (var product in Model.Products) {
+            <article class="product-card">
+                <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">
+                    <div class="product-image">
+                        <img src="@product.ImageUrl" alt="@product.Name">
+                    </div>
+                    <h3>@product.Name</h3>
+                </a>
+                <p class="product-description">
+                    @product.Description
+                </p>
+                <p class="product-price">
+                    @product.Price AZN
+                </p>
+                <button type="button">
+                    🛒 Добавить в корзину
+                </button>
+            </article>
+        }
+    </section>
+
+</div>
