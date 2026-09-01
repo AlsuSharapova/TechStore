@@ -2,66 +2,50 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
 <section class="hero">
-
     <div class="hero-content">
         <h1>Новая техника для твоего компьютера</h1>
-
         <p>
             Мощные ноутбуки, компьютеры и аксессуары
             для работы и развлечений.
         </p>
-
-        <a href="/Products" class="btn">
+        <a asp-controller="Products" asp-action="Index" class="btn">
             Смотреть товары →
         </a>
     </div>
-
     <div class="hero-image">
         💻
     </div>
-
 </section>
-
-
 <!-- CATEGORIES -->
 <section class="categories">
-
     <h2>Популярные категории</h2>
-
     <div class="category-list">
-
-        @foreach(var category in Model.Categories)
-        {
+        @foreach (var category in Model.Categories) {
             <a asp-controller="Products" asp-action="Index" asp-route-category="@category.Id" class="category-card">
                 <div class="category-icon">@category.Icon</div>
                 <h3>@category.Name</h3>
             </a>
         }
-
     </div>
-
 </section>
 <!-- POPULAR PRODUCTS -->
 <section class="popular-products">
-
     <div class="section-header">
         <h2>Популярные товары</h2>
-
-        <a href="/Products">
+        <a asp-controller="Products" asp-action="Index">
             Все товары →
         </a>
     </div>
-
-
     <div class="product-list">
         @foreach (var product in Model.BestSellers) {
             <article class="product-card">
-                <div class="product-image">
-                    <img src="@product.ImageUrl" alt="@product.Name">
-                </div>
-                <h3>@product.Name</h3>
+                <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">
+                    <div class="product-image">
+                        <img src="@product.ImageUrl" alt="@product.Name">
+                    </div>
+                    <h3>@product.Name</h3>
+                </a>
                 <p class="product-description">
                     @product.Description
                 </p>
@@ -74,35 +58,25 @@
             </article>
         }
     </div>
-
 </section>
-
-
 <!-- WHY TECHSTORE -->
 <section class="advantages">
-
     <h2>Почему TechStore?</h2>
-
     <div class="advantages-list">
-
         <div class="advantage">
             <span>🚚</span>
             <h3>Быстрая доставка</h3>
             <p>Доставим ваш заказ в кратчайшие сроки.</p>
         </div>
-
         <div class="advantage">
             <span>🔒</span>
             <h3>Безопасная оплата</h3>
             <p>Безопасная обработка платежей.</p>
         </div>
-
         <div class="advantage">
             <span>↩️</span>
             <h3>Возврат</h3>
             <p>Возможность вернуть товар.</p>
         </div>
-
     </div>
-
 </section>
