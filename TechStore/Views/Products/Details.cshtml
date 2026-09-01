@@ -1,0 +1,72 @@
+﻿@model Product
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<section class="product-details">
+
+    <div class="product-details-image">
+        <img src="@Model.ImageUrl" alt="@Model.Name">
+    </div>
+
+    <div class="product-details-info">
+        <h1>@Model.Name</h1>
+
+        <p class="product-details-price">@Model.Price AZN</p>
+
+        @if (Model.Specifications.Any())
+        {
+            <ul class="spec-highlights">
+                @foreach (var spec in Model.Specifications.Take(4))
+                {
+                    <li>@spec.Value</li>
+                }
+            </ul>
+        }
+
+        <div class="quantity-selector">
+            <button type="button" class="qty-btn" id="qtyMinus">−</button>
+            <input type="number" id="qtyInput" value="1" min="1" max="@Model.StockQuantity" readonly>
+            <button type="button" class="qty-btn" id="qtyPlus">+</button>
+        </div>
+
+        <button type="button" class="btn-add-to-cart">
+            🛒 Добавить в корзину
+        </button>
+    </div>
+
+</section>
+
+<section class="product-details-description">
+    <h2>Описание</h2>
+    <p>@Model.Description</p>
+</section>
+
+@if (Model.Specifications.Any())
+{
+    <section class="product-details-specs">
+        <h2>Характеристики</h2>
+        <table class="specs-table">
+            @foreach (var spec in Model.Specifications)
+            {
+                <tr>
+                    <td>@spec.Name</td>
+                    <td>@spec.Value</td>
+                </tr>
+            }
+        </table>
+    </section>
+}
+
+@section Scripts {
+    <script>
+        const qtyInput = document.getElementById('qtyInput');
+        document.getElementById('qtyPlus').addEventListener('click', () => {
+            const max = parseInt(qtyInput.max);
+            if (parseInt(qtyInput.value) < max) qtyInput.value = parseInt(qtyInput.value) + 1;
+        });
+        document.getElementById('qtyMinus').addEventListener('click', () => {
+            if (parseInt(qtyInput.value) > 1) qtyInput.value = parseInt(qtyInput.value) - 1;
+        });
+    </script>
+}   

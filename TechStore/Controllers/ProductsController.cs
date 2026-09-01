@@ -10,6 +10,7 @@ namespace TechStore.Controllers {
         public ProductsController(AppDbContext context) {
             _context = context;
         }
+
         public async Task<IActionResult> Index(int? category, string? search, decimal? minPrice, decimal? maxPrice) {
             var query = _context.Products
                 .Include(p => p.Category)
@@ -41,6 +42,20 @@ namespace TechStore.Controllers {
             };
 
             return View(viewModel);
+        }
+
+        public async Task<IActionResult> Details(int id) {
+
+            var product = await _context.Products
+                .Include(p => p.Category)
+                .Include(p => p.Specifications)
+                .FirstOrDefaultAsync(p => p.Id == id);
+
+            if (product == null) {
+                return NotFound();
+            }
+
+            return View(product);
         }
     }
 }
