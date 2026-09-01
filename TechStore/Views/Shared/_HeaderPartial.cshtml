@@ -52,8 +52,14 @@
     <!-- SEARCH -->
     <div class="search-container">
         <form asp-controller="Products" asp-action="Index" method="get">
+            <input type="hidden" name="category" value="@Context.Request.Query["category"]" />
+            <input type="hidden" name="minPrice" value="@Context.Request.Query["minPrice"]" />
+            <input type="hidden" name="maxPrice" value="@Context.Request.Query["maxPrice"]" />
+
+
             <input type="text"
                    name="search"
+                   value="@Context.Request.Query["search"]"
                    placeholder="Поиск товаров...">
             <button type="submit">🔍</button>
         </form>

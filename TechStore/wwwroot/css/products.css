@@ -61,3 +61,34 @@
 .catalog-layout .product-list:only-child {
     grid-column: 1 / -1;
 }
+.filter-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-actions .btn-apply {
+    flex: 1;
+}
+
+.btn-clear-filters {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid #dfe3e8;
+    border-radius: 8px;
+    color: #374151;
+    font-size: 14px;
+    text-align: center;
+}
+
+.btn-clear-filters:hover {
+    background-color: #f3f4f6;
+}
+
+.btn-clear-filters.disabled {
+    color: #9ca3af;
+    cursor: not-allowed;
+    background-color: #f9fafb;
+}

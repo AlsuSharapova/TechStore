@@ -33,7 +33,24 @@
                     <input type="number" name="maxPrice" placeholder="До" value="@Model.MaxPrice" />
                 </div>
 
-                <button type="submit" class="btn-apply">Применить</button>
+                <div class="filter-actions">
+                    <button type="submit" class="btn-apply">Применить</button>
+
+                    @{
+                        var hasPriceFilter = Model.MinPrice.HasValue || Model.MaxPrice.HasValue;
+                    }
+                    @if (hasPriceFilter) {
+                        <a asp-controller="Products" asp-action="Index"
+                           asp-route-category="@Model.SelectedCategoryId"
+                           asp-route-search="@Model.Search"
+                           class="btn-clear-filters">
+                            Очистить
+                        </a>
+                    }
+                    else {
+                        <span class="btn-clear-filters disabled">Очистить</span>
+                    }
+                </div>
             </form>
         </aside>
     }
