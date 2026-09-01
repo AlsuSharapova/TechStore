@@ -46,9 +46,13 @@
                     </div>
                     <h3>@product.Name</h3>
                 </a>
-                <p class="product-description">
-                    @product.Description
-                </p>
+                @if (product.Specifications.Any()) {
+                    <ul class="product-card-specs">
+                        @foreach (var spec in product.Specifications.Take(3)) {
+                            <li>@spec.Value</li>
+                        }
+                    </ul>
+                }
                 <p class="product-price">
                     @product.Price AZN
                 </p>

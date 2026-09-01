@@ -14,6 +14,7 @@ namespace TechStore.Controllers {
         public async Task<IActionResult> Index(int? category, string? search, decimal? minPrice, decimal? maxPrice) {
             var query = _context.Products
                 .Include(p => p.Category)
+                .Include(p => p.Specifications)
                 .AsQueryable();
 
             if (category.HasValue) {

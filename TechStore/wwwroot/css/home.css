@@ -176,6 +176,18 @@
     margin-bottom: 8px;
 }
 
+.product-card-specs {
+    list-style: none;
+    min-height: 38px;
+    margin-bottom: 15px;
+}
+
+.product-card-specs li {
+    color: #6b7280;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
 .product-description {
     min-height: 38px;
 

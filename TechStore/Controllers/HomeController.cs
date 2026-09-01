@@ -26,6 +26,7 @@ namespace TechStore.Controllers
                 BestSellers = await _context.Products
                     .Where(p => p.IsBestSeller)
                     .Include(p => p.Category)
+                    .Include(p => p.Specifications)
                     .Take(4)
                     .ToListAsync()
             };
