@@ -11,7 +11,7 @@ namespace TechStore.Controllers {
             _context = context;
         }
 
-        public async Task<IActionResult> Index(int? category, string? search, decimal? minPrice, decimal? maxPrice) {
+        public async Task<IActionResult> Index(int? category, string? search, decimal? minPrice, decimal? maxPrice, string? sortBy) {
             var query = _context.Products
                 .Include(p => p.Category)
                 .Include(p => p.Specifications)
@@ -33,13 +33,22 @@ namespace TechStore.Controllers {
                 query = query.Where(p => p.Price <= maxPrice.Value);
             }
 
+            query = sortBy switch {
+                "price_asc" => query.OrderBy(p => p.Price),
+                "price_desc" => query.OrderByDescending(p => p.Price),
+                "name" => query.OrderBy(p => p.Name),
+                "popular" => query.OrderByDescending(p => p.IsBestSeller),
+                _ => query
+            };
+
             var viewModel = new ProductsIndexViewModel {
                 Products = await query.ToListAsync(),
                 Categories = await _context.Categories.ToListAsync(),
                 SelectedCategoryId = category,
                 MinPrice = minPrice,
                 MaxPrice = maxPrice,
-                Search = search
+                Search = search,
+                SortBy = sortBy
             };
 
             return View(viewModel);

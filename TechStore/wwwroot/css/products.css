@@ -92,3 +92,14 @@
     cursor: not-allowed;
     background-color: #f9fafb;
 }
+.sort-form {
+    margin-bottom: 20px;
+}
+
+.sort-select {
+    padding: 8px 14px;
+    border: 1px solid #dfe3e8;
+    border-radius: 8px;
+    background-color: white;
+    color: #374151;
+}
