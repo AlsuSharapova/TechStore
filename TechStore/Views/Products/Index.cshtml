@@ -39,12 +39,28 @@
             <form asp-controller="Products" asp-action="Index" method="get">
                 <input type="hidden" name="category" value="@Model.SelectedCategoryId" />
                 <input type="hidden" name="search" value="@Model.Search" />
+                <input type="hidden" name="sortBy" value="@Model.SortBy" />
 
                 <h3>Цена, AZN</h3>
                 <div class="price-filter">
                     <input type="number" name="minPrice" placeholder="От" value="@Model.MinPrice" />
                     <input type="number" name="maxPrice" placeholder="До" value="@Model.MaxPrice" />
                 </div>
+
+                @foreach (var specGroup in Model.AvailableSpecFilters) {
+                    <h3>@specGroup.Name</h3>
+                    <div class="spec-filter-group">
+                        @foreach (var value in specGroup.Values) {
+                            var specKey = $"{specGroup.Name}:{value}";
+                            var isChecked = Model.SelectedSpecs.Contains(specKey);
+
+                            <label class="spec-checkbox">
+                                <input type="checkbox" name="specs" value="@specKey" checked="@isChecked" />
+                                @value
+                            </label>
+                        }
+                    </div>
+                }
 
                 <div class="filter-actions">
                     <button type="submit" class="btn-apply">Применить</button>
