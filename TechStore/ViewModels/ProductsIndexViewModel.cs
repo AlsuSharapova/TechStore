@@ -12,5 +12,12 @@ namespace TechStore.ViewModels {
         public decimal? MaxPrice { get; set; }
         public string ? Search { get; set; }
         public string? SortBy { get; set; }
+        public List<string> SelectedSpecs { get; set; } = new();
+        public List<SpecFilterGroup> AvailableSpecFilters { get; set; } = new();
+
+    }
+    public class SpecFilterGroup {
+        public string Name { get; set; } = string.Empty;
+        public List<string> Values { get; set; } = new();
     }
 }

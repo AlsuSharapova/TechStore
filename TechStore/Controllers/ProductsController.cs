@@ -11,7 +11,7 @@ namespace TechStore.Controllers {
             _context = context;
         }
 
-        public async Task<IActionResult> Index(int? category, string? search, decimal? minPrice, decimal? maxPrice, string? sortBy) {
+        public async Task<IActionResult> Index(int? category, string? search, decimal? minPrice, decimal? maxPrice, string? sortBy, List<string>? specs) {
             var query = _context.Products
                 .Include(p => p.Category)
                 .Include(p => p.Specifications)
@@ -33,6 +33,17 @@ namespace TechStore.Controllers {
                 query = query.Where(p => p.Price <= maxPrice.Value);
             }
 
+            // Фильтр по характеристикам
+            if (specs != null && specs.Any()) {
+                foreach (var spec in specs) {
+                    var parts = spec.Split(':');
+                    var specName = parts[0];
+                    var specValue = parts[1];
+
+                    query = query.Where(p => p.Specifications.Any(s => s.Name == specName && s.Value == specValue));
+                }
+            }
+
             query = sortBy switch {
                 "price_asc" => query.OrderBy(p => p.Price),
                 "price_desc" => query.OrderByDescending(p => p.Price),
@@ -41,14 +52,37 @@ namespace TechStore.Controllers {
                 _ => query
             };
 
+            var products = await query.ToListAsync();
+
+            // Собираем доступные фильтры по характеристикам ТОЛЬКО для выбранной категории
+            var availableSpecFilters = new List<SpecFilterGroup>();
+
+            if (category.HasValue) {
+                var categorySpecs = await _context.ProductSpecifications
+                    .Where(s => s.Product.CategoryId == category.Value)
+                    .Select(s => new { s.Name, s.Value })
+                    .Distinct()
+                    .ToListAsync();
+
+                availableSpecFilters = categorySpecs
+                    .GroupBy(s => s.Name)
+                    .Select(g => new SpecFilterGroup {
+                        Name = g.Key,
+                        Values = g.Select(x => x.Value).Distinct().ToList()
+                    })
+                    .ToList();
+            }
+
             var viewModel = new ProductsIndexViewModel {
-                Products = await query.ToListAsync(),
+                Products = products,
                 Categories = await _context.Categories.ToListAsync(),
                 SelectedCategoryId = category,
                 MinPrice = minPrice,
                 MaxPrice = maxPrice,
                 Search = search,
-                SortBy = sortBy
+                SortBy = sortBy,
+                SelectedSpecs = specs ?? new List<string>(),
+                AvailableSpecFilters = availableSpecFilters
             };
 
             return View(viewModel);
