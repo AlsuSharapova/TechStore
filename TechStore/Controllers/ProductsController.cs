@@ -35,12 +35,15 @@ namespace TechStore.Controllers {
 
             // Фильтр по характеристикам
             if (specs != null && specs.Any()) {
-                foreach (var spec in specs) {
-                    var parts = spec.Split(':');
-                    var specName = parts[0];
-                    var specValue = parts[1];
+                var groupedSpecs = specs
+                    .Select(s => s.Split(':'))
+                    .GroupBy(parts => parts[0], parts => parts[1]);
 
-                    query = query.Where(p => p.Specifications.Any(s => s.Name == specName && s.Value == specValue));
+                foreach (var group in groupedSpecs) {
+                    var specName = group.Key;
+                    var specValues = group.ToList();
+
+                    query = query.Where(p => p.Specifications.Any(s => s.Name == specName && specValues.Contains(s.Value)));
                 }
             }
 
