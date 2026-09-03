@@ -113,3 +113,51 @@
     </section>
 
 </div>
+
+@if (Model.TotalPages > 1) {
+    var specsQuery = string.Join("&", Model.SelectedSpecs.Select(s => $"specs={Uri.EscapeDataString(s)}"));
+
+    string PageUrl(int pageNum) => Url.Action("Index", "Products", new {
+        category = Model.SelectedCategoryId,
+        search = Model.Search,
+        minPrice = Model.MinPrice,
+        maxPrice = Model.MaxPrice,
+        sortBy = Model.SortBy,
+        page = pageNum
+    }) + (Model.SelectedSpecs.Any() ? "&" + specsQuery : "");
+
+    <div class="pagination">
+
+        <!-- Кнопка "назад" -->
+        <a href="@(Model.CurrentPage > 1 ? PageUrl(Model.CurrentPage - 1) : "#")"
+           class="page-link @(Model.CurrentPage == 1 ? "disabled" : "")">‹</a>
+
+        @{
+            int start = Math.Max(1, Model.CurrentPage - 2);
+            int end = Math.Min(Model.TotalPages, Model.CurrentPage + 2);
+        }
+
+        @if (start > 1) {
+            <a href="@PageUrl(1)" class="page-link">1</a>
+            if (start > 2) {
+                <span class="page-dots">...</span>
+            }
+        }
+
+        @for (int i = start; i <= end; i++) {
+            <a href="@PageUrl(i)" class="page-link @(i == Model.CurrentPage ? "active" : "")">@i</a>
+        }
+
+        @if (end < Model.TotalPages) {
+            if (end < Model.TotalPages - 1) {
+                <span class="page-dots">...</span>
+            }
+            <a href="@PageUrl(Model.TotalPages)" class="page-link">@Model.TotalPages</a>
+        }
+
+        <!-- Кнопка "вперёд" -->
+        <a href="@(Model.CurrentPage<Model.TotalPages? PageUrl(Model.CurrentPage + 1) : "#")"
+           class="page-link @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">›</a>
+
+    </div>
+}

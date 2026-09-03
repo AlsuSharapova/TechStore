@@ -11,7 +11,7 @@ namespace TechStore.Controllers {
             _context = context;
         }
 
-        public async Task<IActionResult> Index(int? category, string? search, decimal? minPrice, decimal? maxPrice, string? sortBy, List<string>? specs) {
+        public async Task<IActionResult> Index(int? category, string? search, decimal? minPrice, decimal? maxPrice, string? sortBy, List<string>? specs, int page = 1) {
             var query = _context.Products
                 .Include(p => p.Category)
                 .Include(p => p.Specifications)
@@ -55,7 +55,16 @@ namespace TechStore.Controllers {
                 _ => query
             };
 
-            var products = await query.ToListAsync();
+            
+
+            const int PageSize = 12;
+            var totalProducts = await query.CountAsync();
+            var totalPages = (int)Math.Ceiling(totalProducts / (double)PageSize);
+
+            var products = await query
+                .Skip((page - 1) * PageSize)
+                .Take(PageSize)
+                .ToListAsync();
 
             // Собираем доступные фильтры по характеристикам ТОЛЬКО для выбранной категории
             var availableSpecFilters = new List<SpecFilterGroup>();
@@ -85,7 +94,9 @@ namespace TechStore.Controllers {
                 Search = search,
                 SortBy = sortBy,
                 SelectedSpecs = specs ?? new List<string>(),
-                AvailableSpecFilters = availableSpecFilters
+                AvailableSpecFilters = availableSpecFilters,
+                CurrentPage = page,
+                TotalPages = totalPages
             };
 
             return View(viewModel);

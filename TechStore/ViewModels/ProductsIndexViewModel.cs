@@ -15,6 +15,9 @@ namespace TechStore.ViewModels {
         public List<string> SelectedSpecs { get; set; } = new();
         public List<SpecFilterGroup> AvailableSpecFilters { get; set; } = new();
 
+        public int CurrentPage { get; set; } = 1;
+        public int TotalPages { get; set; }
+
     }
     public class SpecFilterGroup {
         public string Name { get; set; } = string.Empty;
