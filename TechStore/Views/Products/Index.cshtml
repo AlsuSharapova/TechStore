@@ -67,8 +67,9 @@
 
                     @{
                         var hasPriceFilter = Model.MinPrice.HasValue || Model.MaxPrice.HasValue;
+						var hasSpecFilter = Model.SelectedSpecs.Any();
                     }
-                    @if (hasPriceFilter) {
+                    @if (hasPriceFilter || hasSpecFilter) {
                         <a asp-controller="Products" asp-action="Index"
                            asp-route-category="@Model.SelectedCategoryId"
                            asp-route-search="@Model.Search"
