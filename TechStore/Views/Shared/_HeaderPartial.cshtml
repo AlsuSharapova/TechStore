@@ -1,4 +1,5 @@
-﻿<header>
+﻿
+<header>
     <div class="header-top">
         <a asp-controller="Home" asp-action="Index" class="logo">TECHSTORE</a>
         <nav>
@@ -18,7 +19,8 @@
             @if (User.Identity?.IsAuthenticated == true) {
                 <div class="account-menu">
                     <button type="button" class="account-link">
-                        👤 @User.Identity.Name
+                        <span class="account-icon">👤</span>
+                        @User.FindFirst("FullName")?.Value
                     </button>
                     <div class="account-dropdown">
                         <a asp-controller="Account" asp-action="Profile">
@@ -26,9 +28,6 @@
                         </a>
                         <a asp-controller="Orders" asp-action="Index">
                             📦 Мои заказы
-                        </a>
-                        <a asp-controller="Account" asp-action="Settings">
-                            ⚙ Настройки
                         </a>
                         <form asp-controller="Account"
                               asp-action="Logout"

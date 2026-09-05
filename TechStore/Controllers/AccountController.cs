@@ -23,7 +23,12 @@ namespace TechStore.Controllers {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FullName = model.FullName };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded) {
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    var claims = new List<System.Security.Claims.Claim>
+                    {
+                new System.Security.Claims.Claim("FullName", user.FullName)
+            };
+
+                    await _signInManager.SignInWithClaimsAsync(user, isPersistent: false, claims);
                     return RedirectToAction("Index", "Home");
                 }
                 foreach (var error in result.Errors) {
