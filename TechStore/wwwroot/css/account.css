@@ -1,0 +1,100 @@
+﻿.account-container {
+    min-height: calc(100vh - 250px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+}
+
+.account-box {
+    width: 100%;
+    max-width: 420px;
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 40px;
+}
+
+.account-box h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #374151;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid #dfe3e8;
+    border-radius: 8px;
+    background-color: #f9fafb;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+    border-color: #111827;
+    background-color: white;
+}
+
+.field-error {
+    display: block;
+    margin-top: 6px;
+    font-size: 13px;
+    color: #dc2626;
+}
+
+.validation-summary {
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #dc2626;
+}
+
+.validation-summary ul {
+    list-style: none;
+    padding: 0;
+}
+
+.btn-account {
+    width: 100%;
+    padding: 13px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #111827;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.btn-account:hover {
+    background-color: #374151;
+}
+
+.account-switch {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.account-switch a {
+    color: #111827;
+    font-weight: 600;
+}
+
+.account-switch a:hover {
+    text-decoration: underline;
+}
