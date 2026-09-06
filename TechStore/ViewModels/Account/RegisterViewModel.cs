@@ -3,7 +3,7 @@
 namespace TechStore.ViewModels.Account {
     public class RegisterViewModel {
         [Required(ErrorMessage = "Введите имя")]
-        [Display(Name = "Полное имя")]
+        [Display(Name = "Имя")]
         public string FullName { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Введите email")]

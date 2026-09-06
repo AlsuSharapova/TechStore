@@ -1,0 +1,57 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Вход";
+}
+
+<div class="account-container">
+    <div class="account-box">
+        <h2>Вход</h2>
+
+        @if (TempData["Message"] != null) {
+            <div class="alert-success">
+                @TempData["Message"]
+            </div>
+        }
+
+        <form asp-controller="Account" asp-action="Login" method="post">
+            <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" />
+                <span asp-validation-for="Email" class="field-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" />
+                <span asp-validation-for="Password" class="field-error"></span>
+            </div>
+
+            <div class="login-options">
+                <div class="form-check">
+                    <label>
+                        <input asp-for="RememberMe" />
+                        @Html.DisplayNameFor(a => a.RememberMe)
+                    </label>
+                </div>
+
+                <div class="forgot-password">
+                    <a asp-controller="Account" asp-action="VerifyEmail">
+                        Забыли пароль?
+                    </a>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-account">Войти</button>
+
+            <p class="account-switch">
+                Нет аккаунта? <a asp-controller="Account" asp-action="Register">Зарегистрироваться</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
