@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Проверьте почту";
+}
+
+<div class="account-container">
+    <div class="account-box account-box-center">
+        <div class="confirmation-icon">📧</div>
+        <h2>Проверьте почту</h2>
+        <p class="confirmation-text">
+            Мы отправили письмо с подтверждением на вашу почту.
+            Перейдите по ссылке в письме, чтобы завершить регистрацию.
+        </p>
+        <a asp-controller="Account" asp-action="Login" class="btn-account-outline">
+            Перейти ко входу
+        </a>
+    </div>
+</div>

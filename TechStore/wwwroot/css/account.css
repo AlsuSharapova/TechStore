@@ -148,4 +148,33 @@
     justify-content: space-between;
     margin-bottom: 20px;
 }
+.account-box-center {
+    text-align: center;
+}
 
+.confirmation-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.confirmation-text {
+    color: #6b7280;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.btn-account-outline {
+    display: inline-block;
+    padding: 12px 24px;
+    border: 1px solid #111827;
+    border-radius: 8px;
+    color: #111827;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.btn-account-outline:hover {
+    background-color: #111827;
+    color: white;
+}
