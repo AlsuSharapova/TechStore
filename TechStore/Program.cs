@@ -1,7 +1,8 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TechStore.Data;
-using Microsoft.AspNetCore.Identity;
 using TechStore.Models.Entities;
+using TechStore.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,8 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => {
 })
 .AddEntityFrameworkStores<AppDbContext>()
 .AddDefaultTokenProviders();
+
+builder.Services.AddScoped<IEmailSender, BrevoEmailSender>();
 
 var app = builder.Build();
 
