@@ -1,0 +1,17 @@
+﻿@model InfoMessageViewModel
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="account-container">
+    <div class="account-box account-box-center">
+        <div class="confirmation-icon">@Model.Icon</div>
+        <h2>@Model.Title</h2>
+        <p class="confirmation-text">
+            @Model.Message
+        </p>
+        <a asp-controller="@Model.ButtonController" asp-action="@Model.ButtonAction" class="btn-account-outline">
+            @Model.ButtonText
+        </a>
+    </div>
+</div>

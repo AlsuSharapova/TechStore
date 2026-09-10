@@ -40,7 +40,14 @@ namespace TechStore.Controllers {
 
                 if (result.Succeeded) {
                     await SendConfirmationEmail(user);
-                    return RedirectToAction("RegisterConfirmation");
+                    return View("InfoMessage", new InfoMessageViewModel {
+                        Icon = "📧",
+                        Title = "Проверьте почту",
+                        Message = "Мы отправили письмо с подтверждением на вашу почту. Перейдите по ссылке в письме, чтобы завершить регистрацию.",
+                        ButtonText = "Перейти ко входу",
+                        ButtonController = "Account",
+                        ButtonAction = "Login"
+                    });
                 }
 
                 foreach (var error in result.Errors) {
@@ -49,25 +56,6 @@ namespace TechStore.Controllers {
             }
 
             return View(model);
-        }
-        private async Task SendConfirmationEmail(ApplicationUser user) {
-            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-            var encodedToken = System.Net.WebUtility.UrlEncode(token);
-
-            var confirmationLink = Url.Action(
-                "ConfirmEmail", "Account",
-                new { userId = user.Id, token = encodedToken },
-                protocol: Request.Scheme);
-
-            var emailBody = $"<h3>Добро пожаловать в TechStore!</h3>" +
-                             $"<p>Подтвердите ваш email, перейдя по ссылке:</p>" +
-                             $"<a href='{confirmationLink}'>Подтвердить email</a>";
-
-            await _emailSender.SendEmailAsync(user.Email!, "Подтверждение регистрации — TechStore", emailBody);
-        }
-        [HttpGet]
-        public IActionResult RegisterConfirmation() {
-            return View();
         }
         [HttpGet]
         public async Task<IActionResult> ConfirmEmail(string userId, string token) {
@@ -127,6 +115,103 @@ namespace TechStore.Controllers {
         public async Task<IActionResult> Logout() {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        public IActionResult VerifyEmail() {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> VerifyEmail(VerifyEmailViewModel model) {
+            if (ModelState.IsValid) {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+
+                if (user != null && user.EmailConfirmed) {
+                    var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                    var encodedToken = System.Net.WebUtility.UrlEncode(token);
+
+                    var resetLink = Url.Action(
+                        "ResetPassword", "Account",
+                        new { userId = user.Id, token = encodedToken },
+                        protocol: Request.Scheme);
+
+                    var emailBody = $"<h3>Сброс пароля — TechStore</h3>" +
+                                     $"<p>Вы запросили сброс пароля. Перейдите по ссылке, чтобы задать новый пароль:</p>" +
+                                     $"<a href='{resetLink}'>Сбросить пароль</a>";
+
+                    await _emailSender.SendEmailAsync(user.Email!, "Сброс пароля — TechStore", emailBody);
+                }
+
+                return View("InfoMessage", new InfoMessageViewModel {
+                    Icon = "📧",
+                    Title = "Проверьте почту",
+                    Message = "Если такой email зарегистрирован у нас, мы отправили на него ссылку для сброса пароля.",
+                    ButtonText = "Вернуться ко входу",
+                    ButtonController = "Account",
+                    ButtonAction = "Login"
+                });
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult ResetPassword(string userId, string token) {
+
+            if( string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(token)) {
+                return RedirectToAction("Login");
+            }
+            var model = new ResetPasswordViewModel { UserId = userId, Token = token };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model) {
+            if (ModelState.IsValid) {
+                var user = await _userManager.FindByIdAsync(model.UserId);
+
+                if (user == null) {
+                    return RedirectToAction("Login");
+                }
+
+                var decodedToken = System.Net.WebUtility.UrlDecode(model.Token);
+                var result = await _userManager.ResetPasswordAsync(user, decodedToken, model.Password);
+
+                if (result.Succeeded) {
+                    return View("InfoMessage", new InfoMessageViewModel {
+                        Icon = "✅",
+                        Title = "Пароль изменён",
+                        Message = "Ваш пароль успешно изменён. Теперь вы можете войти с новым паролем.",
+                        ButtonText = "Перейти ко входу",
+                        ButtonController = "Account",
+                        ButtonAction = "Login"
+                    });
+                }
+
+                foreach (var error in result.Errors) {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+            }
+
+            return View(model);
+        }
+
+        //HELPERS
+        private async Task SendConfirmationEmail(ApplicationUser user) {
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            var encodedToken = System.Net.WebUtility.UrlEncode(token);
+
+            var confirmationLink = Url.Action(
+                "ConfirmEmail", "Account",
+                new { userId = user.Id, token = encodedToken },
+                protocol: Request.Scheme);
+
+            var emailBody = $"<h3>Добро пожаловать в TechStore!</h3>" +
+                             $"<p>Подтвердите ваш email, перейдя по ссылке:</p>" +
+                             $"<a href='{confirmationLink}'>Подтвердить email</a>";
+
+            await _emailSender.SendEmailAsync(user.Email!, "Подтверждение регистрации — TechStore", emailBody);
         }
     }
 }

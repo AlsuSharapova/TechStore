@@ -1,0 +1,33 @@
+﻿@model VerifyEmailViewModel
+@{
+    ViewData["Title"] = "Восстановление пароля";
+}
+
+<div class="account-container">
+    <div class="account-box">
+        <h2>Восстановление пароля</h2>
+        <p class="confirmation-text">
+            Введите email, указанный при регистрации — мы отправим ссылку для сброса пароля.
+        </p>
+
+        <form asp-controller="Account" asp-action="VerifyEmail" method="post">
+            <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" />
+                <span asp-validation-for="Email" class="field-error"></span>
+            </div>
+
+            <button type="submit" class="btn-account">Отправить ссылку</button>
+
+            <p class="account-switch">
+                Вспомнили пароль? <a asp-controller="Account" asp-action="Login">Войти</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
