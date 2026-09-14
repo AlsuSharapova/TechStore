@@ -39,7 +39,10 @@ namespace TechStore.Controllers {
                 var result = await _userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded) {
+                    await _userManager.AddToRoleAsync(user, "User");
+
                     await SendConfirmationEmail(user);
+
                     return View("InfoMessage", new InfoMessageViewModel {
                         Icon = "📧",
                         Title = "Проверьте почту",
