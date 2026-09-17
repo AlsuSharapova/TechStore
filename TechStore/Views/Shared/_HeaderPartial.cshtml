@@ -23,6 +23,11 @@
                         @User.FindFirst("FullName")?.Value
                     </button>
                     <div class="account-dropdown">
+                        @if (User.IsInRole("Admin")) {
+                            <a asp-controller="Admin" asp-action="Index">
+                                🛠 Админка
+                            </a>
+                        }
                         <a asp-controller="Account" asp-action="Profile">
                             👤 Мой профиль
                         </a>

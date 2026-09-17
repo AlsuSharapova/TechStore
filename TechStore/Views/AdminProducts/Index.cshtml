@@ -1,0 +1,48 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "Товары";
+    Layout = "_AdminLayout";
+}
+
+<div class="admin-page-header">
+    <h1>Товары</h1>
+    <a asp-controller="AdminProducts" asp-action="Create" class="btn-admin-primary">
+        + Добавить товар
+    </a>
+</div>
+
+<table class="admin-table">
+    <thead>
+        <tr>
+            <th>Фото</th>
+            <th>Название</th>
+            <th>Категория</th>
+            <th>Цена</th>
+            <th>Остаток</th>
+            <th>Бестселлер</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model) {
+            <tr>
+                <td>
+                    <img src="@product.ImageUrl" alt="@product.Name" class="admin-table-image" />
+                </td>
+                <td>@product.Name</td>
+                <td>@product.Category.Name</td>
+                <td>@product.Price AZN</td>
+                <td>@product.StockQuantity</td>
+                <td>@(product.IsBestSeller ? "Да" : "—")</td>
+                <td class="admin-table-actions">
+                    <a asp-controller="AdminProducts" asp-action="Edit" asp-route-id="@product.Id">
+                        ✏️
+                    </a>
+                    <a asp-controller="AdminProducts" asp-action="Delete" asp-route-id="@product.Id">
+                        🗑
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

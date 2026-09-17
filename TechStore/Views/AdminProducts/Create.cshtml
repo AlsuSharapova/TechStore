@@ -1,0 +1,130 @@
+﻿@using TechStore.ViewModels.Admin
+@model ProductFormViewModel
+@{
+    ViewData["Title"] = "Добавить товар";
+    Layout = "_AdminLayout";
+}
+
+<div class="admin-page-header create-product-header">
+    <h1>Добавить товар</h1>
+</div>
+
+<div class="admin-form-box">
+    <form asp-controller="AdminProducts" asp-action="Create" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" />
+            <span asp-validation-for="Name" class="field-error"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Description"></label>
+            <textarea asp-for="Description" rows="4"></textarea>
+            <span asp-validation-for="Description" class="field-error"></span>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label asp-for="Price"></label>
+                <input asp-for="Price" type="number" step="0.01" />
+                <span asp-validation-for="Price" class="field-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="StockQuantity"></label>
+                <input asp-for="StockQuantity" type="number" />
+                <span asp-validation-for="StockQuantity" class="field-error"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CategoryId">Категория</label>
+            <select asp-for="CategoryId" id="categorySelect">
+                <option value="">Выберите категорию</option>
+                @foreach (var category in (List<Category>)ViewBag.Categories) {
+                    <option value="@category.Id">@category.Name</option>
+                }
+            </select>
+            <span asp-validation-for="CategoryId" class="field-error"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ImageFile">Изображение товара</label>
+            <input asp-for="ImageFile" type="file" accept="image/*" />
+        </div>
+
+        <div class="best-seller-check">
+            <input asp-for="IsBestSeller" />
+            <label asp-for="IsBestSeller">
+                Бестселлер
+            </label>
+            <span>(Показывать на главной)</span>
+        </div>
+
+        <!-- ХАРАКТЕРИСТИКИ -->
+        <h3>Характеристики</h3>
+        <div id="specsContainer"></div>
+
+        <button type="button" id="addSpecBtn" class="btn-admin-secondary">
+            + Добавить характеристику
+        </button>
+
+        <div class="spec-suggestions" id="specSuggestions"></div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-admin-primary">Сохранить товар</button>
+            <a asp-controller="AdminProducts" asp-action="Index" class="btn-admin-secondary">Отмена</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        const specSuggestionsByCategory = {
+            "Ноутбуки": ["Процессор", "Видеокарта", "Оперативная память", "Накопитель"],
+            "Компьютеры": ["Процессор", "Видеокарта", "Оперативная память", "Накопитель"],
+            "Телефоны": ["Память", "Основная камера", "Фронтальная камера", "Связь"],
+            "Наушники": ["Тип подключения", "Время работы", "Частотный диапазон", "Шумоподавление"],
+            "Мышки": ["DPI", "Тип подключения", "Количество кнопок"]
+        };
+
+        const specsContainer = document.getElementById('specsContainer');
+        const addSpecBtn = document.getElementById('addSpecBtn');
+        const categorySelect = document.getElementById('categorySelect');
+        const specSuggestionsDiv = document.getElementById('specSuggestions');
+
+        function addSpecRow(name = '', value = '') {
+            const row = document.createElement('div');
+            row.className = 'spec-row';
+            row.innerHTML = `
+                <input type="text" name="SpecNames" placeholder="Название (например, Процессор)" value="${name}" />
+                <input type="text" name="SpecValues" placeholder="Значение (например, Ryzen 7)" value="${value}" />
+                <button type="button" class="spec-remove-btn">✕</button>
+            `;
+            row.querySelector('.spec-remove-btn').addEventListener('click', () => row.remove());
+            specsContainer.appendChild(row);
+        }
+
+        addSpecBtn.addEventListener('click', () => addSpecRow());
+
+        categorySelect.addEventListener('change', () => {
+            const categoryName = categorySelect.options[categorySelect.selectedIndex].text;
+            const suggestions = specSuggestionsByCategory[categoryName] || [];
+
+            specSuggestionsDiv.innerHTML = '';
+            suggestions.forEach(specName => {
+                const chip = document.createElement('button');
+                chip.type = 'button';
+                chip.className = 'spec-chip';
+                chip.textContent = specName;
+                chip.addEventListener('click', () => addSpecRow(specName));
+                specSuggestionsDiv.appendChild(chip);
+            });
+        });
+
+        addSpecRow();
+    </script>
+}

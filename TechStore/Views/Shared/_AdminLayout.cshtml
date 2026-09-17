@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <partial name="_MetaPartial" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/admin.css" />
+    <title>@ViewData["Title"] - Админка TechStore</title>
+</head>
+<body class="admin-body">
+
+    <div class="admin-layout">
+
+        <aside class="admin-sidebar">
+            <div class="admin-logo">TECHSTORE</div>
+
+            <nav class="admin-nav">
+                @{
+                    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+                }
+
+                <a asp-controller="Admin" asp-action="Index"
+                   class="admin-nav-link @(currentController == "Admin" ? "active" : "")">
+                    📊 Dashboard
+                </a>
+                <a asp-controller="AdminProducts" asp-action="Index"
+                   class="admin-nav-link @(currentController == "AdminProducts" ? "active" : "")">
+                    📦 Товары
+                </a>
+                <a asp-controller="AdminCategories" asp-action="Index"
+                   class="admin-nav-link @(currentController == "AdminCategories" ? "active" : "")">
+                    🗂 Категории
+                </a>
+            </nav>
+
+            <div class="admin-sidebar-footer">
+                <a asp-controller="Home" asp-action="Index" class="admin-nav-link">
+                    ← Вернуться на сайт
+                </a>
+            </div>
+        </aside>
+
+        <main class="admin-content">
+            @RenderBody()
+        </main>
+
+    </div>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
