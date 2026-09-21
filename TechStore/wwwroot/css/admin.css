@@ -277,3 +277,24 @@
     font-size: 14px;
     color: #6b7280;
 }
+
+.admin-current-image {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    background-color: #f3f4f6;
+    border-radius: 8px;
+    margin-top: 8px;
+}
+
+.delete-form {
+    display: inline;
+}
+
+.delete-form button {
+    border: none;
+    background: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0;
+}

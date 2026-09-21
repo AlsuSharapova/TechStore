@@ -1,22 +1,26 @@
-﻿@using TechStore.ViewModels.Admin
-@model ProductFormViewModel
+﻿@model ProductFormViewModel
 @{
-    ViewData["Title"] = "Добавить товар";
+    ViewData["Title"] = "Редактировать товар";
     Layout = "_AdminLayout";
 }
 
 <div class="admin-page-header">
-    <h1>Добавить товар</h1>
+    <h1>Редактировать товар</h1>
 </div>
 
 <div class="admin-form-box">
-    <form asp-controller="AdminProducts" asp-action="Create" method="post" enctype="multipart/form-data">
+    <form asp-controller="AdminProducts" asp-action="Edit" asp-route-id="@ViewBag.ProductId" method="post" enctype="multipart/form-data">
         <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
 
         <partial name="_ProductFormFields" model="Model" />
 
         <div class="form-group">
-            <label asp-for="ImageFile">Изображение товара</label>
+            <label>Текущее изображение</label>
+            <img src="@ViewBag.CurrentImageUrl" alt="Текущее фото" class="admin-current-image" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ImageFile">Заменить изображение (необязательно)</label>
             <input asp-for="ImageFile" type="file" accept="image/*" />
         </div>
 
@@ -30,7 +34,7 @@
         <div class="spec-suggestions" id="specSuggestions"></div>
 
         <div class="form-actions">
-            <button type="submit" class="btn-admin-primary">Сохранить товар</button>
+            <button type="submit" class="btn-admin-primary">Сохранить изменения</button>
             <a asp-controller="AdminProducts" asp-action="Index" class="btn-admin-secondary">Отмена</a>
         </div>
     </form>
@@ -56,8 +60,8 @@
             const row = document.createElement('div');
             row.className = 'spec-row';
             row.innerHTML = `
-                <input type="text" name="SpecNames" placeholder="Название (например, Процессор)" value="${name}" />
-                <input type="text" name="SpecValues" placeholder="Значение (например, Ryzen 7)" value="${value}" />
+                <input type="text" name="SpecNames" placeholder="Название" value="${name}" />
+                <input type="text" name="SpecValues" placeholder="Значение" value="${value}" />
                 <button type="button" class="spec-remove-btn">✕</button>
             `;
             row.querySelector('.spec-remove-btn').addEventListener('click', () => row.remove());
@@ -81,6 +85,20 @@
             });
         });
 
-        addSpecRow();
+        // Заполняем существующими характеристиками при загрузке
+        const existingNames = @Html.Raw(Json.Serialize(Model.SpecNames));
+        const existingValues = @Html.Raw(Json.Serialize(Model.SpecValues));
+
+        if (existingNames.length > 0)
+        {
+            for (let i = 0; i < existingNames.length; i++)
+            {
+                addSpecRow(existingNames[i], existingValues[i]);
+            }
+        }
+        else
+        {
+            addSpecRow();
+        }
     </script>
 }

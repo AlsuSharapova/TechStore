@@ -38,9 +38,10 @@
                     <a asp-controller="AdminProducts" asp-action="Edit" asp-route-id="@product.Id">
                         ✏️
                     </a>
-                    <a asp-controller="AdminProducts" asp-action="Delete" asp-route-id="@product.Id">
-                        🗑
-                    </a>
+                    <form asp-controller="AdminProducts" asp-action="Delete" asp-route-id="@product.Id" method="post"
+                          onsubmit="return confirm('Удалить товар «@product.Name»?')" class="delete-form">
+                        <button type="submit">🗑</button>
+                    </form>
                 </td>
             </tr>
         }
