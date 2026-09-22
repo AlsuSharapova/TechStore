@@ -1,0 +1,21 @@
+﻿@model CategoryFormViewModel
+
+<div class="form-group">
+    <label asp-for="Name"></label>
+    <input asp-for="Name" />
+    <span asp-validation-for="Name" class="field-error"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="Icon">Иконка (эмодзи)</label>
+    <input asp-for="Icon" placeholder="Например: 💻" />
+    <span asp-validation-for="Icon" class="field-error"></span>
+</div>
+
+<div class="form-check">
+    <label>
+        <input asp-for="IsFeatured" />
+        Показывать на главной странице
+    </label>
+</div>
+

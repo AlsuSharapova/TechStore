@@ -1,0 +1,47 @@
+﻿@model List<Category>
+@{
+    ViewData["Title"] = "Категории";
+    Layout = "_AdminLayout";
+}
+
+@if (TempData["ErrorMessage"] != null) {
+    <div class="admin-alert-error">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<div class="admin-page-header">
+    <h1>Категории</h1>
+    <a asp-controller="AdminCategories" asp-action="Create" class="btn-admin-primary">
+        + Добавить категорию
+    </a>
+</div>
+
+<table class="admin-table">
+    <thead>
+        <tr>
+            <th>Иконка</th>
+            <th>Название</th>
+            <th>На главной</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in Model) {
+            <tr>
+                <td style="font-size: 22px;">@category.Icon</td>
+                <td>@category.Name</td>
+                <td>@(category.IsFeatured ? "Да" : "—")</td>
+                <td class="admin-table-actions">
+                    <a asp-controller="AdminCategories" asp-action="Edit" asp-route-id="@category.Id">
+                        ✏️
+                    </a>
+                    <form asp-controller="AdminCategories" asp-action="Delete" asp-route-id="@category.Id" method="post"
+                          onsubmit="return confirm('Удалить категорию «@category.Name»?')" class="delete-form">
+                        <button type="submit">🗑</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
