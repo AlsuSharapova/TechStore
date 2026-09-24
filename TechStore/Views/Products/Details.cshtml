@@ -24,15 +24,20 @@
             </ul>
         }
 
-        <div class="quantity-selector">
-            <button type="button" class="qty-btn" id="qtyMinus">−</button>
-            <input type="number" id="qtyInput" value="1" min="1" max="@Model.StockQuantity" readonly>
-            <button type="button" class="qty-btn" id="qtyPlus">+</button>
-        </div>
+        <form asp-controller="Cart" asp-action="Add" method="post">
+            <input type="hidden" name="productId" value="@Model.Id" />
+            <input type="hidden" name="quantity" id="qtyHidden" value="1" />
 
-        <button type="button" class="btn-add-to-cart">
-            🛒 Добавить в корзину
-        </button>
+            <div class="quantity-selector">
+                <button type="button" class="qty-btn" id="qtyMinus">−</button>
+                <input type="number" id="qtyInput" value="1" min="1" max="@Model.StockQuantity" readonly>
+                <button type="button" class="qty-btn" id="qtyPlus">+</button>
+            </div>
+
+            <button type="submit" class="btn-add-to-cart">
+                🛒 Добавить в корзину
+            </button>
+        </form>
     </div>
 
 </section>
@@ -58,15 +63,21 @@
     </section>
 }
 
-@section Scripts {
-    <script>
-        const qtyInput = document.getElementById('qtyInput');
-        document.getElementById('qtyPlus').addEventListener('click', () => {
-            const max = parseInt(qtyInput.max);
-            if (parseInt(qtyInput.value) < max) qtyInput.value = parseInt(qtyInput.value) + 1;
-        });
-        document.getElementById('qtyMinus').addEventListener('click', () => {
-            if (parseInt(qtyInput.value) > 1) qtyInput.value = parseInt(qtyInput.value) - 1;
-        });
-    </script>
-}   
+<script>
+    const qtyInput = document.getElementById('qtyInput');
+    const qtyHidden = document.getElementById('qtyHidden');
+
+    document.getElementById('qtyPlus').addEventListener('click', () => {
+        const max = parseInt(qtyInput.max);
+        if (parseInt(qtyInput.value) < max) {
+            qtyInput.value = parseInt(qtyInput.value) + 1;
+            qtyHidden.value = qtyInput.value;
+        }
+    });
+    document.getElementById('qtyMinus').addEventListener('click', () => {
+        if (parseInt(qtyInput.value) > 1) {
+            qtyInput.value = parseInt(qtyInput.value) - 1;
+            qtyHidden.value = qtyInput.value;
+        }
+    });
+</script>

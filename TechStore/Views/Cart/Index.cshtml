@@ -1,0 +1,50 @@
+﻿@model Cart?
+@{
+    ViewData["Title"] = "Корзина";
+}
+
+<h1>Корзина</h1>
+
+@if (Model == null || !Model.Items.Any()) {
+    <div class="cart-empty">
+        <p>Ваша корзина пуста.</p>
+        <a asp-controller="Products" asp-action="Index" class="btn-account-outline">
+            Перейти в каталог
+        </a>
+    </div>
+}
+else {
+    <div class="cart-items">
+        @foreach (var item in Model.Items) {
+            <div class="cart-item">
+                <img src="@item.Product.ImageUrl" alt="@item.Product.Name" class="cart-item-image" />
+
+                <div class="cart-item-info">
+                    <h3>@item.Product.Name</h3>
+                    <p class="cart-item-price">@item.Product.Price AZN</p>
+                </div>
+
+                <form asp-controller="Cart" asp-action="UpdateQuantity" method="post" class="cart-item-quantity-form">
+                    <input type="hidden" name="itemId" value="@item.Id" />
+                    <button type="submit" name="quantity" value="@(item.Quantity - 1)" class="qty-btn">−</button>
+                    <span>@item.Quantity</span>
+                    <button type="submit" name="quantity" value="@(item.Quantity + 1)" class="qty-btn">+</button>
+                </form>
+
+                <div class="cart-item-total">
+                    @(item.Product.Price* item.Quantity) AZN
+                </div>
+
+                <form asp-controller="Cart" asp-action="Remove" method="post">
+                    <input type="hidden" name="itemId" value="@item.Id" />
+                    <button type="submit" class="cart-remove-btn">✕</button>
+                </form>
+            </div>
+        }
+    </div>
+
+    <div class="cart-summary">
+        <span>Итого:</span>
+        <span class="cart-total">@Model.Items.Sum(i => i.Product.Price * i.Quantity) AZN</span>
+    </div>
+}

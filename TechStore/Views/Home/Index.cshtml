@@ -56,9 +56,10 @@
                 <p class="product-price">
                     @product.Price AZN
                 </p>
-                <button type="button">
-                    🛒 Добавить в корзину
-                </button>
+                <form asp-controller="Cart" asp-action="Add" method="post">
+                    <input type="hidden" name="productId" value="@product.Id" />
+                    <button type="submit">🛒 Добавить в корзину</button>
+                </form>
             </article>
         }
     </div>
