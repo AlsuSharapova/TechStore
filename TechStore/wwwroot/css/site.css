@@ -43,3 +43,17 @@ section h2 {
 button {
     cursor: pointer;
 }
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}

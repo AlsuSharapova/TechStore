@@ -100,3 +100,8 @@
 .cart-remove-btn:hover {
     color: #dc2626;
 }
+h1 {
+    margin-top: 20px;
+    margin-bottom:30px;
+    text-align: center;
+}

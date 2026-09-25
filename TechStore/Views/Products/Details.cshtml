@@ -19,7 +19,9 @@
             <ul class="spec-highlights">
                 @foreach (var spec in Model.Specifications.Take(4))
                 {
-                    <li>@spec.Value</li>
+                    <li>
+                        <strong>@spec.Name:</strong> @spec.Value
+                    </li>
                 }
             </ul>
         }
@@ -50,7 +52,7 @@
 @if (Model.Specifications.Any())
 {
     <section class="product-details-specs">
-        <h2>Характеристики</h2>
+        <h2>Полные характеристики</h2>
         <table class="specs-table">
             @foreach (var spec in Model.Specifications)
             {
