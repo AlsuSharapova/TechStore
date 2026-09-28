@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TechStore.Data;
 using TechStore.Models.Entities;
+using TechStore.ViewModels;
+using TechStore.ViewModels.Account;
 
 namespace TechStore.Controllers {
     [Authorize]
@@ -102,6 +104,88 @@ namespace TechStore.Controllers {
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Checkout() {
+            var userId = _userManager.GetUserId(User);
+
+            var cart = await _context.Carts
+                .Include(c => c.Items)
+                    .ThenInclude(i => i.Product)
+                .FirstOrDefaultAsync(c => c.UserId == userId);
+
+            if (cart == null || !cart.Items.Any()) {
+                return RedirectToAction("Index");
+            }
+
+            var model = new CheckoutViewModel {
+                Cart = cart
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Checkout(CheckoutViewModel model) {
+            var userId = _userManager.GetUserId(User);
+
+            var cart = await _context.Carts
+                .Include(c => c.Items)
+                    .ThenInclude(i => i.Product)
+                .FirstOrDefaultAsync(c => c.UserId == userId);
+
+            if (cart == null || !cart.Items.Any()) {
+                return RedirectToAction("Index");
+            }
+
+            if (!ModelState.IsValid) {
+                model.Cart = cart;
+                return View(model);
+            }
+
+            var order = new Order {
+                UserId = userId!,
+                DeliveryAddress = model.DeliveryAddress,
+                PhoneNumber = model.PhoneNumber,
+                TotalPrice = cart.Items.Sum(i => i.Product.Price * i.Quantity),
+                Status = OrderStatus.New
+            };
+
+            _context.Orders.Add(order);
+            await _context.SaveChangesAsync();
+
+            foreach (var item in cart.Items) {
+                _context.OrderItems.Add(new OrderItem {
+                    OrderId = order.Id,
+                    ProductId = item.ProductId,
+                    ProductName = item.Product.Name,
+                    ProductPrice = item.Product.Price,
+                    Quantity = item.Quantity
+                });
+
+                // Уменьшаем остаток товара на складе
+                item.Product.StockQuantity -= item.Quantity;
+            }
+
+            // Очищаем корзину
+            _context.CartItems.RemoveRange(cart.Items);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("OrderConfirmation", new { orderId = order.Id });
+        }
+
+        [HttpGet]
+        public IActionResult OrderConfirmation(int orderId) {
+            return View("InfoMessage", new InfoMessageViewModel {
+                Icon = "✅",
+                Title = "Заказ оформлен!",
+                Message = $"Ваш заказ №{orderId} принят в обработку. Мы свяжемся с вами для подтверждения доставки.",
+                ButtonText = "Мои заказы",
+                ButtonController = "Orders",
+                ButtonAction = "Index"
+            });
         }
     }
 }

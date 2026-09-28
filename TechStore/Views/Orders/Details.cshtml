@@ -1,0 +1,44 @@
+﻿@model Order
+@{
+    ViewData["Title"] = $"Заказ №{Model.Id}";
+}
+
+<h1>Заказ №@Model.Id</h1>
+
+<div class="order-details-box">
+    <div class="order-details-row">
+        <span>Статус:</span>
+        <span class="order-status order-status-@Model.Status.ToString().ToLower()">@Model.Status</span>
+    </div>
+    <div class="order-details-row">
+        <span>Дата:</span>
+        <span>@Model.CreatedAt.ToString("dd.MM.yyyy HH:mm")</span>
+    </div>
+    <div class="order-details-row">
+        <span>Адрес доставки:</span>
+        <span>@Model.DeliveryAddress</span>
+    </div>
+    <div class="order-details-row">
+        <span>Телефон:</span>
+        <span>@Model.PhoneNumber</span>
+    </div>
+</div>
+
+<h3>Товары</h3>
+<div class="order-items-list">
+    @foreach (var item in Model.Items) {
+        <div class="order-item-row">
+            <span>@item.ProductName × @item.Quantity</span>
+            <span>@(item.ProductPrice* item.Quantity) AZN</span>
+        </div>
+    }
+</div>
+
+<div class="order-details-total">
+    <span>Итого:</span>
+    <span>@Model.TotalPrice AZN</span>
+</div>
+
+<a asp-controller="Orders" asp-action="Index" class="btn-account-outline">
+    ← Ко всем заказам
+</a>

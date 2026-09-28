@@ -25,21 +25,26 @@
                 }
             </ul>
         }
+        @if (Model.StockQuantity > 0) {
+            <form asp-controller="Cart" asp-action="Add" method="post">
+                <input type="hidden" name="productId" value="@Model.Id" />
+                <input type="hidden" name="quantity" id="qtyHidden" value="1" />
 
-        <form asp-controller="Cart" asp-action="Add" method="post">
-            <input type="hidden" name="productId" value="@Model.Id" />
-            <input type="hidden" name="quantity" id="qtyHidden" value="1" />
+                <div class="quantity-selector">
+                    <button type="button" class="qty-btn" id="qtyMinus">−</button>
+                    <input type="number" id="qtyInput" value="1" min="1" max="@Model.StockQuantity" readonly>
+                    <button type="button" class="qty-btn" id="qtyPlus">+</button>
+                </div>
 
-            <div class="quantity-selector">
-                <button type="button" class="qty-btn" id="qtyMinus">−</button>
-                <input type="number" id="qtyInput" value="1" min="1" max="@Model.StockQuantity" readonly>
-                <button type="button" class="qty-btn" id="qtyPlus">+</button>
-            </div>
-
-            <button type="submit" class="btn-add-to-cart">
-                🛒 Добавить в корзину
-            </button>
-        </form>
+                <button type="submit" class="btn-add-to-cart">
+                    🛒 Добавить в корзину
+                </button>
+            </form>
+        }
+        else
+        {
+            <span class="out-of-stock">Нет в наличии</span>
+        }
     </div>
 
 </section>

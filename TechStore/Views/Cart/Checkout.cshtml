@@ -1,0 +1,48 @@
+﻿@model CheckoutViewModel
+@{
+    ViewData["Title"] = "Оформление заказа";
+}
+
+<h1>Оформление заказа</h1>
+
+<div class="checkout-layout">
+
+    <form asp-controller="Cart" asp-action="Checkout" method="post" class="checkout-form">
+        <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+        <div class="form-group">
+            <label asp-for="DeliveryAddress"></label>
+            <input asp-for="DeliveryAddress" placeholder="Город, улица, дом, квартира" />
+            <span asp-validation-for="DeliveryAddress" class="field-error"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="PhoneNumber"></label>
+            <input asp-for="PhoneNumber" placeholder="+994 XX XXX XX XX" />
+            <span asp-validation-for="PhoneNumber" class="field-error"></span>
+        </div>
+
+        <button type="submit" class="btn-account">Подтвердить заказ</button>
+    </form>
+
+    <div class="checkout-summary">
+        <h3>Ваш заказ</h3>
+
+        @foreach (var item in Model.Cart!.Items) {
+            <div class="checkout-summary-item">
+                <span>@item.Product.Name × @item.Quantity</span>
+                <span>@(item.Product.Price* item.Quantity) AZN</span>
+            </div>
+        }
+
+        <div class="checkout-summary-total">
+            <span>Итого:</span>
+            <span>@Model.Cart.Items.Sum(i => i.Product.Price * i.Quantity) AZN</span>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

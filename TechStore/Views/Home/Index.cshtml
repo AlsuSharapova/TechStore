@@ -13,8 +13,31 @@
             Смотреть товары →
         </a>
     </div>
-    <div class="hero-image">
-        💻
+    <div class="hero-carousel">
+        <div class="carousel-track">
+
+            <div class="carousel-slide">
+                <img src="/images/products/product1.jpg" alt="Ноутбук">
+            </div>
+
+            <div class="carousel-slide">
+                <img src="/images/products/5b6cf361-085c-41c5-90d7-9011f2ac86c8.webp" alt="Телефон">
+            </div>
+
+            <div class="carousel-slide">
+                <img src="/images/products/no-image.png" alt="Наушники">
+            </div>
+
+        </div>
+
+        <button type="button" class="carousel-btn carousel-prev">‹</button>
+        <button type="button" class="carousel-btn carousel-next">›</button>
+
+        <div class="carousel-dots">
+            <span class="carousel-dot active"></span>
+            <span class="carousel-dot"></span>
+            <span class="carousel-dot"></span>
+        </div>
     </div>
 </section>
 <!-- CATEGORIES -->
@@ -85,3 +108,47 @@
         </div>
     </div>
 </section>
+
+<script>
+    const track = document.querySelector('.carousel-track');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+
+    let currentSlide = 0;
+    let timer;
+
+    function showSlide(index) {
+        currentSlide = index;
+
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[currentSlide].classList.add('active');
+
+        // Сбрасываем таймер
+        clearTimeout(timer);
+
+        // Запускаем заново
+        timer = setTimeout(() => {
+            const nextSlide = (currentSlide + 1) % slides.length;
+            showSlide(nextSlide);
+        }, 3000);
+    }
+
+    document.querySelector('.carousel-next').addEventListener('click', () => {
+        const nextSlide = (currentSlide + 1) % slides.length;
+        showSlide(nextSlide);
+    });
+
+    document.querySelector('.carousel-prev').addEventListener('click', () => {
+        const previousSlide =
+            (currentSlide - 1 + slides.length) % slides.length;
+
+        showSlide(previousSlide);
+    });
+
+    // Первый таймер
+    timer = setTimeout(() => {
+        showSlide(1);
+    }, 3000);
+</script>

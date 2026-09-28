@@ -87,30 +87,46 @@
 
     <!-- PRODUCTS -->
     <section class="product-list">
-        @foreach (var product in Model.Products) {
-            <article class="product-card">
-                <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">
-                    <div class="product-image">
-                        <img src="@product.ImageUrl" alt="@product.Name">
-                    </div>
-                    <h3>@product.Name</h3>
-                </a>
-                @if (product.Specifications.Any()) {
-                    <ul class="product-card-specs">
-                        @foreach (var spec in product.Specifications.Take(3)) {
-                            <li>@spec.Value</li>
-                        }
-                    </ul>
-                }
-                <p class="product-price">
-                    @product.Price AZN
-                </p>
-                <form asp-controller="Cart" asp-action="Add" method="post">
-                    <input type="hidden" name="productId" value="@product.Id" />
-                    <button type="submit">🛒 Добавить в корзину</button>
-                </form>
-            </article>
+        @if (!Model.Products.Any()) {
+            <div class="no-products">
+                <p>По вашему запросу ничего не найдено.</p>
+            </div>
         }
+        else
+        {
+            @foreach (var product in Model.Products) {
+                <article class="product-card">
+                    <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">
+                        <div class="product-image">
+                            <img src="@product.ImageUrl" alt="@product.Name">
+                        </div>
+                        <h3>@product.Name</h3>
+                    </a>
+                    @if (product.Specifications.Any()) {
+                        <ul class="product-card-specs">
+                            @foreach (var spec in product.Specifications.Take(3)) {
+                                <li>
+                                    <strong>@spec.Name:</strong> @spec.Value
+                                </li>
+                            }
+                        </ul>
+                    }
+                    <p class="product-price">
+                        @product.Price AZN
+                    </p>
+                    @if (product.StockQuantity > 0) {
+                        <form asp-controller="Cart" asp-action="Add" method="post">
+                            <input type="hidden" name="productId" value="@product.Id" />
+                            <button type="submit">🛒 Добавить в корзину</button>
+                        </form>
+                    }
+                    else {
+                        <span class="out-of-stock">Нет в наличии</span>
+                    }
+                </article>
+            }
+        }
+
     </section>
 
 </div>

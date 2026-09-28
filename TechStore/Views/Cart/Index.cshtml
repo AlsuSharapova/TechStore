@@ -47,4 +47,8 @@ else {
         <span>Итого:</span>
         <span class="cart-total">@Model.Items.Sum(i => i.Product.Price * i.Quantity) AZN</span>
     </div>
+
+    <a asp-controller="Cart" asp-action="Checkout" class="btn-account checkout-link">
+        Оформить заказ
+    </a>
 }

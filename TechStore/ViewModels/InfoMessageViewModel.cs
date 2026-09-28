@@ -1,4 +1,4 @@
-﻿namespace TechStore.ViewModels.Account {
+﻿namespace TechStore.ViewModels {
     public class InfoMessageViewModel {
         public string Icon { get; set; } = "📧";
         public string Title { get; set; } = string.Empty;
