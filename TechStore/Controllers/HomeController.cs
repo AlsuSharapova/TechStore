@@ -39,5 +39,14 @@ namespace TechStore.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult About() {
+            var categories = _context.Categories
+                .Where(c => c.IsFeatured)
+                .Take(4)
+                .ToList();
+
+            return View(categories);
+        }
     }
 }
