@@ -261,3 +261,24 @@ h1 {
     width: fit-content;
     margin: 20px calc((100% - 800px) / 2) 30px;
 }
+.cart-message {
+    width: fit-content;
+    margin: 20px auto;
+    padding: 12px 20px;
+    background-color: #dc2626;
+    color: white;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    animation: fadeOut 0.5s ease 2.5s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}

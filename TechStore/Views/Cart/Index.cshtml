@@ -2,6 +2,11 @@
 @{
     ViewData["Title"] = "Корзина";
 }
+@if (TempData["CartMessage"] != null) {
+    <div class="cart-message">
+        @TempData["CartMessage"]
+    </div>
+}
 
 <h1>Корзина</h1>
 
@@ -52,3 +57,13 @@ else {
         Оформить заказ
     </a>
 }
+
+<script>
+    setTimeout(() => {
+        const message = document.getElementById("cartMessage");
+
+        if (message) {
+            message.remove();
+        }
+    }, 3000);
+</script>

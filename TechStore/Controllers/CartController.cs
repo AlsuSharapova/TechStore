@@ -35,6 +35,7 @@ namespace TechStore.Controllers {
 
             var cart = await _context.Carts
                 .Include(c => c.Items)
+                .ThenInclude(c => c.Product)
                 .FirstOrDefaultAsync(c => c.UserId == userId);
 
             if (cart == null) {
@@ -46,6 +47,10 @@ namespace TechStore.Controllers {
             var existingItem = cart.Items.FirstOrDefault(i => i.ProductId == productId);
 
             if (existingItem != null) {
+                if (existingItem.Quantity + quantity > existingItem.Product.StockQuantity) {
+                    TempData["CartMessage"] =  $"Больше товара {existingItem.Product.Name} нет в наличии.";
+                    return RedirectToAction("Index");
+                }
                 existingItem.Quantity += quantity;
             }
             else {
