@@ -1,8 +1,10 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using TechStore.Data;
 using TechStore.Models;
+using TechStore.Models.Entities;
 using TechStore.ViewModels;
 
 namespace TechStore.Controllers
@@ -10,11 +12,14 @@ namespace TechStore.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly AppDbContext _context; 
-        public HomeController(ILogger<HomeController> logger, AppDbContext context)
+        private readonly AppDbContext _context;
+        private readonly IOptions<StoreSettings> _storeSettings;
+        public HomeController(ILogger<HomeController> logger, AppDbContext context, IOptions<StoreSettings> storeSettings)
         {
             _logger = logger;
             _context = context;
+            _storeSettings = storeSettings;
+            
         }
 
         public async Task<IActionResult> Index() {
@@ -47,6 +52,10 @@ namespace TechStore.Controllers
                 .ToList();
 
             return View(categories);
+        }
+
+        public IActionResult Contacts() {
+            return View(_storeSettings.Value);
         }
     }
 }

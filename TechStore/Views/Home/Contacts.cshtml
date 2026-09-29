@@ -1,0 +1,109 @@
+﻿@model StoreSettings
+@{
+    ViewData["Title"] = "Контакты";
+}
+
+<section class="contacts-hero">
+    <h1>Свяжитесь с нами</h1>
+    <p>
+        Есть вопросы по товарам или заказу?
+        Мы всегда готовы помочь.
+    </p>
+</section>
+
+<section class="contacts-layout">
+
+    <div class="contacts-info">
+        <div class="contact-card">
+            <span class="contact-icon">📍</span>
+            <div>
+                <h3>Адрес</h3>
+                <p>@Model.Address</p>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <span class="contact-icon">☎️</span>
+            <div>
+                <h3>Телефон</h3>
+                <p>@Model.Phone</p>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <span class="contact-icon">✉️</span>
+            <div>
+                <h3>Email</h3>
+                <p>@Model.Email</p>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <span class="contact-icon">🕐</span>
+            <div>
+                <h3>Режим работы</h3>
+                <p>@Model.WorkingHours</p>
+                <p>@Model.SundayHours</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="contacts-map">
+        <div id="map"></div>
+    </div>
+
+</section>
+
+<section class="contact-form-section">
+
+    <div class="about-section-header">
+        <span class="about-label">ОБРАТНАЯ СВЯЗЬ</span>
+        <h2>Остались вопросы?</h2>
+    </div>
+
+    <form class="contact-form">
+
+        <div class="contact-form-row">
+            <div class="form-group">
+                <label>Имя</label>
+                <input type="text" placeholder="Ваше имя" />
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" placeholder="example@mail.com" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Сообщение</label>
+            <textarea rows="5" placeholder="Ваш вопрос..."></textarea>
+        </div>
+
+        <button type="submit" class="contact-submit">
+            Отправить сообщение
+        </button>
+
+    </form>
+
+</section>
+
+<link rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+    const map = L.map('map').setView([40.375, 49.832], 15);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const marker = L.marker([40.375, 49.832]).addTo(map);
+
+    marker.bindPopup(`
+        <strong>TechStore</strong><br>
+        ул. Низами, 45
+    `).openPopup();
+</script>
