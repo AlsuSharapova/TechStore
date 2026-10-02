@@ -1,28 +1,22 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
 using TechStore.Data;
 using TechStore.Models.Entities;
 
 namespace TechStore.Controllers {
-    [Authorize]
-    public class OrdersController : Controller{
+    [Authorize(Roles = "Admin")]
+    public class AdminOrdersController : Controller {
         private readonly AppDbContext _context;
-        private readonly UserManager<ApplicationUser> _userManager;
 
-        public OrdersController(AppDbContext context, UserManager<ApplicationUser> userManager) {
+        public AdminOrdersController(AppDbContext context) {
             _context = context;
-            _userManager = userManager;
         }
 
         public async Task<IActionResult> Index() {
-            var userId = _userManager.GetUserId(User);
-
             var orders = await _context.Orders
+                .Include(o => o.User)
                 .Include(o => o.Items)
-                .Where(o => o.UserId == userId)
                 .OrderByDescending(o => o.CreatedAt)
                 .ToListAsync();
 
@@ -30,9 +24,8 @@ namespace TechStore.Controllers {
         }
 
         public async Task<IActionResult> Details(int id) {
-            var userId = _userManager?.GetUserId(User);
-
             var order = await _context.Orders
+                .Include(o => o.User)
                 .Include(o => o.Items)
                 .FirstOrDefaultAsync(o => o.Id == id);
 
@@ -41,6 +34,20 @@ namespace TechStore.Controllers {
             }
 
             return View(order);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateStatus(int id, OrderStatus status) {
+            var order = await _context.Orders.FindAsync(id);
+
+            if (order == null) {
+                return NotFound();
+            }
+
+            order.Status = status;
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
         }
     }
 }

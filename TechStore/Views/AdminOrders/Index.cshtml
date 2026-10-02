@@ -1,0 +1,44 @@
+﻿@model List<Order>
+@{
+    ViewData["Title"] = "Заказы";
+    Layout = "_AdminLayout";
+}
+
+<div class="admin-page-header">
+    <h1>Заказы</h1>
+</div>
+
+<table class="admin-table">
+    <thead>
+        <tr>
+            <th>№</th>
+            <th>Покупатель</th>
+            <th>Дата</th>
+            <th>Товаров</th>
+            <th>Сумма</th>
+            <th>Статус</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model) {
+            <tr>
+                <td>#@order.Id</td>
+                <td>@order.User.FullName</td>
+                <td>@order.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
+                <td>@order.Items.Count</td>
+                <td>@order.TotalPrice AZN</td>
+                <td>
+                    <span class="order-status order-status-@order.Status.ToString().ToLower()">
+                        @order.Status
+                    </span>
+                </td>
+                <td class="admin-table-actions">
+                    <a asp-controller="AdminOrders" asp-action="Details" asp-route-id="@order.Id">
+                        👁
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

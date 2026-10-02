@@ -1,0 +1,53 @@
+﻿@model Order
+@{
+    ViewData["Title"] = $"Заказ №{Model.Id}";
+    Layout = "_AdminLayout";
+}
+
+<div class="admin-page-header order-page-header">
+    <h1>Заказ №@Model.Id</h1>
+</div>
+
+<div class="admin-form-box">
+    <div class="order-details-row">
+        <span>Покупатель:</span>
+        <span>@Model.User.FullName (@Model.User.Email)</span>
+    </div>
+    <div class="order-details-row">
+        <span>Дата:</span>
+        <span>@Model.CreatedAt.ToString("dd.MM.yyyy HH:mm")</span>
+    </div>
+    <div class="order-details-row">
+        <span>Адрес доставки:</span>
+        <span>@Model.DeliveryAddress</span>
+    </div>
+    <div class="order-details-row">
+        <span>Телефон:</span>
+        <span>@Model.PhoneNumber</span>
+    </div>
+
+    <h3>Товары</h3>
+    @foreach (var item in Model.Items) {
+        <div class="order-item-row">
+            <span>@item.ProductName × @item.Quantity</span>
+            <span>@(item.ProductPrice* item.Quantity) AZN</span>
+        </div>
+    }
+
+    <div class="order-details-total">
+        <span>Итого:</span>
+        <span>@Model.TotalPrice AZN</span>
+    </div>
+
+    <form asp-controller="AdminOrders" asp-action="UpdateStatus" asp-route-id="@Model.Id" method="post" class="order-status-form">
+        <label>Изменить статус:</label>
+        <div class="order-status-form-row">
+            <select name="status">
+                @foreach (var status in Enum.GetValues<OrderStatus>()) {
+                    <option value="@status" selected="@(status == Model.Status)">@status</option>
+                }
+            </select>
+            <button type="submit" class="btn-admin-primary">Сохранить</button>
+        </div>
+    </form>
+</div>

@@ -30,6 +30,10 @@
                    class="admin-nav-link @(currentController == "AdminCategories" ? "active" : "")">
                     🗂 Категории
                 </a>
+                <a asp-controller="AdminOrders" asp-action="Index"
+                   class="admin-nav-link @(currentController == "AdminOrders" ? "active" : "")">
+                    🧾 Заказы
+                </a>
             </nav>
 
             <div class="admin-sidebar-footer">
