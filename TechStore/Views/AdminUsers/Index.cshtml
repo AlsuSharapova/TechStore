@@ -1,0 +1,47 @@
+﻿@model List<AdminUserListItem>
+@{
+    ViewData["Title"] = "Пользователи";
+    Layout = "_AdminLayout";
+}
+
+<div class="admin-page-header">
+    <h1>Пользователи</h1>
+</div>
+
+<table class="admin-table">
+    <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Email</th>
+            <th>Роль</th>
+            <th>Статус</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model) {
+            <tr>
+                <td>@user.FullName</td>
+                <td>@user.Email</td>
+                <td>
+                    <span class="role-badge role-badge-@user.CurrentRole.ToLower()">
+                        @user.CurrentRole
+                    </span>
+                </td>
+                <td>
+                    @if (user.IsLockedOut) {
+                        <span class="order-status order-status-cancelled">Заблокирован</span>
+                    }
+                    else {
+                        <span class="order-status order-status-delivered">Активен</span>
+                    }
+                </td>
+                <td class="admin-table-actions">
+                    <a asp-controller="AdminUsers" asp-action="Details" asp-route-id="@user.Id">
+                        ✏️
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

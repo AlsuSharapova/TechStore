@@ -459,3 +459,32 @@
     color: #6b7280;
     font-size: 14px;
 }
+.role-badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.role-badge-admin {
+    background-color: #ede9fe;
+    color: #5b21b6;
+}
+
+.role-badge-user {
+    background-color: #f3f4f6;
+    color: #374151;
+}
+.btn-admin-danger {
+    padding: 10px 18px;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    background-color: #fef2f2;
+    color: #dc2626;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.btn-admin-danger:hover {
+    background-color: #fee2e2;
+}

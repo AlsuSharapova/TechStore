@@ -1,0 +1,47 @@
+﻿@model AdminUserListItem
+@{
+    ViewData["Title"] = "Пользователь";
+    Layout = "_AdminLayout";
+}
+
+<div class="admin-page-header">
+    <h1>@Model.FullName</h1>
+</div>
+
+<div class="admin-form-box">
+    <div class="order-details-row">
+        <span>Email:</span>
+        <span>@Model.Email</span>
+    </div>
+    <div class="order-details-row">
+        <span>Статус:</span>
+        <span>
+            @if (Model.IsLockedOut) {
+                <span class="order-status order-status-cancelled">Заблокирован</span>
+            }
+            else {
+                <span class="order-status order-status-delivered">Активен</span>
+            }
+        </span>
+    </div>
+
+    <h3>Изменить роль</h3>
+    <form asp-controller="AdminUsers" asp-action="ChangeRole" asp-route-id="@Model.Id" method="post" class="order-status-form-row">
+        <select name="newRole">
+            <option value="User" selected="@(Model.CurrentRole == "User")">User</option>
+            <option value="Admin" selected="@(Model.CurrentRole == "Admin")">Admin</option>
+        </select>
+        <button type="submit" class="btn-admin-primary">Сохранить роль</button>
+    </form>
+
+    <h3>Доступ</h3>
+    <form asp-controller="AdminUsers" asp-action="ToggleLock" asp-route-id="@Model.Id" method="post"
+          onsubmit="return confirm('Заблокировать пользователя?')">
+        @if (Model.IsLockedOut) {
+            <button type="submit" class="btn-admin-primary">Разблокировать</button>
+        }
+        else {
+            <button type="submit" class="btn-admin-danger">Заблокировать</button>
+        }
+    </form>
+</div>

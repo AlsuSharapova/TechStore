@@ -96,11 +96,17 @@ namespace TechStore.Controllers {
                 var user = await _userManager.FindByEmailAsync(model.Email);
 
                 if (user != null) {
+                    var isLockedOut = await _userManager.IsLockedOutAsync(user);
+
+                    if (isLockedOut) {
+                        ModelState.AddModelError(string.Empty, "Ваш аккаунт заблокирован. Обратитесь в поддержку.");
+                        return View(model);
+                    }
+
                     var passwordCheck = await _signInManager.CheckPasswordSignInAsync(user, model.Password, lockoutOnFailure: false);
 
                     if (passwordCheck.Succeeded) {
-                        var claims = new List<System.Security.Claims.Claim>
-                        {
+                        var claims = new List<System.Security.Claims.Claim>{
                             new System.Security.Claims.Claim("FullName", user.FullName)
                         };
 

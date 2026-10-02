@@ -34,6 +34,10 @@
                    class="admin-nav-link @(currentController == "AdminOrders" ? "active" : "")">
                     🧾 Заказы
                 </a>
+                <a asp-controller="AdminUsers" asp-action="Index"
+                   class="admin-nav-link @(currentController == "AdminUsers" ? "active" : "")">
+                    👥 Пользователи
+                </a>
             </nav>
 
             <div class="admin-sidebar-footer">
