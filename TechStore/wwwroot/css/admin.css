@@ -320,3 +320,142 @@
     color: #dc2626;
     margin-bottom: 15px;
 }
+.order-details-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #f3f4f6;
+    font-size: 14px;
+}
+
+.order-item-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 14px;
+    color: #4b5563;
+}
+
+.order-details-total {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 15px;
+    margin-top: 10px;
+    border-top: 1px solid #e5e7eb;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.admin-form-box h3 {
+    margin: 20px 0 10px;
+    font-size: 16px;
+}
+.order-status {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.order-status-new {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+.order-status-processing {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.order-status-shipped {
+    background-color: #e0e7ff;
+    color: #3730a3;
+}
+
+.order-status-delivered {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.order-status-cancelled {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+.order-status-form {
+    margin-top: 20px;
+}
+
+.order-status-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.order-status-form select {
+    padding: 10px 14px;
+    border: 1px solid #dfe3e8;
+    border-radius: 8px;
+}
+.order-status-form-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.order-page-header {
+    max-width: 900px;
+    margin: 0 auto 25px;
+    justify-content: center;
+}
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-bottom: 35px;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+}
+
+.stat-card-highlight {
+    background-color: #111827;
+    border-color: #111827;
+}
+
+.stat-card-highlight .stat-value,
+.stat-card-highlight .stat-label {
+    color: white;
+}
+
+.stat-icon {
+    font-size: 28px;
+}
+
+.stat-value {
+    font-size: 22px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.stat-label {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.no-orders-text {
+    color: #6b7280;
+    font-size: 14px;
+}

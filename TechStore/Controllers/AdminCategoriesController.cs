@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TechStore.Data;
 using TechStore.Models.Entities;
@@ -6,6 +7,7 @@ using TechStore.ViewModels.Admin;
 
 
 namespace TechStore.Controllers {
+    [Authorize(Roles = "Admin")]
     public class AdminCategoriesController : Controller {
         private readonly AppDbContext _context;
         public AdminCategoriesController(AppDbContext context) {

@@ -1,7 +1,91 @@
-﻿@{
+﻿@model DashboardViewModel
+@{
     ViewData["Title"] = "Dashboard";
     Layout = "_AdminLayout";
 }
 
-<h1>Dashboard</h1>
-<p>Здесь будет управление товарами.</p>
+<div class="admin-page-header">
+    <h1>Dashboard</h1>
+</div>
+
+<div class="dashboard-stats">
+    <a asp-controller="AdminProducts" asp-action="Index" class="stat-card">
+        <span class="stat-icon">📦</span>
+        <div>
+            <div class="stat-value">@Model.TotalProducts</div>
+            <div class="stat-label">Товаров</div>
+        </div>
+    </a>
+
+    <a asp-controller="AdminCategories" asp-action="Index" class="stat-card">
+        <span class="stat-icon">🗂</span>
+        <div>
+            <div class="stat-value">@Model.TotalCategories</div>
+            <div class="stat-label">Категорий</div>
+        </div>
+    </a>
+
+    <a asp-controller="AdminUsers" asp-action="Index" class="stat-card">
+        <span class="stat-icon">👥</span>
+        <div>
+            <div class="stat-value">@Model.TotalUsers</div>
+            <div class="stat-label">Пользователей</div>
+        </div>
+    </a>
+
+    <a asp-controller="AdminOrders" asp-action="Index" class="stat-card">
+        <span class="stat-icon">🧾</span>
+        <div>
+            <div class="stat-value">@Model.TotalOrders</div>
+            <div class="stat-label">Заказов</div>
+        </div>
+    </a>
+
+    <a asp-controller="AdminOrders" asp-action="Index" class="stat-card stat-card-highlight">
+        <span class="stat-icon">💰</span>
+        <div>
+            <div class="stat-value">@Model.TotalRevenue AZN</div>
+            <div class="stat-label">Выручка</div>
+        </div>
+    </a>
+</div>
+
+<h3>Последние заказы</h3>
+
+@if (!Model.RecentOrders.Any()) {
+    <p class="no-orders-text">Заказов пока нет.</p>
+}
+else {
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Покупатель</th>
+                <th>Дата</th>
+                <th>Сумма</th>
+                <th>Статус</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.RecentOrders) {
+                <tr>
+                    <td>#@order.Id</td>
+                    <td>@order.User.FullName</td>
+                    <td>@order.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
+                    <td>@order.TotalPrice AZN</td>
+                    <td>
+                        <span class="order-status order-status-@order.Status.ToString().ToLower()">
+                            @order.Status
+                        </span>
+                    </td>
+                    <td class="admin-table-actions">
+                        <a asp-controller="AdminOrders" asp-action="Details" asp-route-id="@order.Id">
+                            👁
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

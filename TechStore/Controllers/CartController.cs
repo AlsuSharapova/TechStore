@@ -124,6 +124,31 @@ namespace TechStore.Controllers {
                 return RedirectToAction("Index");
             }
 
+            var adjustedMessages = new List<string>();
+
+            foreach (var item in cart.Items.ToList()) {
+                if (item.Quantity > item.Product.StockQuantity) {
+                    if (item.Product.StockQuantity <= 0) {
+                        adjustedMessages.Add($"«{item.Product.Name}» закончился и удалён из корзины.");
+                        _context.CartItems.Remove(item);
+                    }
+                    else {
+                        adjustedMessages.Add($"Количество «{item.Product.Name}» уменьшено до {item.Product.StockQuantity} шт. (столько осталось в наличии).");
+                        item.Quantity = item.Product.StockQuantity;
+                    }
+                }
+            }
+
+            if (adjustedMessages.Any()) {
+                await _context.SaveChangesAsync();
+                TempData["CartMessage"] = string.Join(" ", adjustedMessages);
+                return RedirectToAction("Index");
+            }
+
+            if (!cart.Items.Any()) {
+                return RedirectToAction("Index");
+            }
+
             var model = new CheckoutViewModel {
                 Cart = cart
             };
@@ -142,6 +167,14 @@ namespace TechStore.Controllers {
 
             if (cart == null || !cart.Items.Any()) {
                 return RedirectToAction("Index");
+            }
+
+            // Финальная проверка остатков перед оформлением
+            foreach (var item in cart.Items) {
+                if (item.Quantity > item.Product.StockQuantity) {
+                    ModelState.AddModelError(string.Empty,
+                        $"Товара «{item.Product.Name}» осталось только {item.Product.StockQuantity} шт. Пожалуйста, измените количество в корзине.");
+                }
             }
 
             if (!ModelState.IsValid) {
