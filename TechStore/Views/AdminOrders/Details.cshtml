@@ -43,7 +43,7 @@
         <label>Изменить статус:</label>
         <div class="order-status-form-row">
             <select name="status">
-                @foreach (var status in Enum.GetValues<OrderStatus>()) {
+                @foreach (var status in Enum.GetValues<OrderStatus>().Where(s => s != OrderStatus.AwaitingPayment)) {
                     <option value="@status" selected="@(status == Model.Status)">@status</option>
                 }
             </select>

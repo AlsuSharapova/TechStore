@@ -22,7 +22,7 @@ namespace TechStore.Controllers {
 
             var orders = await _context.Orders
                 .Include(o => o.Items)
-                .Where(o => o.UserId == userId)
+                .Where(o => o.UserId == userId && o.Status != OrderStatus.AwaitingPayment)
                 .OrderByDescending(o => o.CreatedAt)
                 .ToListAsync();
 

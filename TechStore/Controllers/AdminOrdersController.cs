@@ -17,6 +17,7 @@ namespace TechStore.Controllers {
             var orders = await _context.Orders
                 .Include(o => o.User)
                 .Include(o => o.Items)
+                .Where(o => o.Status != OrderStatus.AwaitingPayment)
                 .OrderByDescending(o => o.CreatedAt)
                 .ToListAsync();
 

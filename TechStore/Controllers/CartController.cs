@@ -6,6 +6,7 @@ using TechStore.Data;
 using TechStore.Models.Entities;
 using TechStore.ViewModels;
 using TechStore.ViewModels.Account;
+using Stripe.Checkout;
 
 namespace TechStore.Controllers {
     [Authorize]
@@ -182,12 +183,13 @@ namespace TechStore.Controllers {
                 return View(model);
             }
 
+            // Создаём "черновик" заказа — товар пока НЕ списывается, корзина НЕ очищается
             var order = new Order {
                 UserId = userId!,
                 DeliveryAddress = model.DeliveryAddress,
                 PhoneNumber = model.PhoneNumber,
                 TotalPrice = cart.Items.Sum(i => i.Product.Price * i.Quantity),
-                Status = OrderStatus.New
+                Status = OrderStatus.AwaitingPayment
             };
 
             _context.Orders.Add(order);
@@ -201,29 +203,102 @@ namespace TechStore.Controllers {
                     ProductPrice = item.Product.Price,
                     Quantity = item.Quantity
                 });
-
-                // Уменьшаем остаток товара на складе
-                item.Product.StockQuantity -= item.Quantity;
             }
-
-            // Очищаем корзину
-            _context.CartItems.RemoveRange(cart.Items);
 
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("OrderConfirmation", new { orderId = order.Id });
-        }
+            // Создаём сессию оплаты Stripe
+            var lineItems = cart.Items.Select(item => new SessionLineItemOptions {
+                PriceData = new SessionLineItemPriceDataOptions {
+                    Currency = "azn",
+                    UnitAmount = (long)(item.Product.Price * 100),
+                    ProductData = new SessionLineItemPriceDataProductDataOptions {
+                        Name = item.Product.Name
+                    }
+                },
+                Quantity = item.Quantity
+            }).ToList();
 
+            var options = new SessionCreateOptions {
+                AllowedPaymentMethodTypes = new List<string> { "card" },
+                LineItems = lineItems,
+                Mode = "payment",
+                SuccessUrl = Url.Action("PaymentSuccess", "Cart", new { orderId = order.Id }, Request.Scheme) + "&session_id={CHECKOUT_SESSION_ID}",
+                CancelUrl = Url.Action("PaymentCancel", "Cart", new { orderId = order.Id }, Request.Scheme)
+            };
+
+            var service = new SessionService();
+            Session session = service.Create(options);
+
+            return Redirect(session.Url);
+        }
         [HttpGet]
-        public IActionResult OrderConfirmation(int orderId) {
+        public async Task<IActionResult> PaymentSuccess(int orderId, string session_id) {
+            var service = new SessionService();
+            Session session = await service.GetAsync(session_id);
+
+            if (session.PaymentStatus != "paid") {
+                return RedirectToAction("PaymentCancel", new { orderId });
+            }
+
+            var order = await _context.Orders
+                .Include(o => o.Items)
+                .FirstOrDefaultAsync(o => o.Id == orderId);
+
+            if (order == null) {
+                return NotFound();
+            }
+
+            if (order.Status == OrderStatus.AwaitingPayment) {
+                order.Status = OrderStatus.New;
+
+                foreach (var item in order.Items) {
+                    var product = await _context.Products.FindAsync(item.ProductId);
+                    if (product != null) {
+                        product.StockQuantity -= item.Quantity;
+                    }
+                }
+
+                var userId = _userManager.GetUserId(User);
+                var cart = await _context.Carts
+                    .Include(c => c.Items)
+                    .FirstOrDefaultAsync(c => c.UserId == userId);
+
+                if (cart != null) {
+                    _context.CartItems.RemoveRange(cart.Items);
+                }
+
+                await _context.SaveChangesAsync();
+            }
+
             return View("InfoMessage", new InfoMessageViewModel {
                 Icon = "✅",
                 Title = "Заказ оформлен!",
-                Message = $"Ваш заказ №{orderId} принят в обработку. Мы свяжемся с вами для подтверждения доставки.",
+                Message = $"Ваш заказ №{order.Id} оплачен и принят в обработку. Мы свяжемся с вами для подтверждения доставки.",
                 ButtonText = "Мои заказы",
                 ButtonController = "Orders",
                 ButtonAction = "Index"
             });
         }
+
+        [HttpGet]
+        public async Task<IActionResult> PaymentCancel(int orderId) {
+            var order = await _context.Orders.FindAsync(orderId);
+
+            if (order != null && order.Status == OrderStatus.AwaitingPayment) {
+                _context.Orders.Remove(order);
+                await _context.SaveChangesAsync();
+            }
+
+            return View("InfoMessage", new InfoMessageViewModel {
+                Icon = "❌",
+                Title = "Оплата отменена",
+                Message = "Вы отменили оплату. Товары остались в корзине — вы можете попробовать оформить заказ снова.",
+                ButtonText = "Вернуться в корзину",
+                ButtonController = "Cart",
+                ButtonAction = "Index"
+            });
+        }
+        
     }
 }
