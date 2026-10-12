@@ -1,11 +1,11 @@
 ﻿@model CategoryFormViewModel
 @{
-    ViewData["Title"] = "Добавить категорию";
+    ViewData["Title"] = Localizer["AddCategory"].Value;
     Layout = "_AdminLayout";
 }
 
 <div class="admin-page-header">
-    <h1>Добавить категорию</h1>
+    <h1>@Localizer["AddCategory"]</h1>
 </div>
 
 <div class="admin-form-box">
@@ -15,8 +15,8 @@
         <partial name="_CategoryFormFields" model="Model" />
 
         <div class="form-actions">
-            <button type="submit" class="btn-admin-primary">Сохранить</button>
-            <a asp-controller="AdminCategories" asp-action="Index" class="btn-admin-secondary">Отмена</a>
+            <button type="submit" class="btn-admin-primary">@Localizer["Save"]</button>
+            <a asp-controller="AdminCategories" asp-action="Index" class="btn-admin-secondary">@Localizer["Cancel"]</a>
         </div>
     </form>
 </div>

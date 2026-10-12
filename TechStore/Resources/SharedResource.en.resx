@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+	<data name="Catalog" xml:space="preserve"><value>Catalog</value></data>
+	<data name="About" xml:space="preserve"><value>About Us</value></data>
+	<data name="Contacts" xml:space="preserve"><value>Contacts</value></data>
+	<data name="AdminPanel" xml:space="preserve"><value>Admin Panel</value></data>
+	<data name="MyProfile" xml:space="preserve"><value>My Profile</value></data>
+	<data name="MyOrders" xml:space="preserve"><value>My Orders</value></data>
+	<data name="Logout" xml:space="preserve"><value>Log out</value></data>
+	<data name="Login" xml:space="preserve"><value>Log in</value></data>
+	<data name="SearchProducts" xml:space="preserve"><value>Search products...</value></data>
+	<data name="AddToCart" xml:space="preserve"><value>Add to cart</value></data>
+
+	<data name="Dashboard" xml:space="preserve"><value>Dashboard</value></data>
+	<data name="Products" xml:space="preserve"><value>Products</value></data>
+	<data name="Categories" xml:space="preserve"><value>Categories</value></data>
+	<data name="Orders" xml:space="preserve"><value>Orders</value></data>
+	<data name="Users" xml:space="preserve"><value>Users</value></data>
+	<data name="BackToSite" xml:space="preserve"><value>Back to site</value></data>
+	<data name="AdminTitle" xml:space="preserve"><value>TechStore Admin Panel</value></data>
+
+	<data name="StoreDescription" xml:space="preserve"><value>Modern technology store.</value></data>
+	<data name="ForCustomers" xml:space="preserve"><value>For Customers</value></data>
+	<data name="Cart" xml:space="preserve"><value>Cart</value></data>
+	<data name="Help" xml:space="preserve"><value>Help</value></data>
+	<data name="Delivery" xml:space="preserve"><value>Delivery</value></data>
+	<data name="Payment" xml:space="preserve"><value>Payment</value></data>
+	<data name="Returns" xml:space="preserve"><value>Returns</value></data>
+	
+
+	<data name="Sort" xml:space="preserve"><value>Sort</value></data>
+	<data name="CheapestFirst" xml:space="preserve"><value>Price: Low to High</value></data>
+	<data name="MostExpensiveFirst" xml:space="preserve"><value>Price: High to Low</value></data>
+	<data name="ByName" xml:space="preserve"><value>By name</value></data>
+	<data name="Popular" xml:space="preserve"><value>Popular</value></data>
+	<data name="Price" xml:space="preserve"><value>Price, AZN</value></data>
+	<data name="From" xml:space="preserve"><value>From</value></data>
+	<data name="To" xml:space="preserve"><value>To</value></data>
+	<data name="Apply" xml:space="preserve"><value>Apply</value></data>
+	<data name="Clear" xml:space="preserve"><value>Clear</value></data>
+	<data name="NoProductsFound" xml:space="preserve"><value>No products were found for your search.</value></data>
+	<data name="OutOfStock" xml:space="preserve"><value>Out of stock</value></data>
+
+	<data name="Description" xml:space="preserve"><value>Description</value></data>
+	<data name="FullSpecifications" xml:space="preserve"><value>Full Specifications</value></data>
+
+	<data name="NoOrders" xml:space="preserve"><value>You don't have any orders yet.</value></data>
+	<data name="OrderNumber" xml:space="preserve"><value>Order #{0}</value></data>
+	<data name="ItemsCount" xml:space="preserve"><value>{0} item(s)</value></data>
+
+	<data name="Status" xml:space="preserve"><value>Status:</value></data>
+	<data name="Date" xml:space="preserve"><value>Date:</value></data>
+	<data name="DeliveryAddress" xml:space="preserve"><value>Delivery address:</value></data>
+	<data name="Phone" xml:space="preserve"><value>Phone:</value></data>
+	<data name="OrderItems" xml:space="preserve"><value>Items</value></data>
+	<data name="Total" xml:space="preserve"><value>Total:</value></data>
+	<data name="AllOrders" xml:space="preserve"><value>All orders</value></data>
+
+	<data name="HomePage" xml:space="preserve"><value>Home</value></data>
+	<data name="HeroTitle" xml:space="preserve"><value>New tech for your computer</value></data>
+	<data name="HeroText" xml:space="preserve"><value>Powerful laptops, computers and accessories for work and entertainment.</value></data>
+	<data name="ViewProducts" xml:space="preserve"><value>Browse products →</value></data>
+	<data name="CarouselLaptop" xml:space="preserve"><value>Laptop</value></data>
+	<data name="CarouselPhone" xml:space="preserve"><value>Phone</value></data>
+	<data name="CarouselHeadphones" xml:space="preserve"><value>Headphones</value></data>
+	<data name="PopularCategories" xml:space="preserve"><value>Popular categories</value></data>
+	<data name="PopularProducts" xml:space="preserve"><value>Popular products</value></data>
+	<data name="AllProducts" xml:space="preserve"><value>All products →</value></data>
+	<data name="WhyTechStore" xml:space="preserve"><value>Why TechStore?</value></data>
+	<data name="FastDelivery" xml:space="preserve"><value>Fast delivery</value></data>
+	<data name="FastDeliveryText" xml:space="preserve"><value>We will deliver your order as quickly as possible.</value></data>
+	<data name="SecurePayment" xml:space="preserve"><value>Secure payment</value></data>
+	<data name="SecurePaymentText" xml:space="preserve"><value>Secure payment processing.</value></data>
+	<data name="ReturnsText" xml:space="preserve"><value>You can return the product.</value></data>
+
+	<data name="ContactUs" xml:space="preserve"><value>Contact us</value></data>
+	<data name="ContactsHeroText" xml:space="preserve"><value>Have questions about products or your order? We are always ready to help.</value></data>
+	<data name="Address" xml:space="preserve"><value>Address</value></data>
+	<data name="ContactPhone" xml:space="preserve"><value>Phone</value></data>
+	<data name="Email" xml:space="preserve"><value>Email</value></data>
+	<data name="WorkingHoursTitle" xml:space="preserve"><value>Working hours</value></data>
+	<data name="FeedbackLabel" xml:space="preserve"><value>FEEDBACK</value></data>
+	<data name="HaveQuestions" xml:space="preserve"><value>Still have questions?</value></data>
+	<data name="Name" xml:space="preserve"><value>Name</value></data>
+	<data name="YourName" xml:space="preserve"><value>Your name</value></data>
+	<data name="Message" xml:space="preserve"><value>Message</value></data>
+	<data name="YourQuestion" xml:space="preserve"><value>Your question...</value></data>
+	<data name="SendMessage" xml:space="preserve"><value>Send message</value></data>
+
+	<data name="AboutLabel" xml:space="preserve"><value>ABOUT TECHSTORE</value></data>
+	<data name="AboutHeroTitle1" xml:space="preserve"><value>Tech for work,</value></data>
+	<data name="AboutHeroTitle2" xml:space="preserve"><value>study and entertainment.</value></data>
+	<data name="AboutHeroText" xml:space="preserve"><value>TechStore is an online store of modern technology and accessories for those who value convenience, quality and a clear choice.</value></data>
+	<data name="OurGoalLabel" xml:space="preserve"><value>OUR GOAL</value></data>
+	<data name="OurGoalTitle" xml:space="preserve"><value>Making tech choice easier</value></data>
+	<data name="OurGoalText1" xml:space="preserve"><value>We have gathered popular categories of tech in one place, so you don't have to spend hours looking for the right product.</value></data>
+	<data name="OurGoalText2" xml:space="preserve"><value>In the TechStore catalog you can compare specifications, filter products by parameters and choose the right option for your tasks and budget.</value></data>
+	<data name="StoryBoxText" xml:space="preserve"><value>Modern tech without unnecessary complexity.</value></data>
+	<data name="WhyUsLabel" xml:space="preserve"><value>WHY US</value></data>
+	<data name="WhyUsTitle" xml:space="preserve"><value>Everything you need in one place</value></data>
+	<data name="ConvenientCatalog" xml:space="preserve"><value>Convenient catalog</value></data>
+	<data name="ConvenientCatalogText" xml:space="preserve"><value>Categories, filters and sorting help you find the product you need quickly.</value></data>
+	<data name="DetailedSpecs" xml:space="preserve"><value>Detailed specifications</value></data>
+	<data name="DetailedSpecsText" xml:space="preserve"><value>Compare the main parameters of products before buying.</value></data>
+	<data name="AboutFastDeliveryText" xml:space="preserve"><value>Get your purchases without unnecessary waiting.</value></data>
+	<data name="ConvenientReturns" xml:space="preserve"><value>Easy returns</value></data>
+	<data name="ConvenientReturnsText" xml:space="preserve"><value>You can return a product according to the store's terms.</value></data>
+	<data name="CategoriesLabel" xml:space="preserve"><value>CATEGORIES</value></data>
+	<data name="CategoriesTitle" xml:space="preserve"><value>Tech for different needs</value></data>
+	<data name="ReadyToChoose" xml:space="preserve"><value>Ready to choose your tech?</value></data>
+	<data name="ReadyToChooseText" xml:space="preserve"><value>Browse the catalog and find what suits you best.</value></data>
+	<data name="GoToCatalog" xml:space="preserve"><value>Go to catalog →</value></data>
+
+	<data name="CartEmpty" xml:space="preserve"><value>Your cart is empty.</value></data>
+	<data name="ToCatalog" xml:space="preserve"><value>Go to catalog</value></data>
+	<data name="Checkout" xml:space="preserve"><value>Checkout</value></data>
+
+	<data name="CheckoutTitle" xml:space="preserve"><value>Checkout</value></data>
+	<data name="DeliveryAddressField" xml:space="preserve"><value>Delivery address</value></data>
+	<data name="AddressPlaceholder" xml:space="preserve"><value>City, street, house, apartment</value></data>
+	<data name="PhoneField" xml:space="preserve"><value>Phone</value></data>
+	<data name="ConfirmOrder" xml:space="preserve"><value>Confirm order</value></data>
+	<data name="YourOrder" xml:space="preserve"><value>Your order</value></data>
+
+	<data name="Role" xml:space="preserve"><value>Role</value></data>
+	<data name="StatusHeader" xml:space="preserve"><value>Status</value></data>
+	<data name="Blocked" xml:space="preserve"><value>Blocked</value></data>
+	<data name="Active" xml:space="preserve"><value>Active</value></data>
+
+	<data name="User" xml:space="preserve"><value>User</value></data>
+	<data name="ChangeRole" xml:space="preserve"><value>Change role</value></data>
+	<data name="SaveRole" xml:space="preserve"><value>Save role</value></data>
+	<data name="Access" xml:space="preserve"><value>Access</value></data>
+	<data name="Block" xml:space="preserve"><value>Block</value></data>
+	<data name="Unblock" xml:space="preserve"><value>Unblock</value></data>
+	<data name="ConfirmBlockUser" xml:space="preserve"><value>Block this user?</value></data>
+
+	<data name="AddProduct" xml:space="preserve"><value>Add product</value></data>
+	<data name="Photo" xml:space="preserve"><value>Photo</value></data>
+	<data name="ProductName" xml:space="preserve"><value>Name</value></data>
+	<data name="Category" xml:space="preserve"><value>Category</value></data>
+	<data name="PriceHeader" xml:space="preserve"><value>Price</value></data>
+	<data name="Stock" xml:space="preserve"><value>Stock</value></data>
+	<data name="Bestseller" xml:space="preserve"><value>Bestseller</value></data>
+	<data name="Yes" xml:space="preserve"><value>Yes</value></data>
+	<data name="ConfirmDeleteProduct" xml:space="preserve"><value>Delete product «{0}»?</value></data>
+
+	<data name="EditProduct" xml:space="preserve"><value>Edit product</value></data>
+	<data name="CurrentImage" xml:space="preserve"><value>Current image</value></data>
+	<data name="ReplaceImage" xml:space="preserve"><value>Replace image (optional)</value></data>
+	<data name="Specifications" xml:space="preserve"><value>Specifications</value></data>
+	<data name="AddSpecification" xml:space="preserve"><value>Add specification</value></data>
+	<data name="SaveChanges" xml:space="preserve"><value>Save changes</value></data>
+	<data name="Cancel" xml:space="preserve"><value>Cancel</value></data>
+	<data name="SpecNamePlaceholder" xml:space="preserve"><value>Name</value></data>
+	<data name="SpecValuePlaceholder" xml:space="preserve"><value>Value</value></data>
+
+	<data name="ProductImage" xml:space="preserve"><value>Product image</value></data>
+	<data name="SaveProduct" xml:space="preserve"><value>Save product</value></data>
+	<data name="SpecNameExample" xml:space="preserve"><value>Name (e.g., Processor)</value></data>
+	<data name="SpecValueExample" xml:space="preserve"><value>Value (e.g., Ryzen 7)</value></data>
+
+	<data name="SelectCategory" xml:space="preserve"><value>Select category</value></data>
+	<data name="ShowOnHome" xml:space="preserve"><value>(Show on the home page)</value></data>
+
+	<data name="Customer" xml:space="preserve"><value>Customer</value></data>
+	<data name="DateHeader" xml:space="preserve"><value>Date</value></data>
+	<data name="ItemsHeader" xml:space="preserve"><value>Items</value></data>
+	<data name="AmountHeader" xml:space="preserve"><value>Amount</value></data>
+	<data name="OrderStatus_AwaitingPayment" xml:space="preserve"><value>Awaiting payment</value></data>
+	<data name="OrderStatus_New" xml:space="preserve"><value>New</value></data>
+	<data name="OrderStatus_Processing" xml:space="preserve"><value>Processing</value></data>
+	<data name="OrderStatus_Shipped" xml:space="preserve"><value>Shipped</value></data>
+	<data name="OrderStatus_Delivered" xml:space="preserve"><value>Delivered</value></data>
+	<data name="OrderStatus_Cancelled" xml:space="preserve"><value>Cancelled</value></data>
+
+	<data name="ChangeStatus" xml:space="preserve"><value>Change status:</value></data>
+	<data name="Save" xml:space="preserve"><value>Save</value></data>
+
+	<data name="AddCategory" xml:space="preserve"><value>Add category</value></data>
+	<data name="Icon" xml:space="preserve"><value>Icon</value></data>
+	<data name="OnHomepage" xml:space="preserve"><value>On homepage</value></data>
+	<data name="ConfirmDeleteCategory" xml:space="preserve"><value>Delete category «{0}»?</value></data>
+
+	<data name="MaxFeaturedCategories" xml:space="preserve"><value>No more than 4 categories can be shown on the homepage. Please unmark another category first.</value></data>
+
+	<data name="EditCategory" xml:space="preserve"><value>Edit category</value></data>
+
+	<data name="IconEmoji" xml:space="preserve"><value>Icon (emoji)</value></data>
+	<data name="IconPlaceholder" xml:space="preserve"><value>For example: 💻</value></data>
+	<data name="ShowOnHomepage" xml:space="preserve"><value>Show on the homepage</value></data>
+
+	<data name="ProductsCount" xml:space="preserve"><value>Products</value></data>
+	<data name="CategoriesCount" xml:space="preserve"><value>Categories</value></data>
+	<data name="UsersCount" xml:space="preserve"><value>Users</value></data>
+	<data name="OrdersCount" xml:space="preserve"><value>Orders</value></data>
+	<data name="Revenue" xml:space="preserve"><value>Revenue</value></data>
+	<data name="RecentOrders" xml:space="preserve"><value>Recent orders</value></data>
+	<data name="NoOrdersYet" xml:space="preserve"><value>No orders yet.</value></data>
+
+	<data name="PasswordRecovery" xml:space="preserve"><value>Password recovery</value></data>
+	<data name="PasswordRecoveryText" xml:space="preserve"><value>Enter the email you used to register — we will send you a link to reset your password.</value></data>
+	<data name="SendLink" xml:space="preserve"><value>Send link</value></data>
+	<data name="RememberedPassword" xml:space="preserve"><value>Remembered your password?</value></data>
+
+	<data name="NewPassword" xml:space="preserve"><value>New password</value></data>
+	<data name="ConfirmPassword" xml:space="preserve"><value>Confirm password</value></data>
+	<data name="SavePassword" xml:space="preserve"><value>Save password</value></data>
+
+	<data name="Registration" xml:space="preserve"><value>Registration</value></data>
+	<data name="FullName" xml:space="preserve"><value>Full name</value></data>
+	<data name="Password" xml:space="preserve"><value>Password</value></data>
+	<data name="RegisterButton" xml:space="preserve"><value>Register</value></data>
+	<data name="HaveAccount" xml:space="preserve"><value>Already have an account?</value></data>
+
+	<data name="LoginTitle" xml:space="preserve"><value>Sign in</value></data>
+	<data name="RememberMe" xml:space="preserve"><value>Remember me</value></data>
+	<data name="ForgotPassword" xml:space="preserve"><value>Forgot password?</value></data>
+	<data name="NoAccount" xml:space="preserve"><value>Don't have an account?</value></data>
+	
+	
+</root>

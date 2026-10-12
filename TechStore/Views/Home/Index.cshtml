@@ -1,31 +1,30 @@
 ﻿@model HomeViewModel
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = Localizer["HomePage"].Value;
 }
 <section class="hero">
     <div class="hero-content">
-        <h1>Новая техника для твоего компьютера</h1>
+        <h1>@Localizer["HeroTitle"]</h1>
         <p>
-            Мощные ноутбуки, компьютеры и аксессуары
-            для работы и развлечений.
+            @Localizer["HeroText"]
         </p>
         <a asp-controller="Products" asp-action="Index" class="btn">
-            Смотреть товары →
+            @Localizer["ViewProducts"]
         </a>
     </div>
     <div class="hero-carousel">
         <div class="carousel-track">
 
             <div class="carousel-slide">
-                <img src="/images/products/product1.jpg" alt="Ноутбук">
+                <img src="/images/products/product1.jpg" alt="@Localizer["CarouselLaptop"]">
             </div>
 
             <div class="carousel-slide">
-                <img src="/images/products/5b6cf361-085c-41c5-90d7-9011f2ac86c8.webp" alt="Телефон">
+                <img src="/images/products/5b6cf361-085c-41c5-90d7-9011f2ac86c8.webp" alt="@Localizer["CarouselPhone"]">
             </div>
 
             <div class="carousel-slide">
-                <img src="/images/products/no-image.png" alt="Наушники">
+                <img src="/images/products/no-image.png" alt="@Localizer["CarouselHeadphones"]">
             </div>
 
         </div>
@@ -42,7 +41,7 @@
 </section>
 <!-- CATEGORIES -->
 <section class="categories">
-    <h2>Популярные категории</h2>
+    <h2>@Localizer["PopularCategories"]</h2>
     <div class="category-list">
         @foreach (var category in Model.Categories) {
             <a asp-controller="Products" asp-action="Index" asp-route-category="@category.Id" class="category-card">
@@ -55,9 +54,9 @@
 <!-- POPULAR PRODUCTS -->
 <section class="popular-products">
     <div class="section-header">
-        <h2>Популярные товары</h2>
+        <h2>@Localizer["PopularProducts"]</h2>
         <a asp-controller="Products" asp-action="Index">
-            Все товары →
+            @Localizer["AllProducts"]
         </a>
     </div>
     <div class="product-list">
@@ -81,7 +80,7 @@
                 </p>
                 <form asp-controller="Cart" asp-action="Add" method="post">
                     <input type="hidden" name="productId" value="@product.Id" />
-                    <button type="submit">🛒 Добавить в корзину</button>
+                    <button type="submit">🛒 @Localizer["AddToCart"]</button>
                 </form>
             </article>
         }
@@ -89,22 +88,22 @@
 </section>
 <!-- WHY TECHSTORE -->
 <section class="advantages">
-    <h2>Почему TechStore?</h2>
+    <h2>@Localizer["WhyTechStore"]</h2>
     <div class="advantages-list">
         <div class="advantage">
             <span>🚚</span>
-            <h3>Быстрая доставка</h3>
-            <p>Доставим ваш заказ в кратчайшие сроки.</p>
+            <h3>@Localizer["FastDelivery"]</h3>
+            <p>@Localizer["FastDeliveryText"]</p>
         </div>
         <div class="advantage">
             <span>🔒</span>
-            <h3>Безопасная оплата</h3>
-            <p>Безопасная обработка платежей.</p>
+            <h3>@Localizer["SecurePayment"]</h3>
+            <p>@Localizer["SecurePaymentText"]</p>
         </div>
         <div class="advantage">
             <span>↩️</span>
-            <h3>Возврат</h3>
-            <p>Возможность вернуть товар.</p>
+            <h3>@Localizer["Returns"]</h3>
+            <p>@Localizer["ReturnsText"]</p>
         </div>
     </div>
 </section>

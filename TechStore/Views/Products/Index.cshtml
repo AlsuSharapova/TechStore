@@ -1,6 +1,6 @@
 ﻿@model ProductsIndexViewModel
 @{
-    ViewData["Title"] = "Каталог";
+    ViewData["Title"] = Localizer["Catalog"];
 }
 
 <!-- CATEGORY STRIP -->
@@ -24,11 +24,11 @@
     <input type="hidden" name="maxPrice" value="@Model.MaxPrice" />
 
     <select name="sortBy" onchange="document.getElementById('sortForm').submit()" class="sort-select">
-        <option value="" selected="@(string.IsNullOrEmpty(Model.SortBy))">Сортировать</option>
-        <option value="price_asc" selected="@(Model.SortBy == "price_asc")">Сначала дешевле</option>
-        <option value="price_desc" selected="@(Model.SortBy == "price_desc")">Сначала дороже</option>
-        <option value="name" selected="@(Model.SortBy == "name")">По названию</option>
-        <option value="popular" selected="@(Model.SortBy == "popular")">Популярные</option>
+        <option value="" selected="@(string.IsNullOrEmpty(Model.SortBy))">@Localizer["Sort"]</option>
+        <option value="price_asc" selected="@(Model.SortBy == "price_asc")">@Localizer["CheapestFirst"]</option>
+        <option value="price_desc" selected="@(Model.SortBy == "price_desc")">@Localizer["MostExpensiveFirst"]</option>
+        <option value="name" selected="@(Model.SortBy == "name")">@Localizer["ByName"]</option>
+        <option value="popular" selected="@(Model.SortBy == "popular")">@Localizer["Popular"]</option>
     </select>
 </form>
 <div class="catalog-layout">
@@ -41,10 +41,10 @@
                 <input type="hidden" name="search" value="@Model.Search" />
                 <input type="hidden" name="sortBy" value="@Model.SortBy" />
 
-                <h3>Цена, AZN</h3>
+                <h3>@Localizer["Price"]</h3>
                 <div class="price-filter">
-                    <input type="number" name="minPrice" placeholder="От" value="@Model.MinPrice" />
-                    <input type="number" name="maxPrice" placeholder="До" value="@Model.MaxPrice" />
+                    <input type="number" name="minPrice" placeholder="@Localizer["From"]" value="@Model.MinPrice" />
+                    <input type="number" name="maxPrice" placeholder="@Localizer["To"]" value="@Model.MaxPrice" />
                 </div>
 
                 @foreach (var specGroup in Model.AvailableSpecFilters) {
@@ -63,7 +63,7 @@
                 }
 
                 <div class="filter-actions">
-                    <button type="submit" class="btn-apply">Применить</button>
+                    <button type="submit" class="btn-apply">@Localizer["Apply"]</button>
 
                     @{
                         var hasPriceFilter = Model.MinPrice.HasValue || Model.MaxPrice.HasValue;
@@ -74,11 +74,11 @@
                            asp-route-category="@Model.SelectedCategoryId"
                            asp-route-search="@Model.Search"
                            class="btn-clear-filters">
-                            Очистить
+                            @Localizer["Clear"]
                         </a>
                     }
                     else {
-                        <span class="btn-clear-filters disabled">Очистить</span>
+                        <span class="btn-clear-filters disabled">@Localizer["Clear"]</span>
                     }
                 </div>
             </form>
@@ -89,7 +89,7 @@
     <section class="product-list">
         @if (!Model.Products.Any()) {
             <div class="no-products">
-                <p>По вашему запросу ничего не найдено.</p>
+                <p>@Localizer["NoProductsFound"]</p>
             </div>
         }
         else
@@ -117,11 +117,11 @@
                     @if (product.StockQuantity > 0) {
                         <form asp-controller="Cart" asp-action="Add" method="post">
                             <input type="hidden" name="productId" value="@product.Id" />
-                            <button type="submit">🛒 Добавить в корзину</button>
+                            <button type="submit">🛒 @Localizer["AddToCart"]</button>
                         </form>
                     }
                     else {
-                        <span class="out-of-stock">Нет в наличии</span>
+                        <span class="out-of-stock">@Localizer["OutOfStock"]</span>
                     }
                 </article>
             }

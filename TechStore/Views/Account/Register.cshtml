@@ -1,42 +1,42 @@
 ﻿@model RegisterViewModel
 @{
-    ViewData["Title"] = "Регистрация";
+    ViewData["Title"] = Localizer["Registration"].Value;
 }
 
 <div class="account-container">
     <div class="account-box">
-        <h2>Регистрация</h2>
+        <h2>@Localizer["Registration"]</h2>
         <form asp-controller="Account" asp-action="Register" method="post">
             <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
 
             <div class="form-group">
-                <label asp-for="FullName"></label>
+                <label asp-for="FullName">@Localizer["FullName"]</label>
                 <input asp-for="FullName" />
                 <span asp-validation-for="FullName" class="field-error"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Email"></label>
+                <label asp-for="Email">@Localizer["Email"]</label>
                 <input asp-for="Email" />
                 <span asp-validation-for="Email" class="field-error"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Password"></label>
+                <label asp-for="Password">@Localizer["Password"]</label>
                 <input asp-for="Password" />
                 <span asp-validation-for="Password" class="field-error"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="ConfirmPassword"></label>
+                <label asp-for="ConfirmPassword">@Localizer["ConfirmPassword"]</label>
                 <input asp-for="ConfirmPassword" />
                 <span asp-validation-for="ConfirmPassword" class="field-error"></span>
             </div>
 
-            <button type="submit" class="btn-account">Зарегистрироваться</button>
+            <button type="submit" class="btn-account">@Localizer["RegisterButton"]</button>
 
             <p class="account-switch">
-                Уже есть аккаунт? <a asp-controller="Account" asp-action="Login">Войти</a>
+                @Localizer["HaveAccount"] <a asp-controller="Account" asp-action="Login">@Localizer["Login"]</a>
             </p>
         </form>
     </div>

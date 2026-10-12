@@ -4,14 +4,18 @@ using Microsoft.EntityFrameworkCore;
 using TechStore.Data;
 using TechStore.Models.Entities;
 using TechStore.ViewModels.Admin;
-
+using Microsoft.Extensions.Localization;
+using TechStore.Resources;
 
 namespace TechStore.Controllers {
     [Authorize(Roles = "Admin")]
     public class AdminCategoriesController : Controller {
         private readonly AppDbContext _context;
-        public AdminCategoriesController(AppDbContext context) {
+        private readonly IStringLocalizer<SharedResource> _localizer;
+
+        public AdminCategoriesController(AppDbContext context, IStringLocalizer<SharedResource> localizer) {
             _context = context;
+            _localizer = localizer;
         }
 
         public async Task<IActionResult> Index() {
@@ -28,6 +32,14 @@ namespace TechStore.Controllers {
 
         [HttpPost]
         public async Task<IActionResult> Create(CategoryFormViewModel model) {
+            if (model.IsFeatured) {
+                var featuredCount = await _context.Categories.CountAsync(c => c.IsFeatured);
+
+                if (featuredCount >= 4) {
+                    ModelState.AddModelError(string.Empty, _localizer["MaxFeaturedCategories"].Value);
+                }
+            }
+
             if (!ModelState.IsValid) {
                 return View(model);
             }
@@ -68,6 +80,15 @@ namespace TechStore.Controllers {
 
             if (category == null) {
                 return NotFound();
+            }
+
+            if (model.IsFeatured) {
+                var otherFeaturedCount = await _context.Categories
+                    .CountAsync(c => c.IsFeatured && c.Id != id);
+
+                if (otherFeaturedCount >= 4) {
+                    ModelState.AddModelError(string.Empty, _localizer["MaxFeaturedCategories"].Value);
+                }
             }
 
             if (!ModelState.IsValid) {

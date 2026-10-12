@@ -1,6 +1,6 @@
 ﻿@model List<Category>
 @{
-    ViewData["Title"] = "Категории";
+    ViewData["Title"] = Localizer["Categories"].Value;
     Layout = "_AdminLayout";
 }
 
@@ -11,18 +11,18 @@
 }
 
 <div class="admin-page-header">
-    <h1>Категории</h1>
+    <h1>@Localizer["Categories"]</h1>
     <a asp-controller="AdminCategories" asp-action="Create" class="btn-admin-primary">
-        + Добавить категорию
+        + @Localizer["AddCategory"]
     </a>
 </div>
 
 <table class="admin-table">
     <thead>
         <tr>
-            <th>Иконка</th>
-            <th>Название</th>
-            <th>На главной</th>
+            <th>@Localizer["Icon"]</th>
+            <th>@Localizer["ProductName"]</th>
+            <th>@Localizer["OnHomepage"]</th>
             <th></th>
         </tr>
     </thead>
@@ -31,13 +31,13 @@
             <tr>
                 <td style="font-size: 22px;">@category.Icon</td>
                 <td>@category.Name</td>
-                <td>@(category.IsFeatured ? "Да" : "—")</td>
+                <td>@(category.IsFeatured? Localizer["Yes"].Value : "—")</td>
                 <td class="admin-table-actions">
                     <a asp-controller="AdminCategories" asp-action="Edit" asp-route-id="@category.Id">
                         ✏️
                     </a>
                     <form asp-controller="AdminCategories" asp-action="Delete" asp-route-id="@category.Id" method="post"
-                          onsubmit="return confirm('Удалить категорию «@category.Name»?')" class="delete-form">
+                          onsubmit="return confirm('@Localizer["ConfirmDeleteCategory", category.Name]')" class="delete-form">
                         <button type="submit">🗑</button>
                     </form>
                 </td>

@@ -1,79 +1,73 @@
 ﻿@model List<Category>
 @{
-    ViewData["Title"] = "О нас";
+    ViewData["Title"] = Localizer["About"].Value;
 }
 
 <section class="about-hero">
     <div>
-        <span class="about-label">О TECHSTORE</span>
-        <h1>Техника для работы,<br />учёбы и развлечений.</h1>
+        <span class="about-label">@Localizer["AboutLabel"]</span>
+        <h1>@Localizer["AboutHeroTitle1"]<br />@Localizer["AboutHeroTitle2"]</h1>
         <p>
-            TechStore — это интернет-магазин современной техники
-            и аксессуаров для тех, кто ценит удобство, качество
-            и понятный выбор.
+            @Localizer["AboutHeroText"]
         </p>
     </div>
 </section>
 
 <section class="about-story">
     <div class="about-story-content">
-        <span class="about-label">НАША ЦЕЛЬ</span>
-        <h2>Делаем выбор техники проще</h2>
+        <span class="about-label">@Localizer["OurGoalLabel"]</span>
+        <h2>@Localizer["OurGoalTitle"]</h2>
         <p>
-            Мы собрали популярные категории техники в одном месте,
-            чтобы не приходилось тратить часы на поиск подходящего товара.
+            @Localizer["OurGoalText1"]
         </p>
         <p>
-            В каталоге TechStore вы можете сравнивать характеристики,
-            фильтровать товары по параметрам и выбирать подходящий вариант
-            в зависимости от ваших задач и бюджета.
+            @Localizer["OurGoalText2"]
         </p>
     </div>
 
     <div class="about-story-box">
         <span>💻</span>
         <strong>TechStore</strong>
-        <p>Современная техника без лишней сложности.</p>
+        <p>@Localizer["StoryBoxText"]</p>
     </div>
 </section>
 
 <section class="about-advantages">
     <div class="about-section-header">
-        <span class="about-label">ПОЧЕМУ МЫ</span>
-        <h2>Всё необходимое — в одном месте</h2>
+        <span class="about-label">@Localizer["WhyUsLabel"]</span>
+        <h2>@Localizer["WhyUsTitle"]</h2>
     </div>
 
     <div class="about-advantages-list">
         <div class="about-advantage">
             <span>🛍️</span>
-            <h3>Удобный каталог</h3>
+            <h3>@Localizer["ConvenientCatalog"]</h3>
             <p>
-                Категории, фильтры и сортировка помогают быстро
-                найти нужный товар.
+                @Localizer["ConvenientCatalogText"]
             </p>
         </div>
 
         <div class="about-advantage">
             <span>🔍</span>
-            <h3>Подробные характеристики</h3>
+            <h3>@Localizer["DetailedSpecs"]</h3>
             <p>
-                Сравнивайте основные параметры товаров перед покупкой.
+                @Localizer["DetailedSpecsText"]
             </p>
         </div>
 
         <div class="about-advantage">
             <span>🚚</span>
-            <h3>Быстрая доставка</h3>
+            <h3>@Localizer["FastDelivery"]</h3>
             <p>
-                Получайте свои покупки без лишнего ожидания.
+                @Localizer["AboutFastDeliveryText"]
             </p>
         </div>
 
         <div class="about-advantage">
             <span>↩️</span>
-            <h3>Удобный возврат</h3>
+            <h3>@Localizer["ConvenientReturns"]</h3>
             <p>
-                Возможность вернуть товар в соответствии с условиями магазина.
+                @Localizer["ConvenientReturnsText"]
             </p>
         </div>
     </div>
@@ -81,30 +75,29 @@
 
 <section class="about-categories">
     <div class="about-section-header">
-        <span class="about-label">КАТЕГОРИИ</span>
-        <h2>Техника под разные задачи</h2>
+        <span class="about-label">@Localizer["CategoriesLabel"]</span>
+        <h2>@Localizer["CategoriesTitle"]</h2>
     </div>
 
     <div class="about-category-list">
-        @foreach(var category in Model)
-        {
+        @foreach (var category in Model) {
             <a asp-controller="Products" asp-action="Index" asp-route-category="@category.Id">
                 <div class="about-category">
                     <span>@category.Icon</span>
                     <h3>@category.Name</h3>
                 </div>
             </a>
-        } 
+        }
     </div>
 </section>
 
 <section class="about-final">
-    <h2>Готовы выбрать технику?</h2>
+    <h2>@Localizer["ReadyToChoose"]</h2>
     <p>
-        Посмотрите каталог и найдите то, что подходит именно вам.
+        @Localizer["ReadyToChooseText"]
     </p>
 
     <a asp-controller="Products" asp-action="Index" class="about-final-btn">
-        Перейти в каталог →
+        @Localizer["GoToCatalog"]
     </a>
 </section>

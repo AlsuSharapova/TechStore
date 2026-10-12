@@ -1,0 +1,338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+	<data name="Catalog" xml:space="preserve"><value>Kataloq</value></data>
+	<data name="About" xml:space="preserve"><value>Haqqımızda</value></data>
+	<data name="Contacts" xml:space="preserve"><value>Əlaqə</value></data>
+	<data name="AdminPanel" xml:space="preserve"><value>Admin paneli</value></data>
+	<data name="MyProfile" xml:space="preserve"><value>Profilim</value></data>
+	<data name="MyOrders" xml:space="preserve"><value>Sifarişlərim</value></data>
+	<data name="Logout" xml:space="preserve"><value>Çıxış</value></data>
+	<data name="Login" xml:space="preserve"><value>Daxil ol</value></data>
+	<data name="SearchProducts" xml:space="preserve"><value>Məhsul axtar...</value></data>
+	<data name="AddToCart" xml:space="preserve"><value>Səbətə əlavə et</value></data>
+
+	<data name="Dashboard" xml:space="preserve"><value>İdarə paneli</value></data>
+	<data name="Products" xml:space="preserve"><value>Məhsullar</value></data>
+	<data name="Categories" xml:space="preserve"><value>Kategoriyalar</value></data>
+	<data name="Orders" xml:space="preserve"><value>Sifarişlər</value></data>
+	<data name="Users" xml:space="preserve"><value>İstifadəçilər</value></data>
+	<data name="BackToSite" xml:space="preserve"><value>Sayta qayıt</value></data>
+	<data name="AdminTitle" xml:space="preserve"><value>TechStore Admin Paneli</value></data>
+
+	<data name="StoreDescription" xml:space="preserve"><value>Müasir texnologiyalar mağazası.</value></data>
+	<data name="ForCustomers" xml:space="preserve"><value>Müştərilər üçün</value></data>
+	<data name="Cart" xml:space="preserve"><value>Səbət</value></data>
+	<data name="Help" xml:space="preserve"><value>Kömək</value></data>
+	<data name="Delivery" xml:space="preserve"><value>Çatdırılma</value></data>
+	<data name="Payment" xml:space="preserve"><value>Ödəniş</value></data>
+	<data name="Returns" xml:space="preserve"><value>Qaytarılma</value></data>
+
+	<data name="Sort" xml:space="preserve"><value>Sıralamaq</value></data>
+	<data name="CheapestFirst" xml:space="preserve"><value>Əvvəlcə ucuz</value></data>
+	<data name="MostExpensiveFirst" xml:space="preserve"><value>Əvvəlcə bahalı</value></data>
+	<data name="ByName" xml:space="preserve"><value>Adına görə</value></data>
+	<data name="Popular" xml:space="preserve"><value>Populyar</value></data>
+	<data name="Price" xml:space="preserve"><value>Qiymət, AZN</value></data>
+	<data name="From" xml:space="preserve"><value>Min</value></data>
+	<data name="To" xml:space="preserve"><value>Maks</value></data>
+	<data name="Apply" xml:space="preserve"><value>Tətbiq et</value></data>
+	<data name="Clear" xml:space="preserve"><value>Təmizlə</value></data>
+	<data name="NoProductsFound" xml:space="preserve"><value>Sorğunuza uyğun heç bir məhsul tapılmadı.</value></data>
+	<data name="OutOfStock" xml:space="preserve"><value>Stokda yoxdur</value></data>
+
+	<data name="Description" xml:space="preserve"><value>Təsvir</value></data>
+	<data name="FullSpecifications" xml:space="preserve"><value>Tam xüsusiyyətlər</value></data>
+
+	<data name="NoOrders" xml:space="preserve"><value>Hələ heç bir sifarişiniz yoxdur.</value></data>
+	<data name="OrderNumber" xml:space="preserve"><value>Sifariş №{0}</value></data>
+	<data name="ItemsCount" xml:space="preserve"><value>{0} məhsul</value></data>
+
+	<data name="Status" xml:space="preserve"><value>Status:</value></data>
+	<data name="Date" xml:space="preserve"><value>Tarix:</value></data>
+	<data name="DeliveryAddress" xml:space="preserve"><value>Çatdırılma ünvanı:</value></data>
+	<data name="Phone" xml:space="preserve"><value>Telefon:</value></data>
+	<data name="OrderItems" xml:space="preserve"><value>Məhsullar</value></data>
+	<data name="Total" xml:space="preserve"><value>Cəmi:</value></data>
+	<data name="AllOrders" xml:space="preserve"><value>Bütün sifarişlərə</value></data>
+
+	<data name="HomePage" xml:space="preserve"><value>Ana səhifə</value></data>
+	<data name="HeroTitle" xml:space="preserve"><value>Kompüteriniz üçün yeni texnika</value></data>
+	<data name="HeroText" xml:space="preserve"><value>İş və əyləncə üçün güclü noutbuklar, kompüterlər və aksesuarlar.</value></data>
+	<data name="ViewProducts" xml:space="preserve"><value>Məhsullara bax →</value></data>
+	<data name="CarouselLaptop" xml:space="preserve"><value>Noutbuk</value></data>
+	<data name="CarouselPhone" xml:space="preserve"><value>Telefon</value></data>
+	<data name="CarouselHeadphones" xml:space="preserve"><value>Qulaqlıq</value></data>
+	<data name="PopularCategories" xml:space="preserve"><value>Populyar kateqoriyalar</value></data>
+	<data name="PopularProducts" xml:space="preserve"><value>Populyar məhsullar</value></data>
+	<data name="AllProducts" xml:space="preserve"><value>Bütün məhsullar →</value></data>
+	<data name="WhyTechStore" xml:space="preserve"><value>Niyə TechStore?</value></data>
+	<data name="FastDelivery" xml:space="preserve"><value>Sürətli çatdırılma</value></data>
+	<data name="FastDeliveryText" xml:space="preserve"><value>Sifarişinizi ən qısa müddətdə çatdıracağıq.</value></data>
+	<data name="SecurePayment" xml:space="preserve"><value>Təhlükəsiz ödəniş</value></data>
+	<data name="SecurePaymentText" xml:space="preserve"><value>Ödənişlərin təhlükəsiz emalı.</value></data>
+	<data name="ReturnsText" xml:space="preserve"><value>Məhsulu geri qaytarmaq imkanı.</value></data>
+
+	<data name="ContactUs" xml:space="preserve"><value>Bizimlə əlaqə saxlayın</value></data>
+	<data name="ContactsHeroText" xml:space="preserve"><value>Məhsullar və ya sifariş barədə sualınız var? Biz həmişə kömək etməyə hazırıq.</value></data>
+	<data name="Address" xml:space="preserve"><value>Ünvan</value></data>
+	<data name="ContactPhone" xml:space="preserve"><value>Telefon</value></data>
+	<data name="Email" xml:space="preserve"><value>E-poçt</value></data>
+	<data name="WorkingHoursTitle" xml:space="preserve"><value>İş rejimi</value></data>
+	<data name="FeedbackLabel" xml:space="preserve"><value>GERİ BİLDİRİM</value></data>
+	<data name="HaveQuestions" xml:space="preserve"><value>Sualınız qalıb?</value></data>
+	<data name="Name" xml:space="preserve"><value>Ad</value></data>
+	<data name="YourName" xml:space="preserve"><value>Adınız</value></data>
+	<data name="Message" xml:space="preserve"><value>Mesaj</value></data>
+	<data name="YourQuestion" xml:space="preserve"><value>Sualınız...</value></data>
+	<data name="SendMessage" xml:space="preserve"><value>Mesaj göndər</value></data>
+
+	<data name="AboutLabel" xml:space="preserve"><value>TECHSTORE HAQQINDA</value></data>
+	<data name="AboutHeroTitle1" xml:space="preserve"><value>İş, təhsil və əyləncə</value></data>
+	<data name="AboutHeroTitle2" xml:space="preserve"><value>üçün texnika.</value></data>
+	<data name="AboutHeroText" xml:space="preserve"><value>TechStore — rahatlığı, keyfiyyəti və aydın seçimi qiymətləndirənlər üçün müasir texnika və aksesuarların onlayn mağazasıdır.</value></data>
+	<data name="OurGoalLabel" xml:space="preserve"><value>MƏQSƏDİMİZ</value></data>
+	<data name="OurGoalTitle" xml:space="preserve"><value>Texnika seçimini asanlaşdırırıq</value></data>
+	<data name="OurGoalText1" xml:space="preserve"><value>Uyğun məhsul axtarışına saatlarla vaxt sərf etməmək üçün populyar texnika kateqoriyalarını bir yerdə topladıq.</value></data>
+	<data name="OurGoalText2" xml:space="preserve"><value>TechStore kataloqunda xüsusiyyətləri müqayisə edə, məhsulları parametrlərə görə filtrləyə və tapşırıqlarınıza və büdcənizə uyğun variantı seçə bilərsiniz.</value></data>
+	<data name="StoryBoxText" xml:space="preserve"><value>Artıq mürəkkəbliyi olmayan müasir texnika.</value></data>
+	<data name="WhyUsLabel" xml:space="preserve"><value>NİYƏ BİZ</value></data>
+	<data name="WhyUsTitle" xml:space="preserve"><value>Lazım olan hər şey — bir yerdə</value></data>
+	<data name="ConvenientCatalog" xml:space="preserve"><value>Rahat kataloq</value></data>
+	<data name="ConvenientCatalogText" xml:space="preserve"><value>Kateqoriyalar, filtrlər və sıralama lazımi məhsulu tez tapmağa kömək edir.</value></data>
+	<data name="DetailedSpecs" xml:space="preserve"><value>Ətraflı xüsusiyyətlər</value></data>
+	<data name="DetailedSpecsText" xml:space="preserve"><value>Almazdan əvvəl məhsulların əsas parametrlərini müqayisə edin.</value></data>
+	<data name="AboutFastDeliveryText" xml:space="preserve"><value>Alışlarınızı artıq gözləmədən əldə edin.</value></data>
+	<data name="ConvenientReturns" xml:space="preserve"><value>Rahat qaytarılma</value></data>
+	<data name="ConvenientReturnsText" xml:space="preserve"><value>Mağazanın şərtlərinə uyğun olaraq məhsulu geri qaytarmaq imkanı.</value></data>
+	<data name="CategoriesLabel" xml:space="preserve"><value>KATEQORİYALAR</value></data>
+	<data name="CategoriesTitle" xml:space="preserve"><value>Müxtəlif tapşırıqlar üçün texnika</value></data>
+	<data name="ReadyToChoose" xml:space="preserve"><value>Texnika seçməyə hazırsınız?</value></data>
+	<data name="ReadyToChooseText" xml:space="preserve"><value>Kataloqa baxın və məhz sizə uyğun olanı tapın.</value></data>
+	<data name="GoToCatalog" xml:space="preserve"><value>Kataloqa keç →</value></data>
+
+	<data name="CartEmpty" xml:space="preserve"><value>Səbətiniz boşdur.</value></data>
+	<data name="ToCatalog" xml:space="preserve"><value>Kataloqa keç</value></data>
+	<data name="Checkout" xml:space="preserve"><value>Sifarişi rəsmiləşdir</value></data>
+
+	<data name="CheckoutTitle" xml:space="preserve"><value>Sifarişin rəsmiləşdirilməsi</value></data>
+	<data name="DeliveryAddressField" xml:space="preserve"><value>Çatdırılma ünvanı</value></data>
+	<data name="AddressPlaceholder" xml:space="preserve"><value>Şəhər, küçə, ev, mənzil</value></data>
+	<data name="PhoneField" xml:space="preserve"><value>Telefon</value></data>
+	<data name="ConfirmOrder" xml:space="preserve"><value>Sifarişi təsdiqlə</value></data>
+	<data name="YourOrder" xml:space="preserve"><value>Sizin sifarişiniz</value></data>
+
+	<data name="Role" xml:space="preserve"><value>Rol</value></data>
+	<data name="StatusHeader" xml:space="preserve"><value>Status</value></data>
+	<data name="Blocked" xml:space="preserve"><value>Bloklanıb</value></data>
+	<data name="Active" xml:space="preserve"><value>Aktiv</value></data>
+
+	<data name="User" xml:space="preserve"><value>İstifadəçi</value></data>
+	<data name="ChangeRole" xml:space="preserve"><value>Rolu dəyiş</value></data>
+	<data name="SaveRole" xml:space="preserve"><value>Rolu yadda saxla</value></data>
+	<data name="Access" xml:space="preserve"><value>Giriş</value></data>
+	<data name="Block" xml:space="preserve"><value>Blokla</value></data>
+	<data name="Unblock" xml:space="preserve"><value>Bloku aç</value></data>
+	<data name="ConfirmBlockUser" xml:space="preserve"><value>İstifadəçini bloklamaq istəyirsiniz?</value></data>
+
+	<data name="AddProduct" xml:space="preserve"><value>Məhsul əlavə et</value></data>
+	<data name="Photo" xml:space="preserve"><value>Şəkil</value></data>
+	<data name="ProductName" xml:space="preserve"><value>Ad</value></data>
+	<data name="Category" xml:space="preserve"><value>Kateqoriya</value></data>
+	<data name="PriceHeader" xml:space="preserve"><value>Qiymət</value></data>
+	<data name="Stock" xml:space="preserve"><value>Qalıq</value></data>
+	<data name="Bestseller" xml:space="preserve"><value>Çoxsatılan</value></data>
+	<data name="Yes" xml:space="preserve"><value>Bəli</value></data>
+	<data name="ConfirmDeleteProduct" xml:space="preserve"><value>«{0}» məhsulunu silmək istəyirsiniz?</value></data>
+
+	<data name="EditProduct" xml:space="preserve"><value>Məhsulu redaktə et</value></data>
+	<data name="CurrentImage" xml:space="preserve"><value>Cari şəkil</value></data>
+	<data name="ReplaceImage" xml:space="preserve"><value>Şəkli dəyiş (məcburi deyil)</value></data>
+	<data name="Specifications" xml:space="preserve"><value>Xüsusiyyətlər</value></data>
+	<data name="AddSpecification" xml:space="preserve"><value>Xüsusiyyət əlavə et</value></data>
+	<data name="SaveChanges" xml:space="preserve"><value>Dəyişiklikləri yadda saxla</value></data>
+	<data name="Cancel" xml:space="preserve"><value>Ləğv et</value></data>
+	<data name="SpecNamePlaceholder" xml:space="preserve"><value>Ad</value></data>
+	<data name="SpecValuePlaceholder" xml:space="preserve"><value>Dəyər</value></data>
+
+	<data name="ProductImage" xml:space="preserve"><value>Məhsulun şəkli</value></data>
+	<data name="SaveProduct" xml:space="preserve"><value>Məhsulu yadda saxla</value></data>
+	<data name="SpecNameExample" xml:space="preserve"><value>Ad (məsələn, Prosessor)</value></data>
+	<data name="SpecValueExample" xml:space="preserve"><value>Dəyər (məsələn, Ryzen 7)</value></data>
+
+	<data name="SelectCategory" xml:space="preserve"><value>Kateqoriya seçin</value></data>
+	<data name="ShowOnHome" xml:space="preserve"><value>(Ana səhifədə göstərilsin)</value></data>
+
+	<data name="Customer" xml:space="preserve"><value>Alıcı</value></data>
+	<data name="DateHeader" xml:space="preserve"><value>Tarix</value></data>
+	<data name="ItemsHeader" xml:space="preserve"><value>Məhsul sayı</value></data>
+	<data name="AmountHeader" xml:space="preserve"><value>Məbləğ</value></data>
+	<data name="OrderStatus_AwaitingPayment" xml:space="preserve"><value>Ödəniş gözlənilir</value></data>
+	<data name="OrderStatus_New" xml:space="preserve"><value>Yeni</value></data>
+	<data name="OrderStatus_Processing" xml:space="preserve"><value>Emal olunur</value></data>
+	<data name="OrderStatus_Shipped" xml:space="preserve"><value>Göndərilib</value></data>
+	<data name="OrderStatus_Delivered" xml:space="preserve"><value>Çatdırılıb</value></data>
+	<data name="OrderStatus_Cancelled" xml:space="preserve"><value>Ləğv edilib</value></data>
+
+	<data name="ChangeStatus" xml:space="preserve"><value>Statusu dəyiş:</value></data>
+	<data name="Save" xml:space="preserve"><value>Yadda saxla</value></data>
+
+	<data name="AddCategory" xml:space="preserve"><value>Kateqoriya əlavə et</value></data>
+	<data name="Icon" xml:space="preserve"><value>İkon</value></data>
+	<data name="OnHomepage" xml:space="preserve"><value>Ana səhifədə</value></data>
+	<data name="ConfirmDeleteCategory" xml:space="preserve"><value>«{0}» kateqoriyasını silmək istəyirsiniz?</value></data>
+
+	<data name="MaxFeaturedCategories" xml:space="preserve"><value>Ana səhifədə 4-dən çox kateqoriya göstərmək olmaz. Əvvəlcə başqa kateqoriyadan işarəni çıxarın.</value></data>
+
+	<data name="EditCategory" xml:space="preserve"><value>Kateqoriyanı redaktə et</value></data>
+
+	<data name="IconEmoji" xml:space="preserve"><value>İkon (emoji)</value></data>
+	<data name="IconPlaceholder" xml:space="preserve"><value>Məsələn: 💻</value></data>
+	<data name="ShowOnHomepage" xml:space="preserve"><value>Ana səhifədə göstər</value></data>
+
+	<data name="ProductsCount" xml:space="preserve"><value>Məhsul</value></data>
+	<data name="CategoriesCount" xml:space="preserve"><value>Kateqoriya</value></data>
+	<data name="UsersCount" xml:space="preserve"><value>İstifadəçi</value></data>
+	<data name="OrdersCount" xml:space="preserve"><value>Sifariş</value></data>
+	<data name="Revenue" xml:space="preserve"><value>Gəlir</value></data>
+	<data name="RecentOrders" xml:space="preserve"><value>Son sifarişlər</value></data>
+	<data name="NoOrdersYet" xml:space="preserve"><value>Hələlik sifariş yoxdur.</value></data>
+
+	<data name="PasswordRecovery" xml:space="preserve"><value>Şifrənin bərpası</value></data>
+	<data name="PasswordRecoveryText" xml:space="preserve"><value>Qeydiyyat zamanı göstərdiyiniz e-poçtu daxil edin — şifrəni sıfırlamaq üçün keçid göndərəcəyik.</value></data>
+	<data name="SendLink" xml:space="preserve"><value>Keçid göndər</value></data>
+	<data name="RememberedPassword" xml:space="preserve"><value>Şifrənizi xatırladınız?</value></data>
+
+	<data name="NewPassword" xml:space="preserve"><value>Yeni şifrə</value></data>
+	<data name="ConfirmPassword" xml:space="preserve"><value>Şifrənin təsdiqi</value></data>
+	<data name="SavePassword" xml:space="preserve"><value>Şifrəni yadda saxla</value></data>
+
+	<data name="Registration" xml:space="preserve"><value>Qeydiyyat</value></data>
+	<data name="FullName" xml:space="preserve"><value>Tam ad</value></data>
+	<data name="Password" xml:space="preserve"><value>Şifrə</value></data>
+	<data name="RegisterButton" xml:space="preserve"><value>Qeydiyyatdan keç</value></data>
+	<data name="HaveAccount" xml:space="preserve"><value>Artıq hesabınız var?</value></data>
+
+	<data name="LoginTitle" xml:space="preserve"><value>Giriş</value></data>
+	<data name="RememberMe" xml:space="preserve"><value>Məni xatırla</value></data>
+	<data name="ForgotPassword" xml:space="preserve"><value>Şifrəni unutmusunuz?</value></data>
+	<data name="NoAccount" xml:space="preserve"><value>Hesabınız yoxdur?</value></data>
+	
+	
+</root>

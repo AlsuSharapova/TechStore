@@ -1,10 +1,10 @@
 ﻿<!DOCTYPE html>
-<html lang="ru">
+<html lang="@System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName">
 <head>
     <partial name="_MetaPartial" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/admin.css" />
-    <title>@ViewData["Title"] - Админка TechStore</title>
+    <title>@ViewData["Title"] - @Localizer["AdminTitle"]</title>
 </head>
 <body class="admin-body">
 
@@ -20,29 +20,29 @@
 
                 <a asp-controller="Admin" asp-action="Index"
                    class="admin-nav-link @(currentController == "Admin" ? "active" : "")">
-                    📊 Dashboard
+                    📊 @Localizer["Dashboard"]
                 </a>
                 <a asp-controller="AdminProducts" asp-action="Index"
                    class="admin-nav-link @(currentController == "AdminProducts" ? "active" : "")">
-                    📦 Товары
+                    📦 @Localizer["Products"]
                 </a>
                 <a asp-controller="AdminCategories" asp-action="Index"
                    class="admin-nav-link @(currentController == "AdminCategories" ? "active" : "")">
-                    🗂 Категории
+                    🗂 @Localizer["Categories"]
                 </a>
                 <a asp-controller="AdminOrders" asp-action="Index"
                    class="admin-nav-link @(currentController == "AdminOrders" ? "active" : "")">
-                    🧾 Заказы
+                    🧾 @Localizer["Orders"]
                 </a>
                 <a asp-controller="AdminUsers" asp-action="Index"
                    class="admin-nav-link @(currentController == "AdminUsers" ? "active" : "")">
-                    👥 Пользователи
+                    👥 @Localizer["Users"]
                 </a>
             </nav>
 
             <div class="admin-sidebar-footer">
                 <a asp-controller="Home" asp-action="Index" class="admin-nav-link">
-                    ← Вернуться на сайт
+                    ← @Localizer["BackToSite"]
                 </a>
             </div>
         </aside>

@@ -1,18 +1,20 @@
-﻿
-<header>
+﻿<header>
     <div class="header-top">
         <a asp-controller="Home" asp-action="Index" class="logo">TECHSTORE</a>
         <nav>
-            <a asp-controller="Products" asp-action="Index">Каталог</a>
-            <a asp-controller="Home" asp-action="About">О нас</a>
-            <a asp-controller="Home" asp-action="Contacts">Контакты</a>
+            <a asp-controller="Products" asp-action="Index">@Localizer["Catalog"]</a>
+            <a asp-controller="Home" asp-action="About">@Localizer["About"]</a>
+            <a asp-controller="Home" asp-action="Contacts">@Localizer["Contacts"]</a>
         </nav>
         <div class="header-actions">
-            <select>
-                <option>RU</option>
-                <option>EN</option>
-                <option>AZ</option>
-            </select>
+            <form asp-controller="Language" asp-action="SetLanguage" method="post" class="language-form">
+                <input type="hidden" name="returnUrl" value="@Context.Request.Path@Context.Request.QueryString" />
+                <select name="culture" onchange="this.form.submit()">
+                    <option value="en" selected="@(System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "en")">EN</option>
+                    <option value="ru" selected="@(System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "ru")">RU</option>
+                    <option value="az" selected="@(System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "az")">AZ</option>
+                </select>
+            </form>
             <a asp-controller="Cart" asp-action="Index" class="header-icon">
                 🛒
             </a>
@@ -25,20 +27,20 @@
                     <div class="account-dropdown">
                         @if (User.IsInRole("Admin")) {
                             <a asp-controller="Admin" asp-action="Index">
-                                🛠 Админка
+                                🛠 @Localizer["AdminPanel"]
                             </a>
                         }
                         <a asp-controller="Account" asp-action="Profile">
-                            👤 Мой профиль
+                            👤 @Localizer["MyProfile"]
                         </a>
                         <a asp-controller="Orders" asp-action="Index">
-                            📦 Мои заказы
+                            📦 @Localizer["MyOrders"]
                         </a>
                         <form asp-controller="Account"
                               asp-action="Logout"
                               method="post">
                             <button type="submit">
-                                🚪 Выйти
+                                🚪 @Localizer["Logout"]
                             </button>
                         </form>
                     </div>
@@ -48,7 +50,7 @@
                 <a asp-controller="Account"
                    asp-action="Login"
                    class="account-link">
-                    👤 Войти
+                    👤 @Localizer["Login"]
                 </a>
             }
         </div>
@@ -64,7 +66,7 @@
             <input type="text"
                    name="search"
                    value="@Context.Request.Query["search"]"
-                   placeholder="Поиск товаров...">
+                   placeholder="@Localizer["SearchProducts"]">
             <button type="submit">🔍</button>
         </form>
     </div>

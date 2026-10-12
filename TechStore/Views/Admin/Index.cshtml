@@ -1,11 +1,11 @@
 ﻿@model DashboardViewModel
 @{
-    ViewData["Title"] = "Dashboard";
+    ViewData["Title"] = Localizer["Dashboard"].Value;
     Layout = "_AdminLayout";
 }
 
 <div class="admin-page-header">
-    <h1>Dashboard</h1>
+    <h1>@Localizer["Dashboard"]</h1>
 </div>
 
 <div class="dashboard-stats">
@@ -13,7 +13,7 @@
         <span class="stat-icon">📦</span>
         <div>
             <div class="stat-value">@Model.TotalProducts</div>
-            <div class="stat-label">Товаров</div>
+            <div class="stat-label">@Localizer["ProductsCount"]</div>
         </div>
     </a>
 
@@ -21,7 +21,7 @@
         <span class="stat-icon">🗂</span>
         <div>
             <div class="stat-value">@Model.TotalCategories</div>
-            <div class="stat-label">Категорий</div>
+            <div class="stat-label">@Localizer["CategoriesCount"]</div>
         </div>
     </a>
 
@@ -29,7 +29,7 @@
         <span class="stat-icon">👥</span>
         <div>
             <div class="stat-value">@Model.TotalUsers</div>
-            <div class="stat-label">Пользователей</div>
+            <div class="stat-label">@Localizer["UsersCount"]</div>
         </div>
     </a>
 
@@ -37,7 +37,7 @@
         <span class="stat-icon">🧾</span>
         <div>
             <div class="stat-value">@Model.TotalOrders</div>
-            <div class="stat-label">Заказов</div>
+            <div class="stat-label">@Localizer["OrdersCount"]</div>
         </div>
     </a>
 
@@ -45,25 +45,25 @@
         <span class="stat-icon">💰</span>
         <div>
             <div class="stat-value">@Model.TotalRevenue AZN</div>
-            <div class="stat-label">Выручка</div>
+            <div class="stat-label">@Localizer["Revenue"]</div>
         </div>
     </a>
 </div>
 
-<h3>Последние заказы</h3>
+<h3>@Localizer["RecentOrders"]</h3>
 
 @if (!Model.RecentOrders.Any()) {
-    <p class="no-orders-text">Заказов пока нет.</p>
+    <p class="no-orders-text">@Localizer["NoOrdersYet"]</p>
 }
 else {
     <table class="admin-table">
         <thead>
             <tr>
                 <th>№</th>
-                <th>Покупатель</th>
-                <th>Дата</th>
-                <th>Сумма</th>
-                <th>Статус</th>
+                <th>@Localizer["Customer"]</th>
+                <th>@Localizer["DateHeader"]</th>
+                <th>@Localizer["AmountHeader"]</th>
+                <th>@Localizer["StatusHeader"]</th>
                 <th></th>
             </tr>
         </thead>
@@ -76,7 +76,7 @@ else {
                     <td>@order.TotalPrice AZN</td>
                     <td>
                         <span class="order-status order-status-@order.Status.ToString().ToLower()">
-                            @order.Status
+                            @Localizer["OrderStatus_" + order.Status]
                         </span>
                     </td>
                     <td class="admin-table-actions">

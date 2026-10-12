@@ -28,7 +28,7 @@ namespace TechStore.Controllers {
 
                 if (existingUser != null && !existingUser.EmailConfirmed) {
                     await SendConfirmationEmail(existingUser);
-                    return RedirectToAction("RegisterConfirmation");
+                    return CheckEmailMessage();
                 }
 
                 if (existingUser != null && existingUser.EmailConfirmed) {
@@ -41,17 +41,8 @@ namespace TechStore.Controllers {
 
                 if (result.Succeeded) {
                     await _userManager.AddToRoleAsync(user, "User");
-
                     await SendConfirmationEmail(user);
-
-                    return View("InfoMessage", new InfoMessageViewModel {
-                        Icon = "📧",
-                        Title = "Проверьте почту",
-                        Message = "Мы отправили письмо с подтверждением на вашу почту. Перейдите по ссылке в письме, чтобы завершить регистрацию.",
-                        ButtonText = "Перейти ко входу",
-                        ButtonController = "Account",
-                        ButtonAction = "Login"
-                    });
+                    return CheckEmailMessage();
                 }
 
                 foreach (var error in result.Errors) {
@@ -61,6 +52,7 @@ namespace TechStore.Controllers {
 
             return View(model);
         }
+
         [HttpGet]
         public async Task<IActionResult> ConfirmEmail(string userId, string token) {
             if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(token)) {
@@ -222,6 +214,16 @@ namespace TechStore.Controllers {
                              $"<a href='{confirmationLink}'>Подтвердить email</a>";
 
             await _emailSender.SendEmailAsync(user.Email!, "Подтверждение регистрации — TechStore", emailBody);
+        }
+        private IActionResult CheckEmailMessage() {
+            return View("InfoMessage", new InfoMessageViewModel {
+                Icon = "📧",
+                Title = "Проверьте почту",
+                Message = "Мы отправили письмо с подтверждением на вашу почту. Перейдите по ссылке в письме, чтобы завершить регистрацию.",
+                ButtonText = "Перейти ко входу",
+                ButtonController = "Account",
+                ButtonAction = "Login"
+            });
         }
     }
 }

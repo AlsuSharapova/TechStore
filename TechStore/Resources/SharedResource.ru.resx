@@ -1,0 +1,338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+	<data name="Catalog" xml:space="preserve"><value>Каталог</value></data>
+	<data name="About" xml:space="preserve"><value>О нас</value></data>
+	<data name="Contacts" xml:space="preserve"><value>Контакты</value></data>
+	<data name="AdminPanel" xml:space="preserve"><value>Админка</value></data>
+	<data name="MyProfile" xml:space="preserve"><value>Мой профиль</value></data>
+	<data name="MyOrders" xml:space="preserve"><value>Мои заказы</value></data>
+	<data name="Logout" xml:space="preserve"><value>Выйти</value></data>
+	<data name="Login" xml:space="preserve"><value>Войти</value></data>
+	<data name="SearchProducts" xml:space="preserve"><value>Поиск товаров...</value></data>
+	<data name="AddToCart" xml:space="preserve"><value>Добавить в корзину</value></data>
+
+	<data name="Dashboard" xml:space="preserve"><value>Дашборд</value></data>
+	<data name="Products" xml:space="preserve"><value>Товары</value></data>
+	<data name="Categories" xml:space="preserve"><value>Категории</value></data>
+	<data name="Orders" xml:space="preserve"><value>Заказы</value></data>
+	<data name="Users" xml:space="preserve"><value>Пользователи</value></data>
+	<data name="BackToSite" xml:space="preserve"><value>Вернуться на сайт</value></data>
+	<data name="AdminTitle" xml:space="preserve"><value>Админка TechStore</value></data>
+
+	<data name="StoreDescription" xml:space="preserve"><value>Магазин современной техники.</value></data>
+	<data name="ForCustomers" xml:space="preserve"><value>Покупателям</value></data>
+	<data name="Cart" xml:space="preserve"><value>Корзина</value></data>
+	<data name="Help" xml:space="preserve"><value>Помощь</value></data>
+	<data name="Delivery" xml:space="preserve"><value>Доставка</value></data>
+	<data name="Payment" xml:space="preserve"><value>Оплата</value></data>
+	<data name="Returns" xml:space="preserve"><value>Возврат</value></data>
+
+	<data name="Sort" xml:space="preserve"><value>Сортировать</value></data>
+	<data name="CheapestFirst" xml:space="preserve"><value>Сначала дешевле</value></data>
+	<data name="MostExpensiveFirst" xml:space="preserve"><value>Сначала дороже</value></data>
+	<data name="ByName" xml:space="preserve"><value>По названию</value></data>
+	<data name="Popular" xml:space="preserve"><value>Популярные</value></data>
+	<data name="Price" xml:space="preserve"><value>Цена, AZN</value></data>
+	<data name="From" xml:space="preserve"><value>От</value></data>
+	<data name="To" xml:space="preserve"><value>До</value></data>
+	<data name="Apply" xml:space="preserve"><value>Применить</value></data>
+	<data name="Clear" xml:space="preserve"><value>Очистить</value></data>
+	<data name="NoProductsFound" xml:space="preserve"><value>По вашему запросу ничего не найдено.</value></data>
+	<data name="OutOfStock" xml:space="preserve"><value>Нет в наличии</value></data>
+
+	<data name="Description" xml:space="preserve"><value>Описание</value></data>
+	<data name="FullSpecifications" xml:space="preserve"><value>Полные характеристики</value></data>
+
+	<data name="NoOrders" xml:space="preserve"><value>У вас пока нет заказов.</value></data>
+	<data name="OrderNumber" xml:space="preserve"><value>Заказ №{0}</value></data>
+	<data name="ItemsCount" xml:space="preserve"><value>{0} товар(ов)</value></data>
+
+	<data name="Status" xml:space="preserve"><value>Статус:</value></data>
+	<data name="Date" xml:space="preserve"><value>Дата:</value></data>
+	<data name="DeliveryAddress" xml:space="preserve"><value>Адрес доставки:</value></data>
+	<data name="Phone" xml:space="preserve"><value>Телефон:</value></data>
+	<data name="OrderItems" xml:space="preserve"><value>Товары</value></data>
+	<data name="Total" xml:space="preserve"><value>Итого:</value></data>
+	<data name="AllOrders" xml:space="preserve"><value>Ко всем заказам</value></data>
+
+	<data name="HomePage" xml:space="preserve"><value>Главная</value></data>
+	<data name="HeroTitle" xml:space="preserve"><value>Новая техника для твоего компьютера</value></data>
+	<data name="HeroText" xml:space="preserve"><value>Мощные ноутбуки, компьютеры и аксессуары для работы и развлечений.</value></data>
+	<data name="ViewProducts" xml:space="preserve"><value>Смотреть товары →</value></data>
+	<data name="CarouselLaptop" xml:space="preserve"><value>Ноутбук</value></data>
+	<data name="CarouselPhone" xml:space="preserve"><value>Телефон</value></data>
+	<data name="CarouselHeadphones" xml:space="preserve"><value>Наушники</value></data>
+	<data name="PopularCategories" xml:space="preserve"><value>Популярные категории</value></data>
+	<data name="PopularProducts" xml:space="preserve"><value>Популярные товары</value></data>
+	<data name="AllProducts" xml:space="preserve"><value>Все товары →</value></data>
+	<data name="WhyTechStore" xml:space="preserve"><value>Почему TechStore?</value></data>
+	<data name="FastDelivery" xml:space="preserve"><value>Быстрая доставка</value></data>
+	<data name="FastDeliveryText" xml:space="preserve"><value>Доставим ваш заказ в кратчайшие сроки.</value></data>
+	<data name="SecurePayment" xml:space="preserve"><value>Безопасная оплата</value></data>
+	<data name="SecurePaymentText" xml:space="preserve"><value>Безопасная обработка платежей.</value></data>
+	<data name="ReturnsText" xml:space="preserve"><value>Возможность вернуть товар.</value></data>
+
+	<data name="ContactUs" xml:space="preserve"><value>Свяжитесь с нами</value></data>
+	<data name="ContactsHeroText" xml:space="preserve"><value>Есть вопросы по товарам или заказу? Мы всегда готовы помочь.</value></data>
+	<data name="Address" xml:space="preserve"><value>Адрес</value></data>
+	<data name="ContactPhone" xml:space="preserve"><value>Телефон</value></data>
+	<data name="Email" xml:space="preserve"><value>Email</value></data>
+	<data name="WorkingHoursTitle" xml:space="preserve"><value>Режим работы</value></data>
+	<data name="FeedbackLabel" xml:space="preserve"><value>ОБРАТНАЯ СВЯЗЬ</value></data>
+	<data name="HaveQuestions" xml:space="preserve"><value>Остались вопросы?</value></data>
+	<data name="Name" xml:space="preserve"><value>Имя</value></data>
+	<data name="YourName" xml:space="preserve"><value>Ваше имя</value></data>
+	<data name="Message" xml:space="preserve"><value>Сообщение</value></data>
+	<data name="YourQuestion" xml:space="preserve"><value>Ваш вопрос...</value></data>
+	<data name="SendMessage" xml:space="preserve"><value>Отправить сообщение</value></data>
+
+	<data name="AboutLabel" xml:space="preserve"><value>О TECHSTORE</value></data>
+	<data name="AboutHeroTitle1" xml:space="preserve"><value>Техника для работы,</value></data>
+	<data name="AboutHeroTitle2" xml:space="preserve"><value>учёбы и развлечений.</value></data>
+	<data name="AboutHeroText" xml:space="preserve"><value>TechStore — это интернет-магазин современной техники и аксессуаров для тех, кто ценит удобство, качество и понятный выбор.</value></data>
+	<data name="OurGoalLabel" xml:space="preserve"><value>НАША ЦЕЛЬ</value></data>
+	<data name="OurGoalTitle" xml:space="preserve"><value>Делаем выбор техники проще</value></data>
+	<data name="OurGoalText1" xml:space="preserve"><value>Мы собрали популярные категории техники в одном месте, чтобы не приходилось тратить часы на поиск подходящего товара.</value></data>
+	<data name="OurGoalText2" xml:space="preserve"><value>В каталоге TechStore вы можете сравнивать характеристики, фильтровать товары по параметрам и выбирать подходящий вариант в зависимости от ваших задач и бюджета.</value></data>
+	<data name="StoryBoxText" xml:space="preserve"><value>Современная техника без лишней сложности.</value></data>
+	<data name="WhyUsLabel" xml:space="preserve"><value>ПОЧЕМУ МЫ</value></data>
+	<data name="WhyUsTitle" xml:space="preserve"><value>Всё необходимое — в одном месте</value></data>
+	<data name="ConvenientCatalog" xml:space="preserve"><value>Удобный каталог</value></data>
+	<data name="ConvenientCatalogText" xml:space="preserve"><value>Категории, фильтры и сортировка помогают быстро найти нужный товар.</value></data>
+	<data name="DetailedSpecs" xml:space="preserve"><value>Подробные характеристики</value></data>
+	<data name="DetailedSpecsText" xml:space="preserve"><value>Сравнивайте основные параметры товаров перед покупкой.</value></data>
+	<data name="AboutFastDeliveryText" xml:space="preserve"><value>Получайте свои покупки без лишнего ожидания.</value></data>
+	<data name="ConvenientReturns" xml:space="preserve"><value>Удобный возврат</value></data>
+	<data name="ConvenientReturnsText" xml:space="preserve"><value>Возможность вернуть товар в соответствии с условиями магазина.</value></data>
+	<data name="CategoriesLabel" xml:space="preserve"><value>КАТЕГОРИИ</value></data>
+	<data name="CategoriesTitle" xml:space="preserve"><value>Техника под разные задачи</value></data>
+	<data name="ReadyToChoose" xml:space="preserve"><value>Готовы выбрать технику?</value></data>
+	<data name="ReadyToChooseText" xml:space="preserve"><value>Посмотрите каталог и найдите то, что подходит именно вам.</value></data>
+	<data name="GoToCatalog" xml:space="preserve"><value>Перейти в каталог →</value></data>
+
+	<data name="CartEmpty" xml:space="preserve"><value>Ваша корзина пуста.</value></data>
+	<data name="ToCatalog" xml:space="preserve"><value>Перейти в каталог</value></data>
+	<data name="Checkout" xml:space="preserve"><value>Оформить заказ</value></data>
+
+	<data name="CheckoutTitle" xml:space="preserve"><value>Оформление заказа</value></data>
+	<data name="DeliveryAddressField" xml:space="preserve"><value>Адрес доставки</value></data>
+	<data name="AddressPlaceholder" xml:space="preserve"><value>Город, улица, дом, квартира</value></data>
+	<data name="PhoneField" xml:space="preserve"><value>Телефон</value></data>
+	<data name="ConfirmOrder" xml:space="preserve"><value>Подтвердить заказ</value></data>
+	<data name="YourOrder" xml:space="preserve"><value>Ваш заказ</value></data>
+
+	<data name="Role" xml:space="preserve"><value>Роль</value></data>
+	<data name="StatusHeader" xml:space="preserve"><value>Статус</value></data>
+	<data name="Blocked" xml:space="preserve"><value>Заблокирован</value></data>
+	<data name="Active" xml:space="preserve"><value>Активен</value></data>
+
+	<data name="User" xml:space="preserve"><value>Пользователь</value></data>
+	<data name="ChangeRole" xml:space="preserve"><value>Изменить роль</value></data>
+	<data name="SaveRole" xml:space="preserve"><value>Сохранить роль</value></data>
+	<data name="Access" xml:space="preserve"><value>Доступ</value></data>
+	<data name="Block" xml:space="preserve"><value>Заблокировать</value></data>
+	<data name="Unblock" xml:space="preserve"><value>Разблокировать</value></data>
+	<data name="ConfirmBlockUser" xml:space="preserve"><value>Заблокировать пользователя?</value></data>
+
+	<data name="AddProduct" xml:space="preserve"><value>Добавить товар</value></data>
+	<data name="Photo" xml:space="preserve"><value>Фото</value></data>
+	<data name="ProductName" xml:space="preserve"><value>Название</value></data>
+	<data name="Category" xml:space="preserve"><value>Категория</value></data>
+	<data name="PriceHeader" xml:space="preserve"><value>Цена</value></data>
+	<data name="Stock" xml:space="preserve"><value>Остаток</value></data>
+	<data name="Bestseller" xml:space="preserve"><value>Бестселлер</value></data>
+	<data name="Yes" xml:space="preserve"><value>Да</value></data>
+	<data name="ConfirmDeleteProduct" xml:space="preserve"><value>Удалить товар «{0}»?</value></data>
+
+	<data name="EditProduct" xml:space="preserve"><value>Редактировать товар</value></data>
+	<data name="CurrentImage" xml:space="preserve"><value>Текущее изображение</value></data>
+	<data name="ReplaceImage" xml:space="preserve"><value>Заменить изображение (необязательно)</value></data>
+	<data name="Specifications" xml:space="preserve"><value>Характеристики</value></data>
+	<data name="AddSpecification" xml:space="preserve"><value>Добавить характеристику</value></data>
+	<data name="SaveChanges" xml:space="preserve"><value>Сохранить изменения</value></data>
+	<data name="Cancel" xml:space="preserve"><value>Отмена</value></data>
+	<data name="SpecNamePlaceholder" xml:space="preserve"><value>Название</value></data>
+	<data name="SpecValuePlaceholder" xml:space="preserve"><value>Значение</value></data>
+
+	<data name="ProductImage" xml:space="preserve"><value>Изображение товара</value></data>
+	<data name="SaveProduct" xml:space="preserve"><value>Сохранить товар</value></data>
+	<data name="SpecNameExample" xml:space="preserve"><value>Название (например, Процессор)</value></data>
+	<data name="SpecValueExample" xml:space="preserve"><value>Значение (например, Ryzen 7)</value></data>
+
+	<data name="SelectCategory" xml:space="preserve"><value>Выберите категорию</value></data>
+	<data name="ShowOnHome" xml:space="preserve"><value>(Показывать на главной)</value></data>
+
+	<data name="Customer" xml:space="preserve"><value>Покупатель</value></data>
+	<data name="DateHeader" xml:space="preserve"><value>Дата</value></data>
+	<data name="ItemsHeader" xml:space="preserve"><value>Товаров</value></data>
+	<data name="AmountHeader" xml:space="preserve"><value>Сумма</value></data>
+	<data name="OrderStatus_AwaitingPayment" xml:space="preserve"><value>Ожидает оплаты</value></data>
+	<data name="OrderStatus_New" xml:space="preserve"><value>Новый</value></data>
+	<data name="OrderStatus_Processing" xml:space="preserve"><value>В обработке</value></data>
+	<data name="OrderStatus_Shipped" xml:space="preserve"><value>Отправлен</value></data>
+	<data name="OrderStatus_Delivered" xml:space="preserve"><value>Доставлен</value></data>
+	<data name="OrderStatus_Cancelled" xml:space="preserve"><value>Отменён</value></data>
+
+	<data name="ChangeStatus" xml:space="preserve"><value>Изменить статус:</value></data>
+	<data name="Save" xml:space="preserve"><value>Сохранить</value></data>
+
+	<data name="AddCategory" xml:space="preserve"><value>Добавить категорию</value></data>
+	<data name="Icon" xml:space="preserve"><value>Иконка</value></data>
+	<data name="OnHomepage" xml:space="preserve"><value>На главной</value></data>
+	<data name="ConfirmDeleteCategory" xml:space="preserve"><value>Удалить категорию «{0}»?</value></data>
+
+	<data name="MaxFeaturedCategories" xml:space="preserve"><value>На главной можно показывать не более 4 категорий. Сначала снимите отметку у другой категории.</value></data>
+
+	<data name="EditCategory" xml:space="preserve"><value>Редактировать категорию</value></data>
+
+	<data name="IconEmoji" xml:space="preserve"><value>Иконка (эмодзи)</value></data>
+	<data name="IconPlaceholder" xml:space="preserve"><value>Например: 💻</value></data>
+	<data name="ShowOnHomepage" xml:space="preserve"><value>Показывать на главной странице</value></data>
+
+	<data name="ProductsCount" xml:space="preserve"><value>Товаров</value></data>
+	<data name="CategoriesCount" xml:space="preserve"><value>Категорий</value></data>
+	<data name="UsersCount" xml:space="preserve"><value>Пользователей</value></data>
+	<data name="OrdersCount" xml:space="preserve"><value>Заказов</value></data>
+	<data name="Revenue" xml:space="preserve"><value>Выручка</value></data>
+	<data name="RecentOrders" xml:space="preserve"><value>Последние заказы</value></data>
+	<data name="NoOrdersYet" xml:space="preserve"><value>Заказов пока нет.</value></data>
+
+	<data name="PasswordRecovery" xml:space="preserve"><value>Восстановление пароля</value></data>
+	<data name="PasswordRecoveryText" xml:space="preserve"><value>Введите email, указанный при регистрации — мы отправим ссылку для сброса пароля.</value></data>
+	<data name="SendLink" xml:space="preserve"><value>Отправить ссылку</value></data>
+	<data name="RememberedPassword" xml:space="preserve"><value>Вспомнили пароль?</value></data>
+
+	<data name="NewPassword" xml:space="preserve"><value>Новый пароль</value></data>
+	<data name="ConfirmPassword" xml:space="preserve"><value>Подтверждение пароля</value></data>
+	<data name="SavePassword" xml:space="preserve"><value>Сохранить пароль</value></data>
+
+	<data name="Registration" xml:space="preserve"><value>Регистрация</value></data>
+	<data name="FullName" xml:space="preserve"><value>Полное имя</value></data>
+	<data name="Password" xml:space="preserve"><value>Пароль</value></data>
+	<data name="RegisterButton" xml:space="preserve"><value>Зарегистрироваться</value></data>
+	<data name="HaveAccount" xml:space="preserve"><value>Уже есть аккаунт?</value></data>
+
+	<data name="LoginTitle" xml:space="preserve"><value>Вход</value></data>
+	<data name="RememberMe" xml:space="preserve"><value>Запомнить меня</value></data>
+	<data name="ForgotPassword" xml:space="preserve"><value>Забыли пароль?</value></data>
+	<data name="NoAccount" xml:space="preserve"><value>Нет аккаунта?</value></data>
+	
+	
+</root>

@@ -1,22 +1,22 @@
 ﻿@model List<Order>
 @{
-    ViewData["Title"] = "Заказы";
+    ViewData["Title"] = Localizer["Orders"].Value;
     Layout = "_AdminLayout";
 }
 
 <div class="admin-page-header">
-    <h1>Заказы</h1>
+    <h1>@Localizer["Orders"]</h1>
 </div>
 
 <table class="admin-table">
     <thead>
         <tr>
             <th>№</th>
-            <th>Покупатель</th>
-            <th>Дата</th>
-            <th>Товаров</th>
-            <th>Сумма</th>
-            <th>Статус</th>
+            <th>@Localizer["Customer"]</th>
+            <th>@Localizer["DateHeader"]</th>
+            <th>@Localizer["ItemsHeader"]</th>
+            <th>@Localizer["AmountHeader"]</th>
+            <th>@Localizer["StatusHeader"]</th>
             <th></th>
         </tr>
     </thead>
@@ -30,7 +30,7 @@
                 <td>@order.TotalPrice AZN</td>
                 <td>
                     <span class="order-status order-status-@order.Status.ToString().ToLower()">
-                        @order.Status
+                        @Localizer["OrderStatus_" + order.Status]
                     </span>
                 </td>
                 <td class="admin-table-actions">

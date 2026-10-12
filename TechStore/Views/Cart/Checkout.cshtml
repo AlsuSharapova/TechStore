@@ -1,9 +1,9 @@
 ﻿@model CheckoutViewModel
 @{
-    ViewData["Title"] = "Оформление заказа";
+    ViewData["Title"] = Localizer["CheckoutTitle"].Value;
 }
 
-<h1>Оформление заказа</h1>
+<h1>@Localizer["CheckoutTitle"]</h1>
 
 <div class="checkout-layout">
 
@@ -11,22 +11,22 @@
         <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
 
         <div class="form-group">
-            <label asp-for="DeliveryAddress"></label>
-            <input asp-for="DeliveryAddress" placeholder="Город, улица, дом, квартира" />
+            <label asp-for="DeliveryAddress">@Localizer["DeliveryAddressField"]</label>
+            <input asp-for="DeliveryAddress" placeholder="@Localizer["AddressPlaceholder"]" />
             <span asp-validation-for="DeliveryAddress" class="field-error"></span>
         </div>
 
         <div class="form-group">
-            <label asp-for="PhoneNumber"></label>
+            <label asp-for="PhoneNumber">@Localizer["PhoneField"]</label>
             <input asp-for="PhoneNumber" placeholder="+994 XX XXX XX XX" />
             <span asp-validation-for="PhoneNumber" class="field-error"></span>
         </div>
 
-        <button type="submit" class="btn-account">Подтвердить заказ</button>
+        <button type="submit" class="btn-account">@Localizer["ConfirmOrder"]</button>
     </form>
 
     <div class="checkout-summary">
-        <h3>Ваш заказ</h3>
+        <h3>@Localizer["YourOrder"]</h3>
 
         @foreach (var item in Model.Cart!.Items) {
             <div class="checkout-summary-item">
@@ -36,7 +36,7 @@
         }
 
         <div class="checkout-summary-total">
-            <span>Итого:</span>
+            <span>@Localizer["Total"]</span>
             <span>@Model.Cart.Items.Sum(i => i.Product.Price * i.Quantity) AZN</span>
         </div>
     </div>

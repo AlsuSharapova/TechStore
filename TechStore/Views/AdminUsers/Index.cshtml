@@ -1,20 +1,20 @@
 ﻿@model List<AdminUserListItem>
 @{
-    ViewData["Title"] = "Пользователи";
+    ViewData["Title"] = Localizer["Users"].Value;
     Layout = "_AdminLayout";
 }
 
 <div class="admin-page-header">
-    <h1>Пользователи</h1>
+    <h1>@Localizer["Users"]</h1>
 </div>
 
 <table class="admin-table">
     <thead>
         <tr>
-            <th>Имя</th>
-            <th>Email</th>
-            <th>Роль</th>
-            <th>Статус</th>
+            <th>@Localizer["Name"]</th>
+            <th>@Localizer["Email"]</th>
+            <th>@Localizer["Role"]</th>
+            <th>@Localizer["StatusHeader"]</th>
             <th></th>
         </tr>
     </thead>
@@ -30,10 +30,10 @@
                 </td>
                 <td>
                     @if (user.IsLockedOut) {
-                        <span class="order-status order-status-cancelled">Заблокирован</span>
+                        <span class="order-status order-status-cancelled">@Localizer["Blocked"]</span>
                     }
                     else {
-                        <span class="order-status order-status-delivered">Активен</span>
+                        <span class="order-status order-status-delivered">@Localizer["Active"]</span>
                     }
                 </td>
                 <td class="admin-table-actions">

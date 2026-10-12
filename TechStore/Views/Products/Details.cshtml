@@ -37,27 +37,27 @@
                 </div>
 
                 <button type="submit" class="btn-add-to-cart">
-                    🛒 Добавить в корзину
+                    🛒 @Localizer["AddToCart"]
                 </button>
             </form>
         }
         else
         {
-            <span class="out-of-stock">Нет в наличии</span>
+            <span class="out-of-stock">@Localizer["OutOfStock"]</span>
         }
     </div>
 
 </section>
 
 <section class="product-details-description">
-    <h2>Описание</h2>
+    <h2>@Localizer["Description"]</h2>
     <p>@Model.Description</p>
 </section>
 
 @if (Model.Specifications.Any())
 {
     <section class="product-details-specs">
-        <h2>Полные характеристики</h2>
+        <h2>@Localizer["FullSpecifications"]</h2>
         <table class="specs-table">
             @foreach (var spec in Model.Specifications)
             {

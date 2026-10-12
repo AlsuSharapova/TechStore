@@ -1,25 +1,25 @@
 ﻿@model List<Product>
 @{
-    ViewData["Title"] = "Товары";
+    ViewData["Title"] = Localizer["Products"].Value;
     Layout = "_AdminLayout";
 }
 
 <div class="admin-page-header">
-    <h1>Товары</h1>
+    <h1>@Localizer["Products"]</h1>
     <a asp-controller="AdminProducts" asp-action="Create" class="btn-admin-primary">
-        + Добавить товар
+        + @Localizer["AddProduct"]
     </a>
 </div>
 
 <table class="admin-table">
     <thead>
         <tr>
-            <th>Фото</th>
-            <th>Название</th>
-            <th>Категория</th>
-            <th>Цена</th>
-            <th>Остаток</th>
-            <th>Бестселлер</th>
+            <th>@Localizer["Photo"]</th>
+            <th>@Localizer["ProductName"]</th>
+            <th>@Localizer["Category"]</th>
+            <th>@Localizer["PriceHeader"]</th>
+            <th>@Localizer["Stock"]</th>
+            <th>@Localizer["Bestseller"]</th>
             <th></th>
         </tr>
     </thead>
@@ -33,13 +33,13 @@
                 <td>@product.Category.Name</td>
                 <td>@product.Price AZN</td>
                 <td>@product.StockQuantity</td>
-                <td>@(product.IsBestSeller ? "Да" : "—")</td>
+                <td>@(product.IsBestSeller? Localizer["Yes"].Value : "—")</td>
                 <td class="admin-table-actions">
                     <a asp-controller="AdminProducts" asp-action="Edit" asp-route-id="@product.Id">
                         ✏️
                     </a>
                     <form asp-controller="AdminProducts" asp-action="Delete" asp-route-id="@product.Id" method="post"
-                          onsubmit="return confirm('Удалить товар «@product.Name»?')" class="delete-form">
+                          onsubmit="return confirm('@Localizer["ConfirmDeleteProduct", product.Name]')" class="delete-form">
                         <button type="submit">🗑</button>
                     </form>
                 </td>

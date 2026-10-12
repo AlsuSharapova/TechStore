@@ -1,28 +1,28 @@
 ﻿@model VerifyEmailViewModel
 @{
-    ViewData["Title"] = "Восстановление пароля";
+    ViewData["Title"] = Localizer["PasswordRecovery"].Value;
 }
 
 <div class="account-container">
     <div class="account-box">
-        <h2>Восстановление пароля</h2>
+        <h2>@Localizer["PasswordRecovery"]</h2>
         <p class="confirmation-text">
-            Введите email, указанный при регистрации — мы отправим ссылку для сброса пароля.
+            @Localizer["PasswordRecoveryText"]
         </p>
 
         <form asp-controller="Account" asp-action="VerifyEmail" method="post">
             <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
 
             <div class="form-group">
-                <label asp-for="Email"></label>
+                <label asp-for="Email">@Localizer["Email"]</label>
                 <input asp-for="Email" />
                 <span asp-validation-for="Email" class="field-error"></span>
             </div>
 
-            <button type="submit" class="btn-account">Отправить ссылку</button>
+            <button type="submit" class="btn-account">@Localizer["SendLink"]</button>
 
             <p class="account-switch">
-                Вспомнили пароль? <a asp-controller="Account" asp-action="Login">Войти</a>
+                @Localizer["RememberedPassword"] <a asp-controller="Account" asp-action="Login">@Localizer["Login"]</a>
             </p>
         </form>
     </div>

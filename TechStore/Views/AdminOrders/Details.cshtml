@@ -1,32 +1,32 @@
 ﻿@model Order
 @{
-    ViewData["Title"] = $"Заказ №{Model.Id}";
+    ViewData["Title"] = Localizer["OrderNumber", Model.Id].Value;
     Layout = "_AdminLayout";
 }
 
 <div class="admin-page-header details-page-header">
-    <h1>Заказ №@Model.Id</h1>
+    <h1>@Localizer["OrderNumber", Model.Id]</h1>
 </div>
 
 <div class="admin-form-box">
     <div class="order-details-row">
-        <span>Покупатель:</span>
+        <span>@Localizer["Customer"]:</span>
         <span>@Model.User.FullName (@Model.User.Email)</span>
     </div>
     <div class="order-details-row">
-        <span>Дата:</span>
+        <span>@Localizer["Date"]</span>
         <span>@Model.CreatedAt.ToString("dd.MM.yyyy HH:mm")</span>
     </div>
     <div class="order-details-row">
-        <span>Адрес доставки:</span>
+        <span>@Localizer["DeliveryAddress"]</span>
         <span>@Model.DeliveryAddress</span>
     </div>
     <div class="order-details-row">
-        <span>Телефон:</span>
+        <span>@Localizer["Phone"]</span>
         <span>@Model.PhoneNumber</span>
     </div>
 
-    <h3>Товары</h3>
+    <h3>@Localizer["OrderItems"]</h3>
     @foreach (var item in Model.Items) {
         <div class="order-item-row">
             <span>@item.ProductName × @item.Quantity</span>
@@ -35,19 +35,19 @@
     }
 
     <div class="order-details-total">
-        <span>Итого:</span>
+        <span>@Localizer["Total"]</span>
         <span>@Model.TotalPrice AZN</span>
     </div>
 
     <form asp-controller="AdminOrders" asp-action="UpdateStatus" asp-route-id="@Model.Id" method="post" class="order-status-form">
-        <label>Изменить статус:</label>
+        <label>@Localizer["ChangeStatus"]</label>
         <div class="order-status-form-row">
             <select name="status">
                 @foreach (var status in Enum.GetValues<OrderStatus>().Where(s => s != OrderStatus.AwaitingPayment)) {
-                    <option value="@status" selected="@(status == Model.Status)">@status</option>
+                    <option value="@status" selected="@(status == Model.Status)">@Localizer["OrderStatus_" + status]</option>
                 }
             </select>
-            <button type="submit" class="btn-admin-primary">Сохранить</button>
+            <button type="submit" class="btn-admin-primary">@Localizer["Save"]</button>
         </div>
     </form>
 </div>

@@ -1,15 +1,15 @@
 ﻿@model List<Order>
 @{
-    ViewData["Title"] = "Мои заказы";
+    ViewData["Title"] = Localizer["MyOrders"];
 }
 
-<h1>Мои заказы</h1>
+<h1>@Localizer["MyOrders"]</h1>
 
 @if (!Model.Any()) {
     <div class="cart-empty">
-        <p>У вас пока нет заказов.</p>
+        <p>@Localizer["NoOrders"]</p>
         <a asp-controller="Products" asp-action="Index" class="btn-account-outline">
-            Перейти в каталог
+            @Localizer["Catalog"]
         </a>
     </div>
 }
@@ -18,14 +18,14 @@ else {
         @foreach (var order in Model) {
             <a asp-controller="Orders" asp-action="Details" asp-route-id="@order.Id" class="order-card">
                 <div class="order-card-header">
-                    <span class="order-number">Заказ №@order.Id</span>
+                    <span class="order-number">@Localizer["OrderNumber", order.Id]</span>
                     <span class="order-status order-status-@order.Status.ToString().ToLower()">
                         @order.Status
                     </span>
                 </div>
                 <div class="order-card-body">
                     <span>@order.CreatedAt.ToString("dd.MM.yyyy HH:mm")</span>
-                    <span>@order.Items.Count товар(ов)</span>
+                    <span>@Localizer["ItemsCount", order.Items.Count]</span>
                     <span class="order-card-total">@order.TotalPrice AZN</span>
                 </div>
             </a>

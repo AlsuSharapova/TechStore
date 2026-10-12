@@ -1,12 +1,12 @@
 ﻿@using TechStore.ViewModels.Admin
 @model ProductFormViewModel
 @{
-    ViewData["Title"] = "Добавить товар";
+    ViewData["Title"] = Localizer["AddProduct"].Value;
     Layout = "_AdminLayout";
 }
 
 <div class="admin-page-header">
-    <h1>Добавить товар</h1>
+    <h1>@Localizer["AddProduct"]</h1>
 </div>
 
 <div class="admin-form-box">
@@ -16,22 +16,22 @@
         <partial name="_ProductFormFields" model="Model" />
 
         <div class="form-group">
-            <label asp-for="ImageFile">Изображение товара</label>
+            <label asp-for="ImageFile">@Localizer["ProductImage"]</label>
             <input asp-for="ImageFile" type="file" accept="image/*" />
         </div>
 
-        <h3>Характеристики</h3>
+        <h3>@Localizer["Specifications"]</h3>
         <div id="specsContainer"></div>
 
         <button type="button" id="addSpecBtn" class="btn-admin-secondary">
-            + Добавить характеристику
+            + @Localizer["AddSpecification"]
         </button>
 
         <div class="spec-suggestions" id="specSuggestions"></div>
 
         <div class="form-actions">
-            <button type="submit" class="btn-admin-primary">Сохранить товар</button>
-            <a asp-controller="AdminProducts" asp-action="Index" class="btn-admin-secondary">Отмена</a>
+            <button type="submit" class="btn-admin-primary">@Localizer["SaveProduct"]</button>
+            <a asp-controller="AdminProducts" asp-action="Index" class="btn-admin-secondary">@Localizer["Cancel"]</a>
         </div>
     </form>
 </div>
@@ -39,6 +39,9 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
     <script>
+        const specNamePlaceholder = @Html.Raw(Json.Serialize(Localizer["SpecNameExample"].Value));
+        const specValuePlaceholder = @Html.Raw(Json.Serialize(Localizer["SpecValueExample"].Value));
+
         const specSuggestionsByCategory = {
             "Ноутбуки": ["Процессор", "Видеокарта", "Оперативная память", "Накопитель"],
             "Компьютеры": ["Процессор", "Видеокарта", "Оперативная память", "Накопитель"],
@@ -56,8 +59,8 @@
             const row = document.createElement('div');
             row.className = 'spec-row';
             row.innerHTML = `
-                <input type="text" name="SpecNames" placeholder="Название (например, Процессор)" value="${name}" />
-                <input type="text" name="SpecValues" placeholder="Значение (например, Ryzen 7)" value="${value}" />
+                <input type="text" name="SpecNames" placeholder="${specNamePlaceholder}" value="${name}" />
+                <input type="text" name="SpecValues" placeholder="${specValuePlaceholder}" value="${value}" />
                 <button type="button" class="spec-remove-btn">✕</button>
             `;
             row.querySelector('.spec-remove-btn').addEventListener('click', () => row.remove());
