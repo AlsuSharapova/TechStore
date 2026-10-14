@@ -30,7 +30,7 @@
         @foreach (var category in Model) {
             <tr>
                 <td style="font-size: 22px;">@category.Icon</td>
-                <td>@category.Name</td>
+                <td>@category.GetName()</td>
                 <td>@(category.IsFeatured? Localizer["Yes"].Value : "—")</td>
                 <td class="admin-table-actions">
                     <a asp-controller="AdminCategories" asp-action="Edit" asp-route-id="@category.Id">

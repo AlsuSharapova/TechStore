@@ -84,7 +84,7 @@
             <a asp-controller="Products" asp-action="Index" asp-route-category="@category.Id">
                 <div class="about-category">
                     <span>@category.Icon</span>
-                    <h3>@category.Name</h3>
+                    <h3>@category.GetName()</h3>
                 </div>
             </a>
         }

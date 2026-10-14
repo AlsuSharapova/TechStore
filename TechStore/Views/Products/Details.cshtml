@@ -51,7 +51,7 @@
 
 <section class="product-details-description">
     <h2>@Localizer["Description"]</h2>
-    <p>@Model.Description</p>
+    <p>@Model.GetDescription()</p>
 </section>
 
 @if (Model.Specifications.Any())

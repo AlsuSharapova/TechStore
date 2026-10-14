@@ -40,6 +40,8 @@ namespace TechStore.Controllers {
             var product = new Product {
                 Name = model.Name,
                 Description = model.Description,
+                DescriptionEn = model.DescriptionEn,
+                DescriptionAz = model.DescriptionAz,
                 Price = model.Price,
                 StockQuantity = model.StockQuantity,
                 CategoryId = model.CategoryId,
@@ -93,6 +95,8 @@ namespace TechStore.Controllers {
             var model = new ProductFormViewModel {
                 Name = product.Name,
                 Description = product.Description,
+                DescriptionEn = product.DescriptionEn,
+                DescriptionAz = product.DescriptionAz,
                 Price = product.Price,
                 StockQuantity = product.StockQuantity,
                 CategoryId = product.CategoryId,
@@ -127,6 +131,8 @@ namespace TechStore.Controllers {
 
             product.Name = model.Name;
             product.Description = model.Description;
+            product.DescriptionEn = model.DescriptionEn;
+            product.DescriptionAz = model.DescriptionAz;
             product.Price = model.Price;
             product.StockQuantity = model.StockQuantity;
             product.CategoryId = model.CategoryId;

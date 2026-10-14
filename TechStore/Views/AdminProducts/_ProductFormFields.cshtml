@@ -12,6 +12,18 @@
     <span asp-validation-for="Description" class="field-error"></span>
 </div>
 
+<div class="form-group">
+    <label asp-for="DescriptionEn">@Localizer["Description"] (EN)</label>
+    <textarea asp-for="DescriptionEn" rows="4"></textarea>
+    <span asp-validation-for="DescriptionEn" class="field-error"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="DescriptionAz">@Localizer["Description"] (AZ)</label>
+    <textarea asp-for="DescriptionAz" rows="4"></textarea>
+    <span asp-validation-for="DescriptionAz" class="field-error"></span>
+</div>
+
 <div class="form-row">
     <div class="form-group">
         <label asp-for="Price">@Localizer["Price"]</label>

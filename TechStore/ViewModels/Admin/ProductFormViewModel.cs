@@ -9,6 +9,10 @@ namespace TechStore.ViewModels.Admin {
         [Required(ErrorMessage = "Введите описание")]
         [Display(Name = "Описание")]
         public string Description { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Введите описание")]
+        public string? DescriptionEn { get; set; }
+        [Required(ErrorMessage = "Введите описание")]
+        public string? DescriptionAz { get; set; }
 
         [Required(ErrorMessage = "Введите цену")]
         [Display(Name = "Цена")]

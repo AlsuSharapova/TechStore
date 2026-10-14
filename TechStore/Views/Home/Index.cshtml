@@ -46,7 +46,7 @@
         @foreach (var category in Model.Categories) {
             <a asp-controller="Products" asp-action="Index" asp-route-category="@category.Id" class="category-card">
                 <div class="category-icon">@category.Icon</div>
-                <h3>@category.Name</h3>
+                <h3>@category.GetName()</h3>
             </a>
         }
     </div>

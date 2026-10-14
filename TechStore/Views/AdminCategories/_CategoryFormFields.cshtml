@@ -5,6 +5,17 @@
     <input asp-for="Name" />
     <span asp-validation-for="Name" class="field-error"></span>
 </div>
+<div class="form-group">
+    <label asp-for="NameEn">@Localizer["ProductName"] (EN)</label>
+    <input asp-for="NameEn" />
+    <span asp-validation-for="NameEn" class="field-error"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="NameAz">@Localizer["ProductName"] (AZ)</label>
+    <input asp-for="NameAz" />
+    <span asp-validation-for="NameAz" class="field-error"></span>
+</div>
 
 <div class="form-group">
     <label asp-for="Icon">@Localizer["IconEmoji"]</label>

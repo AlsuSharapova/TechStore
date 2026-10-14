@@ -13,7 +13,7 @@
            asp-route-search="@Model.Search"
            class="category-strip-item @(isActive ? "active" : "")">
             <span style="font-size: 22px;">@category.Icon</span>
-            <span>@category.Name</span>
+            <span>@category.GetName()</span>
         </a>
     }
 </div>

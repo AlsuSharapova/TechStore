@@ -46,6 +46,8 @@ namespace TechStore.Controllers {
 
             var category = new Category {
                 Name = model.Name,
+                NameEn = model.NameEn,
+                NameAz = model.NameAz,
                 Icon = model.Icon,
                 IsFeatured = model.IsFeatured
             };
@@ -66,6 +68,8 @@ namespace TechStore.Controllers {
 
             var model = new CategoryFormViewModel {
                 Name = category.Name,
+                NameEn = category.NameEn,
+                NameAz = category.NameAz,
                 Icon = category.Icon,
                 IsFeatured = category.IsFeatured
             };
@@ -97,6 +101,8 @@ namespace TechStore.Controllers {
             }
 
             category.Name = model.Name;
+            category.NameEn = model.NameEn;
+            category.NameAz = model.NameAz;
             category.Icon = model.Icon;
             category.IsFeatured = model.IsFeatured;
 
