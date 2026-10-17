@@ -2,29 +2,31 @@
 
 namespace TechStore.ViewModels.Admin {
     public class ProductFormViewModel {
-        [Required(ErrorMessage = "Введите название")]
-        [Display(Name = "Название")]
+        [Required(ErrorMessage = "TitleRequired")]
+        [Display(Name = "ProductName")]
         public string Name { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Введите описание")]
-        [Display(Name = "Описание")]
+        [Required(ErrorMessage = "DescriptionRequired")]
+        [Display(Name = "Description")]
         public string Description { get; set; } = string.Empty;
-        [Required(ErrorMessage = "Введите описание")]
+
+        [Required(ErrorMessage = "DescriptionEnRequired")]
         public string? DescriptionEn { get; set; }
-        [Required(ErrorMessage = "Введите описание")]
+
+        [Required(ErrorMessage = "DescriptionAzRequired")]
         public string? DescriptionAz { get; set; }
 
-        [Required(ErrorMessage = "Введите цену")]
-        [Display(Name = "Цена")]
-        [Range(0.01, 1000000, ErrorMessage = "Цена должна быть больше 0")]
+        [Required(ErrorMessage = "PriceRequired")]
+        [Display(Name = "PriceHeader")]
+        [Range(0.01, 1000000, ErrorMessage = "PriceRange")]
         public decimal Price { get; set; }
 
-        [Required(ErrorMessage = "Введите количество")]
-        [Range(0, int.MaxValue, ErrorMessage = "Количество не может быть отрицательным")]
-        [Display(Name = "Количество на складе")]
+        [Required(ErrorMessage = "QuantityRequired")]
+        [Range(0, int.MaxValue, ErrorMessage = "QuantityNegative")]
+        [Display(Name = "Stock")]
         public int StockQuantity { get; set; }
 
-        [Required(ErrorMessage = "Выберите категорию")]
+        [Required(ErrorMessage = "SelectCategory")]
         public int CategoryId { get; set; }
 
         public bool IsBestSeller { get; set; }

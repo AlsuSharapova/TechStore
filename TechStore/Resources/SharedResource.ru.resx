@@ -333,6 +333,75 @@
 	<data name="RememberMe" xml:space="preserve"><value>Запомнить меня</value></data>
 	<data name="ForgotPassword" xml:space="preserve"><value>Забыли пароль?</value></data>
 	<data name="NoAccount" xml:space="preserve"><value>Нет аккаунта?</value></data>
+
+	<data name="SpecTranslationsTitle" xml:space="preserve"><value>Переводы характеристик</value></data>
+	<data name="WordRu" xml:space="preserve"><value>Слово (по-русски)</value></data>
+
+	<data name="EditTranslation" xml:space="preserve"><value>Редактировать перевод</value></data>
+
+	<data name="ConfirmDeleteTranslation" xml:space="preserve"><value>Удалить перевод слова «{0}»?</value></data>
+
+	<data name="TranslationInUse" xml:space="preserve"><value>Нельзя удалить слово «{0}»: оно используется в товарах: {1}. Сначала измените или удалите его в товарах.</value></data>
+
+	<data name="TranslationExists" xml:space="preserve"><value>Слово «{0}» уже есть в словаре.</value></data>
+
+	<data name="EmailAlreadyRegistered" xml:space="preserve"><value>Этот email уже зарегистрирован. Попробуйте войти.</value></data>
+	<data name="EmailConfirmed" xml:space="preserve"><value>Email подтверждён! Теперь вы можете войти.</value></data>
+	<data name="EmailConfirmFailed" xml:space="preserve"><value>Не удалось подтвердить email. Ссылка недействительна или устарела.</value></data>
+	<data name="AccountBlocked" xml:space="preserve"><value>Ваш аккаунт заблокирован. Обратитесь в поддержку.</value></data>
+	<data name="InvalidCredentials" xml:space="preserve"><value>Неверный email или пароль</value></data>
+
+	<data name="ResetEmailSentText" xml:space="preserve"><value>Если такой email зарегистрирован у нас, мы отправили на него ссылку для сброса пароля.</value></data>
+	<data name="BackToLogin" xml:space="preserve"><value>Вернуться ко входу</value></data>
+	<data name="PasswordChanged" xml:space="preserve"><value>Пароль изменён</value></data>
+	<data name="PasswordChangedText" xml:space="preserve"><value>Ваш пароль успешно изменён. Теперь вы можете войти с новым паролем.</value></data>
+	<data name="ResetEmailSubject" xml:space="preserve"><value>Сброс пароля — TechStore</value></data>
+	<data name="ResetEmailIntro" xml:space="preserve"><value>Вы запросили сброс пароля. Перейдите по ссылке, чтобы задать новый пароль:</value></data>
+	<data name="ResetEmailLink" xml:space="preserve"><value>Сбросить пароль</value></data>
+	<data name="ConfirmEmailSubject" xml:space="preserve"><value>Подтверждение регистрации — TechStore</value></data>
+	<data name="ConfirmEmailTitle" xml:space="preserve"><value>Добро пожаловать в TechStore!</value></data>
+	<data name="ConfirmEmailIntro" xml:space="preserve"><value>Подтвердите ваш email, перейдя по ссылке:</value></data>
+	<data name="ConfirmEmailLink" xml:space="preserve"><value>Подтвердить email</value></data>
+
+	<data name="CategoryHasProducts" xml:space="preserve"><value>Нельзя удалить категорию «{0}» — в ней есть товары ({1} шт.). Сначала удалите или перенесите их.</value></data>
+
+	<data name="CartNoMoreStock" xml:space="preserve"><value>Больше товара {0} нет в наличии.</value></data>
+	<data name="CartItemSoldOut" xml:space="preserve"><value>«{0}» закончился и удалён из корзины.</value></data>
+	<data name="CartQuantityReduced" xml:space="preserve"><value>Количество «{0}» уменьшено до {1} шт. (столько осталось в наличии).</value></data>
+	<data name="CheckoutStockError" xml:space="preserve"><value>Товара «{0}» осталось только {1} шт. Пожалуйста, измените количество в корзине.</value></data>
+	<data name="OrderPlaced" xml:space="preserve"><value>Заказ оформлен!</value></data>
+	<data name="OrderPaidText" xml:space="preserve"><value>Ваш заказ №{0} оплачен и принят в обработку. Мы свяжемся с вами для подтверждения доставки.</value></data>
+	<data name="PaymentCancelled" xml:space="preserve"><value>Оплата отменена</value></data>
+	<data name="PaymentCancelledText" xml:space="preserve"><value>Вы отменили оплату. Товары остались в корзине — вы можете попробовать оформить заказ снова.</value></data>
+	<data name="BackToCart" xml:space="preserve"><value>Вернуться в корзину</value></data>
+
+	<data name="EmailRequired" xml:space="preserve"><value>Введите email</value></data>
+	<data name="EmailInvalid" xml:space="preserve"><value>Некорректный email</value></data>
+	<data name="PasswordRequired" xml:space="preserve"><value>Введите пароль</value></data>
+
+	<data name="NameRequired" xml:space="preserve"><value>Введите имя</value></data>
+	<data name="PasswordLength" xml:space="preserve"><value>Пароль должен содержать от {2} до {1} символов.</value></data>
+	<data name="ConfirmPasswordRequired" xml:space="preserve"><value>Подтвердите пароль</value></data>
+	<data name="PasswordsDoNotMatch" xml:space="preserve"><value>Пароли не совпадают</value></data>
+
+	<data name="NewPasswordRequired" xml:space="preserve"><value>Введите новый пароль</value></data>
+
+	<data name="TitleRequired" xml:space="preserve"><value>Введите название</value></data>
+	<data name="TitleEnRequired" xml:space="preserve"><value>Введите название на английском</value></data>
+	<data name="TitleAzRequired" xml:space="preserve"><value>Введите название на азербайджанском</value></data>
+	<data name="IconRequired" xml:space="preserve"><value>Введите иконку (эмодзи)</value></data>
+
+	<data name="DescriptionRequired" xml:space="preserve"><value>Введите описание</value></data>
+	<data name="DescriptionEnRequired" xml:space="preserve"><value>Введите описание на английском</value></data>
+	<data name="DescriptionAzRequired" xml:space="preserve"><value>Введите описание на азербайджанском</value></data>
+	<data name="PriceRequired" xml:space="preserve"><value>Введите цену</value></data>
+	<data name="PriceRange" xml:space="preserve"><value>Цена должна быть больше 0</value></data>
+	<data name="QuantityRequired" xml:space="preserve"><value>Введите количество</value></data>
+	<data name="QuantityNegative" xml:space="preserve"><value>Количество не может быть отрицательным</value></data>
+
+	<data name="AddressRequired" xml:space="preserve"><value>Введите адрес доставки</value></data>
+	<data name="PhoneRequired" xml:space="preserve"><value>Введите номер телефона</value></data>
+	<data name="PhoneInvalid" xml:space="preserve"><value>Некорректный номер телефона</value></data>
 	
 	
 </root>

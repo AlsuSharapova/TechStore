@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using TechStore.Data;
 using TechStore.Models.Entities;
 using TechStore.ViewModels.Admin;
+using System.Text.RegularExpressions;
 
 namespace TechStore.Controllers {
     [Authorize(Roles = "Admin")]
@@ -76,6 +77,8 @@ namespace TechStore.Controllers {
                     });
                 }
             }
+
+            await AddMissingSpecWords(model.SpecNames.Concat(model.SpecValues));
 
             await _context.SaveChangesAsync();
 
@@ -171,6 +174,8 @@ namespace TechStore.Controllers {
                 }
             }
 
+            await AddMissingSpecWords(model.SpecNames.Concat(model.SpecValues));
+
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");
@@ -199,6 +204,26 @@ namespace TechStore.Controllers {
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");
+        }
+
+        //HELPERS
+        private async Task AddMissingSpecWords(IEnumerable<string> texts) {
+            var candidates = texts
+            .Where(t => !string.IsNullOrWhiteSpace(t))
+            .Select(t => t.Trim())
+            .Where(t => t.Length <= 200)
+            .Where(t => Regex.IsMatch(t, "[а-яА-ЯёЁ]"))
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .ToList();
+
+            var known = (await _context.SpecTranslations.Select(t => t.Term).ToListAsync())
+                .ToHashSet(StringComparer.OrdinalIgnoreCase);
+
+            foreach (var text in candidates) {
+                if (!known.Contains(text)) {
+                    _context.SpecTranslations.Add(new SpecTranslation { Term = text });
+                }
+            }
         }
     }
 }

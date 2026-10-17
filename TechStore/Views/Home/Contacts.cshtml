@@ -42,7 +42,6 @@
             <div>
                 <h3>@Localizer["WorkingHoursTitle"]</h3>
                 <p>@Model.WorkingHours</p>
-                <p>@Model.SundayHours</p>
             </div>
         </div>
     </div>
@@ -101,8 +100,8 @@
 
     const marker = L.marker([40.375, 49.832]).addTo(map);
 
-    marker.bindPopup(`
+        marker.bindPopup(`
         <strong>TechStore</strong><br>
-        ул. Низами, 45
+        @Model.Address
     `).openPopup();
 </script>

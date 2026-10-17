@@ -488,3 +488,20 @@
 .btn-admin-danger:hover {
     background-color: #fee2e2;
 }
+
+.admin-topbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+
+.admin-topbar select {
+    padding: 7px 12px;
+    border: 1px solid #dfe3e8;
+    border-radius: 8px;
+    background-color: white;
+    color: #374151;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+}

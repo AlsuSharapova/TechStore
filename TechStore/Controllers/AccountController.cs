@@ -4,16 +4,20 @@ using TechStore.Models.Entities;
 using TechStore.ViewModels.Account;
 using TechStore.Services;
 using TechStore.ViewModels;
+using Microsoft.Extensions.Localization;
+using TechStore.Resources;
 
 namespace TechStore.Controllers {
     public class AccountController : Controller {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailSender emailSender) {
+        private readonly IStringLocalizer<SharedResource> _localizer;
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailSender emailSender, IStringLocalizer<SharedResource> localizer) {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
+            _localizer = localizer;
         }
 
         [HttpGet]
@@ -32,7 +36,7 @@ namespace TechStore.Controllers {
                 }
 
                 if (existingUser != null && existingUser.EmailConfirmed) {
-                    ModelState.AddModelError(string.Empty, "Этот email уже зарегистрирован. Попробуйте войти.");
+                    ModelState.AddModelError(string.Empty, _localizer["EmailAlreadyRegistered"].Value);
                     return View(model);
                 }
 
@@ -69,10 +73,10 @@ namespace TechStore.Controllers {
             var result = await _userManager.ConfirmEmailAsync(user, decodedToken);
 
             if (result.Succeeded) {
-                TempData["Message"] = "Email подтверждён! Теперь вы можете войти.";
+                TempData["Message"] = _localizer["EmailConfirmed"].Value;
             }
             else {
-                TempData["Message"] = "Не удалось подтвердить email. Ссылка недействительна или устарела.";
+                TempData["Message"] = _localizer["EmailConfirmFailed"].Value;
             }
 
             return RedirectToAction("Login");
@@ -91,7 +95,7 @@ namespace TechStore.Controllers {
                     var isLockedOut = await _userManager.IsLockedOutAsync(user);
 
                     if (isLockedOut) {
-                        ModelState.AddModelError(string.Empty, "Ваш аккаунт заблокирован. Обратитесь в поддержку.");
+                        ModelState.AddModelError(string.Empty, _localizer["AccountBlocked"].Value);
                         return View(model);
                     }
 
@@ -107,7 +111,7 @@ namespace TechStore.Controllers {
                     }
                 }
 
-                ModelState.AddModelError(string.Empty, "Неверный email или пароль");
+                ModelState.AddModelError(string.Empty, _localizer["InvalidCredentials"].Value);
             }
 
             return View(model);
@@ -137,18 +141,18 @@ namespace TechStore.Controllers {
                         new { userId = user.Id, token = encodedToken },
                         protocol: Request.Scheme);
 
-                    var emailBody = $"<h3>Сброс пароля — TechStore</h3>" +
-                                     $"<p>Вы запросили сброс пароля. Перейдите по ссылке, чтобы задать новый пароль:</p>" +
-                                     $"<a href='{resetLink}'>Сбросить пароль</a>";
+                    var emailBody = $"<h3>{_localizer["ResetEmailSubject"].Value}</h3>" +
+                        $"<p>{_localizer["ResetEmailIntro"].Value}</p>" +
+                        $"<a href='{resetLink}'>{_localizer["ResetEmailLink"].Value}</a>";
 
-                    await _emailSender.SendEmailAsync(user.Email!, "Сброс пароля — TechStore", emailBody);
+                    await _emailSender.SendEmailAsync(user.Email!, _localizer["ResetEmailSubject"].Value, emailBody);
                 }
 
                 return View("InfoMessage", new InfoMessageViewModel {
                     Icon = "📧",
-                    Title = "Проверьте почту",
-                    Message = "Если такой email зарегистрирован у нас, мы отправили на него ссылку для сброса пароля.",
-                    ButtonText = "Вернуться ко входу",
+                    Title = _localizer["CheckEmail"].Value,
+                    Message = _localizer["ResetEmailSentText"].Value,
+                    ButtonText = _localizer["BackToLogin"].Value,
                     ButtonController = "Account",
                     ButtonAction = "Login"
                 });
@@ -183,9 +187,9 @@ namespace TechStore.Controllers {
                 if (result.Succeeded) {
                     return View("InfoMessage", new InfoMessageViewModel {
                         Icon = "✅",
-                        Title = "Пароль изменён",
-                        Message = "Ваш пароль успешно изменён. Теперь вы можете войти с новым паролем.",
-                        ButtonText = "Перейти ко входу",
+                        Title = _localizer["PasswordChanged"].Value,
+                        Message = _localizer["PasswordChangedText"].Value,
+                        ButtonText = _localizer["GoToLogin"].Value,
                         ButtonController = "Account",
                         ButtonAction = "Login"
                     });
@@ -209,18 +213,18 @@ namespace TechStore.Controllers {
                 new { userId = user.Id, token = encodedToken },
                 protocol: Request.Scheme);
 
-            var emailBody = $"<h3>Добро пожаловать в TechStore!</h3>" +
-                             $"<p>Подтвердите ваш email, перейдя по ссылке:</p>" +
-                             $"<a href='{confirmationLink}'>Подтвердить email</a>";
+            var emailBody = $"<h3>{_localizer["ConfirmEmailTitle"].Value}</h3>" +
+                 $"<p>{_localizer["ConfirmEmailIntro"].Value}</p>" +
+                 $"<a href='{confirmationLink}'>{_localizer["ConfirmEmailLink"].Value}</a>";
 
-            await _emailSender.SendEmailAsync(user.Email!, "Подтверждение регистрации — TechStore", emailBody);
+            await _emailSender.SendEmailAsync(user.Email!, _localizer["ConfirmEmailSubject"].Value, emailBody);
         }
         private IActionResult CheckEmailMessage() {
             return View("InfoMessage", new InfoMessageViewModel {
                 Icon = "📧",
-                Title = "Проверьте почту",
-                Message = "Мы отправили письмо с подтверждением на вашу почту. Перейдите по ссылке в письме, чтобы завершить регистрацию.",
-                ButtonText = "Перейти ко входу",
+                Title = _localizer["CheckEmail"].Value,
+                Message = _localizer["RegisterConfirmationText"].Value,
+                ButtonText = _localizer["GoToLogin"].Value,
                 ButtonController = "Account",
                 ButtonAction = "Login"
             });

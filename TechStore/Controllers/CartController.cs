@@ -7,16 +7,20 @@ using TechStore.Models.Entities;
 using TechStore.ViewModels;
 using TechStore.ViewModels.Account;
 using Stripe.Checkout;
+using Microsoft.Extensions.Localization;
+using TechStore.Resources;
 
 namespace TechStore.Controllers {
     [Authorize]
     public class CartController : Controller {
         private readonly AppDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IStringLocalizer<SharedResource> _localizer;
 
-        public CartController(AppDbContext context, UserManager<ApplicationUser> userManager) {
+        public CartController(AppDbContext context, UserManager<ApplicationUser> userManager, IStringLocalizer<SharedResource> localizer) {
             _context = context;
             _userManager = userManager;
+            _localizer = localizer;
         }
 
         public async Task<IActionResult> Index() {
@@ -49,7 +53,7 @@ namespace TechStore.Controllers {
 
             if (existingItem != null) {
                 if (existingItem.Quantity + quantity > existingItem.Product.StockQuantity) {
-                    TempData["CartMessage"] =  $"Больше товара {existingItem.Product.Name} нет в наличии.";
+                    TempData["CartMessage"] = _localizer["CartNoMoreStock", existingItem.Product.Name].Value;
                     return RedirectToAction("Index");
                 }
                 existingItem.Quantity += quantity;
@@ -130,11 +134,11 @@ namespace TechStore.Controllers {
             foreach (var item in cart.Items.ToList()) {
                 if (item.Quantity > item.Product.StockQuantity) {
                     if (item.Product.StockQuantity <= 0) {
-                        adjustedMessages.Add($"«{item.Product.Name}» закончился и удалён из корзины.");
+                        adjustedMessages.Add(_localizer["CartItemSoldOut", item.Product.Name].Value);
                         _context.CartItems.Remove(item);
                     }
                     else {
-                        adjustedMessages.Add($"Количество «{item.Product.Name}» уменьшено до {item.Product.StockQuantity} шт. (столько осталось в наличии).");
+                        adjustedMessages.Add(_localizer["CartQuantityReduced", item.Product.Name, item.Product.StockQuantity].Value);
                         item.Quantity = item.Product.StockQuantity;
                     }
                 }
@@ -174,7 +178,7 @@ namespace TechStore.Controllers {
             foreach (var item in cart.Items) {
                 if (item.Quantity > item.Product.StockQuantity) {
                     ModelState.AddModelError(string.Empty,
-                        $"Товара «{item.Product.Name}» осталось только {item.Product.StockQuantity} шт. Пожалуйста, измените количество в корзине.");
+                        _localizer["CheckoutStockError", item.Product.Name, item.Product.StockQuantity].Value);
                 }
             }
 
@@ -273,9 +277,9 @@ namespace TechStore.Controllers {
 
             return View("InfoMessage", new InfoMessageViewModel {
                 Icon = "✅",
-                Title = "Заказ оформлен!",
-                Message = $"Ваш заказ №{order.Id} оплачен и принят в обработку. Мы свяжемся с вами для подтверждения доставки.",
-                ButtonText = "Мои заказы",
+                Title = _localizer["OrderPlaced"].Value,
+                Message = _localizer["OrderPaidText", order.Id].Value,
+                ButtonText = _localizer["MyOrders"].Value,
                 ButtonController = "Orders",
                 ButtonAction = "Index"
             });
@@ -292,9 +296,9 @@ namespace TechStore.Controllers {
 
             return View("InfoMessage", new InfoMessageViewModel {
                 Icon = "❌",
-                Title = "Оплата отменена",
-                Message = "Вы отменили оплату. Товары остались в корзине — вы можете попробовать оформить заказ снова.",
-                ButtonText = "Вернуться в корзину",
+                Title = _localizer["PaymentCancelled"].Value,
+                Message = _localizer["PaymentCancelledText"].Value,
+                ButtonText = _localizer["BackToCart"].Value,
                 ButtonController = "Cart",
                 ButtonAction = "Index"
             });

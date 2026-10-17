@@ -71,7 +71,9 @@
                 @if (product.Specifications.Any()) {
                     <ul class="product-card-specs">
                         @foreach (var spec in product.Specifications.Take(3)) {
-                            <li>@spec.Value</li>
+                            <li>
+                                <strong>@SpecTranslator.Translate(spec.Name):</strong> @SpecTranslator.Translate(spec.Value)
+                            </li>
                         }
                     </ul>
                 }

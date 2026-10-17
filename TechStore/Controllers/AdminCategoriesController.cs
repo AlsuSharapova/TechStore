@@ -122,7 +122,7 @@ namespace TechStore.Controllers {
             }
 
             if (category.Products.Any()) {
-                TempData["ErrorMessage"] = $"Нельзя удалить категорию «{category.Name}» — в ней есть товары ({category.Products.Count} шт.). Сначала удалите или перенесите их.";
+                TempData["ErrorMessage"] = _localizer["CategoryHasProducts", category.Name, category.Products.Count].Value;
                 return RedirectToAction("Index");
             }
 

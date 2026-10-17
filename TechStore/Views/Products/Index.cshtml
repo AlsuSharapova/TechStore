@@ -48,7 +48,7 @@
                 </div>
 
                 @foreach (var specGroup in Model.AvailableSpecFilters) {
-                    <h3>@specGroup.Name</h3>
+                    <h3>@SpecTranslator.Translate(specGroup.Name)</h3>
                     <div class="spec-filter-group">
                         @foreach (var value in specGroup.Values) {
                             var specKey = $"{specGroup.Name}:{value}";
@@ -56,7 +56,7 @@
 
                             <label class="spec-checkbox">
                                 <input type="checkbox" name="specs" value="@specKey" checked="@isChecked" />
-                                @value
+                                @SpecTranslator.Translate(value)
                             </label>
                         }
                     </div>
@@ -106,7 +106,7 @@
                         <ul class="product-card-specs">
                             @foreach (var spec in product.Specifications.Take(3)) {
                                 <li>
-                                    <strong>@spec.Name:</strong> @spec.Value
+                                    <strong>@SpecTranslator.Translate(spec.Name):</strong> @SpecTranslator.Translate(spec.Value)
                                 </li>
                             }
                         </ul>

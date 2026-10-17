@@ -20,7 +20,7 @@
                 @foreach (var spec in Model.Specifications.Take(4))
                 {
                     <li>
-                        <strong>@spec.Name:</strong> @spec.Value
+                        <strong>@SpecTranslator.Translate(spec.Name):</strong> @SpecTranslator.Translate(spec.Value)
                     </li>
                 }
             </ul>
@@ -62,8 +62,8 @@
             @foreach (var spec in Model.Specifications)
             {
                 <tr>
-                    <td>@spec.Name</td>
-                    <td>@spec.Value</td>
+                    <td>@SpecTranslator.Translate(spec.Name)</td>
+                    <td>@SpecTranslator.Translate(spec.Value)</td>
                 </tr>
             }
         </table>

@@ -1,0 +1,44 @@
+﻿@model List<SpecTranslation>
+@{
+    ViewData["Title"] = Localizer["SpecTranslationsTitle"].Value;
+    Layout = "_AdminLayout";
+}
+@if (TempData["ErrorMessage"] != null) {
+    <div class="admin-alert-error">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<div class="admin-page-header">
+    <h1>@Localizer["SpecTranslationsTitle"]</h1>
+</div>
+
+<table class="admin-table">
+    <thead>
+        <tr>
+            <th>@Localizer["WordRu"]</th>
+            <th>EN</th>
+            <th>AZ</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var word in Model) {
+            <tr>
+                <td>@word.Term</td>
+                <td>@(string.IsNullOrWhiteSpace(word.En) ? "—" : word.En)</td>
+                <td>@(string.IsNullOrWhiteSpace(word.Az) ? "—" : word.Az)</td>
+                <td class="admin-table-actions">
+                    <a asp-controller="AdminSpecTranslations" asp-action="Edit" asp-route-id="@word.Id">
+                        ✏️
+                    </a>
+                    <form asp-controller="AdminSpecTranslations" asp-action="Delete" asp-route-id="@word.Id" method="post"
+                          onsubmit="return confirm('@Localizer["ConfirmDeleteTranslation", word.Term]')" class="delete-form">
+                        <button type="submit">🗑</button>
+                    </form>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

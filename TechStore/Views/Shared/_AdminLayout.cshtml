@@ -38,6 +38,10 @@
                    class="admin-nav-link @(currentController == "AdminUsers" ? "active" : "")">
                     👥 @Localizer["Users"]
                 </a>
+                <a asp-controller="AdminSpecTranslations" asp-action="Index"
+                   class="admin-nav-link @(currentController == "AdminSpecTranslations" ? "active" : "")">
+                    📖 @Localizer["SpecTranslationsTitle"]
+                </a>
             </nav>
 
             <div class="admin-sidebar-footer">
@@ -48,6 +52,10 @@
         </aside>
 
         <main class="admin-content">
+            <div class="admin-topbar">
+                <partial name="_LanguageSwitcher" />
+            </div>
+
             @RenderBody()
         </main>
 

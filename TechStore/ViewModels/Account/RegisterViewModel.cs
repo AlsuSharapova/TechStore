@@ -2,24 +2,24 @@
 
 namespace TechStore.ViewModels.Account {
     public class RegisterViewModel {
-        [Required(ErrorMessage = "Введите имя")]
-        [Display(Name = "Имя")]
+        [Required(ErrorMessage = "NameRequired")]
+        [Display(Name = "FullName")]
         public string FullName { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Введите email")]
-        [EmailAddress(ErrorMessage = "Некорректный email")]
+        [Required(ErrorMessage = "EmailRequired")]
+        [EmailAddress(ErrorMessage = "EmailInvalid")]
         public string Email { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Введите пароль")]
-        [StringLength(40, MinimumLength = 8, ErrorMessage = "Пароль должен содержать от {2} до {1} символов.")]
+        [Required(ErrorMessage = "PasswordRequired")]
+        [StringLength(40, MinimumLength = 8, ErrorMessage = "PasswordLength")]
         [DataType(DataType.Password)]
-        [Display(Name = "Пароль")]
+        [Display(Name = "Password")]
         public string Password { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Подтвердите пароль")]
+        [Required(ErrorMessage = "ConfirmPasswordRequired")]
         [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "Пароли не совпадают")]
-        [Display(Name = "Подтверждение пароля")]
+        [Compare("Password", ErrorMessage = "PasswordsDoNotMatch")]
+        [Display(Name = "ConfirmPassword")]
         public string ConfirmPassword { get; set; } = string.Empty;
     }
 }

@@ -3,13 +3,13 @@ using TechStore.Models.Entities;
 
 namespace TechStore.ViewModels {
     public class CheckoutViewModel {
-        [Required(ErrorMessage = "Введите адрес доставки")]
-        [Display(Name = "Адрес доставки")]
+        [Required(ErrorMessage = "AddressRequired")]
+        [Display(Name = "DeliveryAddressField")]
         public string DeliveryAddress { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Введите номер телефона")]
-        [Phone(ErrorMessage = "Некорректный номер телефона")]
-        [Display(Name = "Телефон")]
+        [Required(ErrorMessage = "PhoneRequired")]
+        [Phone(ErrorMessage = "PhoneInvalid")]
+        [Display(Name = "PhoneField")]
         public string PhoneNumber { get; set; } = string.Empty;
 
         public Cart? Cart { get; set; }

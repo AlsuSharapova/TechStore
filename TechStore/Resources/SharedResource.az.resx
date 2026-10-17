@@ -333,6 +333,75 @@
 	<data name="RememberMe" xml:space="preserve"><value>Məni xatırla</value></data>
 	<data name="ForgotPassword" xml:space="preserve"><value>Şifrəni unutmusunuz?</value></data>
 	<data name="NoAccount" xml:space="preserve"><value>Hesabınız yoxdur?</value></data>
+
+	<data name="SpecTranslationsTitle" xml:space="preserve"><value>Xüsusiyyət tərcümələri</value></data>
+	<data name="WordRu" xml:space="preserve"><value>Söz (rusca)</value></data>
+
+	<data name="EditTranslation" xml:space="preserve"><value>Tərcüməni redaktə et</value></data>
+
+	<data name="ConfirmDeleteTranslation" xml:space="preserve"><value>«{0}» sözünün tərcüməsini silmək istəyirsiniz?</value></data>
+
+	<data name="TranslationInUse" xml:space="preserve"><value>«{0}» sözünü silmək olmaz: o, bu məhsullarda istifadə olunur: {1}. Əvvəlcə onu məhsullarda dəyişin və ya silin.</value></data>
+
+	<data name="TranslationExists" xml:space="preserve"><value>«{0}» sözü artıq lüğətdə var.</value></data>
+
+	<data name="EmailAlreadyRegistered" xml:space="preserve"><value>Bu e-poçt artıq qeydiyyatdan keçib. Daxil olmağa çalışın.</value></data>
+	<data name="EmailConfirmed" xml:space="preserve"><value>E-poçt təsdiqləndi! İndi daxil ola bilərsiniz.</value></data>
+	<data name="EmailConfirmFailed" xml:space="preserve"><value>E-poçtu təsdiqləmək mümkün olmadı. Keçid etibarsızdır və ya köhnəlib.</value></data>
+	<data name="AccountBlocked" xml:space="preserve"><value>Hesabınız bloklanıb. Dəstək xidməti ilə əlaqə saxlayın.</value></data>
+	<data name="InvalidCredentials" xml:space="preserve"><value>E-poçt və ya şifrə yanlışdır</value></data>
+
+	<data name="ResetEmailSentText" xml:space="preserve"><value>Əgər bu e-poçt bizdə qeydiyyatdadırsa, şifrəni sıfırlamaq üçün ona keçid göndərdik.</value></data>
+	<data name="BackToLogin" xml:space="preserve"><value>Girişə qayıt</value></data>
+	<data name="PasswordChanged" xml:space="preserve"><value>Şifrə dəyişdirildi</value></data>
+	<data name="PasswordChangedText" xml:space="preserve"><value>Şifrəniz uğurla dəyişdirildi. İndi yeni şifrə ilə daxil ola bilərsiniz.</value></data>
+	<data name="ResetEmailSubject" xml:space="preserve"><value>Şifrənin sıfırlanması — TechStore</value></data>
+	<data name="ResetEmailIntro" xml:space="preserve"><value>Siz şifrənin sıfırlanmasını tələb etdiniz. Yeni şifrə təyin etmək üçün keçidə daxil olun:</value></data>
+	<data name="ResetEmailLink" xml:space="preserve"><value>Şifrəni sıfırla</value></data>
+	<data name="ConfirmEmailSubject" xml:space="preserve"><value>Qeydiyyatın təsdiqi — TechStore</value></data>
+	<data name="ConfirmEmailTitle" xml:space="preserve"><value>TechStore-a xoş gəlmisiniz!</value></data>
+	<data name="ConfirmEmailIntro" xml:space="preserve"><value>E-poçtunuzu təsdiqləmək üçün keçidə daxil olun:</value></data>
+	<data name="ConfirmEmailLink" xml:space="preserve"><value>E-poçtu təsdiqlə</value></data>
+
+	<data name="CategoryHasProducts" xml:space="preserve"><value>«{0}» kateqoriyasını silmək olmaz — onda məhsullar var ({1}). Əvvəlcə onları silin və ya köçürün.</value></data>
+
+	<data name="CartNoMoreStock" xml:space="preserve"><value>{0} məhsulundan daha stokda yoxdur.</value></data>
+	<data name="CartItemSoldOut" xml:space="preserve"><value>«{0}» bitib və səbətdən çıxarılıb.</value></data>
+	<data name="CartQuantityReduced" xml:space="preserve"><value>«{0}» sayı {1} ədədə endirildi (stokda bu qədər qalıb).</value></data>
+	<data name="CheckoutStockError" xml:space="preserve"><value>«{0}» məhsulundan stokda yalnız {1} ədəd qalıb. Zəhmət olmasa səbətdə sayı dəyişin.</value></data>
+	<data name="OrderPlaced" xml:space="preserve"><value>Sifariş rəsmiləşdirildi!</value></data>
+	<data name="OrderPaidText" xml:space="preserve"><value>№{0} sifarişiniz ödənildi və emala götürüldü. Çatdırılmanı təsdiqləmək üçün sizinlə əlaqə saxlayacağıq.</value></data>
+	<data name="PaymentCancelled" xml:space="preserve"><value>Ödəniş ləğv edildi</value></data>
+	<data name="PaymentCancelledText" xml:space="preserve"><value>Ödənişi ləğv etdiniz. Məhsullar səbətdə qalıb — sifarişi yenidən verməyə cəhd edə bilərsiniz.</value></data>
+	<data name="BackToCart" xml:space="preserve"><value>Səbətə qayıt</value></data>
+
+	<data name="EmailRequired" xml:space="preserve"><value>E-poçtu daxil edin</value></data>
+	<data name="EmailInvalid" xml:space="preserve"><value>E-poçt ünvanı düzgün deyil</value></data>
+	<data name="PasswordRequired" xml:space="preserve"><value>Şifrəni daxil edin</value></data>
+
+	<data name="NameRequired" xml:space="preserve"><value>Adı daxil edin</value></data>
+	<data name="PasswordLength" xml:space="preserve"><value>Şifrə {2} ilə {1} simvol arasında olmalıdır.</value></data>
+	<data name="ConfirmPasswordRequired" xml:space="preserve"><value>Şifrəni təsdiqləyin</value></data>
+	<data name="PasswordsDoNotMatch" xml:space="preserve"><value>Şifrələr uyğun gəlmir</value></data>
+
+	<data name="NewPasswordRequired" xml:space="preserve"><value>Yeni şifrəni daxil edin</value></data>
+
+	<data name="TitleRequired" xml:space="preserve"><value>Adı daxil edin</value></data>
+	<data name="TitleEnRequired" xml:space="preserve"><value>İngiliscə adı daxil edin</value></data>
+	<data name="TitleAzRequired" xml:space="preserve"><value>Azərbaycanca adı daxil edin</value></data>
+	<data name="IconRequired" xml:space="preserve"><value>İkonu (emoji) daxil edin</value></data>
+
+	<data name="DescriptionRequired" xml:space="preserve"><value>Təsviri daxil edin</value></data>
+	<data name="DescriptionEnRequired" xml:space="preserve"><value>İngiliscə təsviri daxil edin</value></data>
+	<data name="DescriptionAzRequired" xml:space="preserve"><value>Azərbaycanca təsviri daxil edin</value></data>
+	<data name="PriceRequired" xml:space="preserve"><value>Qiyməti daxil edin</value></data>
+	<data name="PriceRange" xml:space="preserve"><value>Qiymət 0-dan böyük olmalıdır</value></data>
+	<data name="QuantityRequired" xml:space="preserve"><value>Sayı daxil edin</value></data>
+	<data name="QuantityNegative" xml:space="preserve"><value>Say mənfi ola bilməz</value></data>
+
+	<data name="AddressRequired" xml:space="preserve"><value>Çatdırılma ünvanını daxil edin</value></data>
+	<data name="PhoneRequired" xml:space="preserve"><value>Telefon nömrəsini daxil edin</value></data>
+	<data name="PhoneInvalid" xml:space="preserve"><value>Telefon nömrəsi düzgün deyil</value></data>
 	
 	
 </root>
